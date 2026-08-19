@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bioinstrumentación · Introducción, 9.1 y 9.2</title>
+<meta name="description" content="Capítulo 9 de bioinstrumentación: objetivos y esquema del capítulo, 9.1 Introducción con los hitos históricos de la instrumentación médica y 9.2 Sistema básico de bioinstrumentación.">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">◍</span>
+      <span class="brand-text">Mediciones Clínicas<small>Instrumentación biomédica</small></span>
+    </a>
+    <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Inicio</a>
+      <a href="capitulo-01.html">Capítulo 1</a>
+      <a class="active" href="bioinstrumentacion.html">Bioinstrumentación 9.1–9.2</a>
+      <a href="glosario.html">Glosario</a>
+      <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema">☾</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc-head">
+    <span class="eyebrow">Capítulo 9 · Bioinstrumentación</span>
+    <h1>Introducción y sistema básico de bioinstrumentación</h1>
+    <div class="meta">
+      <span>John D. Enderle, PhD</span>
+      <span>Temas 9.1 y 9.2</span>
+      <span>Tiempo de lectura ≈ 12 min</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="doc">
+
+  <aside class="toc">
+    <h4>Contenido</h4>
+    <ol>
+      <li><a href="#objetivos">Objetivos del capítulo</a></li>
+      <li><a href="#esquema">Esquema del capítulo</a></li>
+      <li><a href="#s91">9.1 Introducción</a></li>
+      <li class="sub"><a href="#antes1900">Antes de 1900</a></li>
+      <li class="sub"><a href="#electronica">La electrónica en la medicina</a></li>
+      <li class="sub"><a href="#linea">Línea de tiempo (Fig. 9.1)</a></li>
+      <li class="sub"><a href="#fisica">Física, computación e imagen</a></li>
+      <li><a href="#s92">9.2 Sistema básico</a></li>
+      <li class="sub"><a href="#fig92">Diagrama (Fig. 9.2)</a></li>
+      <li class="sub"><a href="#auxiliares">Calibración y realimentación</a></li>
+    </ol>
+  </aside>
+
+  <article>
+
+  <section id="objetivos">
+    <h2>Al concluir el capítulo, el estudiante será capaz de:</h2>
+    <ul>
+      <li>Describir los componentes de un sistema de instrumentación básico.</li>
+      <li>Analizar circuitos lineales usando el método de tensiones de nodo.</li>
+      <li>Simplificar circuitos complejos usando circuitos equivalentes de Thévenin.</li>
+      <li>Resolver circuitos con resistores, capacitores e inductores de cualquier orden.</li>
+      <li>Analizar circuitos que emplean amplificadores operacionales.</li>
+      <li>Determinar la respuesta en régimen permanente a entradas sinusoidales y trabajar en el dominio fasorial.</li>
+      <li>Comprender los conceptos básicos del diseño de filtros analógicos y diseñar filtros básicos.</li>
+      <li>Diseñar filtros paso bajo, paso alto y paso banda.</li>
+      <li>Explicar los distintos tipos de ruido en un sistema de instrumentación biomédica.</li>
+    </ul>
+  </section>
+
+  <section id="esquema">
+    <h2>Esquema del capítulo</h2>
+    <p>
+      Los dos temas tratados en esta página —<strong>9.1</strong> y <strong>9.2</strong>— son la puerta de
+      entrada al resto del capítulo, que desarrolla la teoría de circuitos necesaria para la bioinstrumentación.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Sección</th><th>Tema</th><th>Página</th></tr></thead>
+        <tbody>
+          <tr><td class="param">9.1</td><td><strong>Introducción</strong></td><td>510</td></tr>
+          <tr><td class="param">9.2</td><td><strong>Sistema básico de bioinstrumentación</strong></td><td>512</td></tr>
+          <tr><td class="param">9.3</td><td>Carga, corriente, tensión, potencia y energía</td><td>514</td></tr>
+          <tr><td class="param">9.4</td><td>Resistencia</td><td>520</td></tr>
+          <tr><td class="param">9.5</td><td>Análisis de redes lineales</td><td>531</td></tr>
+          <tr><td class="param">9.6</td><td>Linealidad y superposición</td><td>537</td></tr>
+          <tr><td class="param">9.7</td><td>Teorema de Thévenin</td><td>541</td></tr>
+          <tr><td class="param">9.8</td><td>Inductores</td><td>544</td></tr>
+          <tr><td class="param">9.9</td><td>Capacitores</td><td>548</td></tr>
+          <tr><td class="param">9.10</td><td>Enfoque general para resolver circuitos con resistores, capacitores e inductores</td><td>551</td></tr>
+          <tr><td class="param">9.11</td><td>Amplificadores operacionales</td><td>560</td></tr>
+          <tr><td class="param">9.12</td><td>Señales variables en el tiempo</td><td>572</td></tr>
+          <tr><td class="param">9.13</td><td>Filtros analógicos activos</td><td>578</td></tr>
+          <tr><td class="param">9.14</td><td>Diseño en bioinstrumentación</td><td>588</td></tr>
+          <tr><td class="param">9.15</td><td>Ejercicios</td><td>591</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="s91">
+    <h2><span class="num">9.1</span>Introducción</h2>
+    <p>
+      Este capítulo proporciona información básica sobre bioinstrumentación y sobre la teoría de circuitos
+      eléctricos empleada en los demás capítulos. Muchos instrumentos biomédicos usan un
+      <strong>transductor o sensor</strong> para convertir una señal creada por el cuerpo en una señal
+      eléctrica. El objetivo del capítulo es desarrollar destreza en teoría de circuitos eléctricos aplicada a
+      la bioinstrumentación.
+    </p>
+    <div class="callout">
+      <div class="callout-title">Recorrido del capítulo</div>
+      <p style="margin-bottom:0">
+        Se comienza con la descripción de las variables usadas en teoría de circuitos —<strong>carga,
+        corriente, tensión, potencia y energía</strong>—. A continuación se introducen las <strong>leyes de
+        Kirchhoff</strong> de corriente y tensión, seguidas de la resistencia, la simplificación de circuitos
+        resistivos y el cálculo de tensiones y corrientes. Después se presentan las técnicas de análisis de
+        circuitos, la inductancia y la capacitancia, y la resolución de circuitos por el método de las
+        ecuaciones diferenciales. Por último, se introducen el amplificador operacional y las señales
+        variables en el tiempo.
+      </p>
+    </div>
+
+    <h3 id="antes1900">Antes de 1900: del maletín negro al laboratorio</h3>
+    <p>
+      Antes de 1900 la medicina tenía poco que ofrecer al ciudadano medio, porque sus recursos eran
+      principalmente la educación y <strong>el pequeño maletín negro del médico</strong>. El origen de los
+      cambios que ocurrieron dentro de la ciencia médica se encuentra en varios desarrollos que tuvieron lugar
+      en las ciencias aplicadas.
+    </p>
+    <div class="grid grid-2" style="margin:20px 0">
+      <div class="card">
+        <span class="card-tag">Principios del s. XIX</span>
+        <p style="margin-top:10px">El diagnóstico se basaba en la <strong>exploración física</strong> y el tratamiento se diseñaba para curar la anomalía estructural.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">Finales del s. XIX</span>
+        <p style="margin-top:10px">El diagnóstico se basaba en <strong>pruebas de laboratorio</strong> y el tratamiento se diseñaba para eliminar la causa del trastorno.</p>
+      </div>
+    </div>
+    <p>
+      La tendencia hacia el uso de la tecnología se aceleró a lo largo del siglo XX. Durante ese periodo los
+      hospitales se convirtieron en instituciones de investigación y tecnología. Profesionales de la química,
+      la física, la ingeniería mecánica y la ingeniería eléctrica empezaron a trabajar junto al campo médico, y
+      la <strong>ingeniería biomédica se convirtió en una profesión reconocida</strong>. Como resultado, la
+      tecnología médica avanzó más en el siglo XX que en todo el resto de la historia junta (figura 9.1).
+    </p>
+
+    <h3 id="electronica">La electrónica y el nacimiento del ECG y el EEG</h3>
+    <p>
+      Durante este periodo, el área de la electrónica tuvo un impacto significativo en el desarrollo de nueva
+      tecnología médica. Hombres como <strong>Richard Caton</strong> y <strong>Augustus Desire</strong>
+      demostraron que el cerebro y el corazón humanos dependen de eventos bioeléctricos.
+    </p>
+    <p>
+      En 1903 <strong>William Einthoven</strong> amplió estas ideas tras crear el primer
+      <span class="dfn">galvanómetro de cuerda</span>. Einthoven colocó dos sensores en la piel de un hombre y
+      los conectó a los extremos de un hilo plateado suspendido a través de orificios perforados en los dos
+      extremos de un gran imán permanente. El hilo plateado suspendido se movía rítmicamente al latir el
+      corazón del sujeto. Proyectando un fino haz de luz a través del hilo, Einthoven pudo registrar su
+      movimiento como ondas sobre un rollo de papel fotográfico en movimiento. Así, la invención del
+      galvanómetro de cuerda condujo a la creación del <span class="dfn">electrocardiograma (ECG)</span>, que
+      se usa hoy de forma rutinaria para medir y registrar la actividad eléctrica de corazones anormales y
+      comparar esas señales con las normales.
+    </p>
+    <p>
+      En 1929 <strong>Hans Berger</strong> creó el primer <span class="dfn">electroencefalograma (EEG)</span>,
+      que se usa para medir y registrar la actividad eléctrica del cerebro. En 1935 se emplearon
+      <strong>amplificadores eléctricos</strong> para demostrar que la actividad eléctrica de la corteza tenía
+      un ritmo específico, y en 1960 se usaron amplificadores eléctricos en dispositivos como el primer
+      <span class="dfn">marcapasos implantable</span>, creado por William Chardack y Wilson Greatbatch. Estos
+      son solo una pequeña muestra de los muchos ejemplos en los que la electrónica se ha usado para avanzar
+      significativamente la tecnología médica.
+    </p>
+
+    <h3 id="linea">Figura 9.1 · Línea de tiempo de inventos y descubrimientos</h3>
+    <figure class="figure">
+      <div class="timeline">
+        <div class="tl-item"><span class="tl-year">1752</span><p>Ben Franklin vuela su cometa en la tormenta.</p></div>
+        <div class="tl-item"><span class="tl-year">1774</span><p>John Walsh demuestra que la electricidad atraviesa a los seres humanos.</p></div>
+        <div class="tl-item"><span class="tl-year">1785</span><p>Coulomb formula las leyes de atracción y repulsión entre cuerpos cargados eléctricamente.</p></div>
+        <div class="tl-item"><span class="tl-year">1791</span><p>Galvani publica sus hallazgos sobre la «electricidad animal».</p></div>
+        <div class="tl-item"><span class="tl-year">1800</span><p>Volta construye la primera batería.</p></div>
+        <div class="tl-item"><span class="tl-year">1820</span><p>Oersted descubre el electromagnetismo; Ampère mide el efecto magnético de una corriente eléctrica.</p></div>
+        <div class="tl-item"><span class="tl-year">1826</span><p>Ohm formula la ley de la resistencia eléctrica.</p></div>
+        <div class="tl-item"><span class="tl-year">1831</span><p>Faraday y Henry descubren que un imán en movimiento induce una corriente eléctrica en una bobina de hilo.</p></div>
+        <div class="tl-item"><span class="tl-year">1860</span><p>Maxwell desarrolla las ecuaciones matemáticas de las leyes de la electricidad y el magnetismo.</p></div>
+        <div class="tl-item"><span class="tl-year">1886</span><p>Hertz descubre la onda electromagnética.</p></div>
+        <div class="tl-item"><span class="tl-year">1895</span><p>Roentgen descubre los rayos X.</p></div>
+        <div class="tl-item"><span class="tl-year">1897</span><p>Thomson descubre los electrones.</p></div>
+        <div class="tl-item"><span class="tl-year">1903</span><p>Einthoven desarrolla el galvanómetro (de cuerda).</p></div>
+        <div class="tl-item"><span class="tl-year">1904</span><p>Fleming inventa el tubo de vacío.</p></div>
+        <div class="tl-item"><span class="tl-year">1909</span><p>Millikan mide la carga del electrón.</p></div>
+        <div class="tl-item"><span class="tl-year">1920s</span><p>Se inventa la televisión.</p></div>
+        <div class="tl-item"><span class="tl-year">1929</span><p>Hans Berger registra el primer EEG.</p></div>
+        <div class="tl-item"><span class="tl-year">1935</span><p>Se usan amplificadores para registrar EEG.</p></div>
+        <div class="tl-item"><span class="tl-year">1948</span><p>Se construye el primer computador a gran escala; los transistores pasan a estar ampliamente disponibles.</p></div>
+        <div class="tl-item"><span class="tl-year">1959</span><p>Se fabrica el primer computador basado en transistores.</p></div>
+        <div class="tl-item"><span class="tl-year">1960</span><p>Chardack y Greatbatch crean el primer marcapasos implantable.</p></div>
+        <div class="tl-item"><span class="tl-year">1972</span><p>Se fabrica la primera máquina CAT; se usa el primer microprocesador.</p></div>
+        <div class="tl-item"><span class="tl-year">1981</span><p>IBM presenta el primer computador personal.</p></div>
+      </div>
+      <figcaption>
+        <b>Figura 9.1 · Línea de tiempo</b> de los principales inventos y descubrimientos que condujeron a la
+        instrumentación médica moderna.
+      </figcaption>
+    </figure>
+
+    <h3 id="fisica">Física aplicada, computación e imagen</h3>
+    <p>
+      Muchos otros avances de la tecnología médica se originaron en la investigación en física básica y
+      aplicada. En 1895 se creó la <span class="dfn">máquina de rayos X</span>, uno de los inventos
+      tecnológicos más importantes del campo médico, cuando <strong>W. K. Roentgen</strong> descubrió que los
+      rayos X podían usarse para obtener imágenes de las estructuras internas del cuerpo. Fue, por tanto, el
+      primer dispositivo de imagen creado.
+    </p>
+    <p>
+      Otra aportación importante llegó con la invención del <strong>computador</strong>, que permitió realizar
+      análisis y funciones mucho más rápidos y complicados. Uno de los primeros instrumentos basados en
+      computador en el campo de la medicina, el <em>sequential multiple analyzer plus computer</em>, se usó
+      para almacenar una enorme cantidad de datos de información de laboratorio clínico. La invención del
+      computador hizo posible que las pruebas de laboratorio se realizaran y analizaran de forma más rápida y
+      exacta.
+    </p>
+    <p>
+      El primer instrumento médico a gran escala basado en computador se creó en 1972, cuando se inventó la
+      máquina de <span class="dfn">tomografía axial computarizada (CAT)</span>. La máquina CAT creaba una
+      imagen que mostraba todas las estructuras internas situadas en un único plano del cuerpo. Este nuevo tipo
+      de imagen hizo posible un diagnóstico más exacto y sencillo de tumores, hemorragias y otros daños
+      internos, a partir de información obtenida <strong>de forma no invasiva</strong>.
+    </p>
+    <p>
+      La <span class="dfn">telemedicina</span>, que usa tecnología computacional para transmitir información de
+      un centro médico a otro, se está explorando para permitir el acceso a la asistencia sanitaria de
+      pacientes en localizaciones remotas: permite que un especialista de un gran hospital reciba información
+      sobre un paciente de una zona rural y devuelva un plan de tratamiento específico para ese paciente.
+    </p>
+    <div class="callout tip">
+      <div class="callout-title">Panorama actual</div>
+      <p style="margin-bottom:0">
+        Hoy existe una amplia variedad de dispositivos médicos y sistemas de instrumentación. Algunos se usan
+        para <strong>monitorizar</strong> el estado del paciente o adquirir información con fines
+        diagnósticos —por ejemplo, los equipos de ECG y EEG—, mientras que otros se usan para
+        <strong>controlar funciones fisiológicas</strong> —por ejemplo, marcapasos y ventiladores—. Algunos
+        dispositivos, como los marcapasos, son implantables, mientras que muchos otros se usan de forma no
+        invasiva. Este capítulo se centra en las características comunes a los dispositivos que se emplean
+        para adquirir y procesar datos fisiológicos.
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="s92">
+    <h2><span class="num">9.2</span>Sistema básico de bioinstrumentación</h2>
+    <p>
+      La cantidad, propiedad o condición que mide un sistema de instrumentación se denomina
+      <span class="dfn">mensurando</span> (figura 9.2). Puede ser una <strong>señal bioeléctrica</strong>, como
+      las generadas por los músculos o el cerebro, o una señal química o mecánica que se convierte en señal
+      eléctrica.
+    </p>
+    <p>
+      Los <strong>sensores</strong> se usan para convertir mensurandos físicos en salidas eléctricas. Las
+      salidas de estos biosensores son <span class="dfn">señales analógicas</span> —es decir, señales
+      continuas— que se envían al bloque de procesamiento analógico y conversión digital. Allí las señales se
+      <strong>amplifican, filtran, acondicionan y convierten a forma digital</strong>. Una vez digitalizadas y
+      convertidas a una forma que puede almacenarse y procesarse por computadores digitales, pueden aplicarse
+      muchos más métodos de acondicionamiento de señal.
+    </p>
+
+    <figure class="figure" id="fig92">
+      <div class="scroll">
+      <svg viewBox="0 0 920 330" role="img" aria-label="Sistema básico de instrumentación con sensores" style="min-width:700px">
+        <style>
+          .f9 .bx { fill: var(--surface-2); stroke: var(--accent); stroke-width: 1.6; }
+          .f9 .bx2 { fill: var(--accent-2-soft); stroke: var(--accent-2); stroke-width: 1.6; }
+          .f9 .t { fill: var(--text); font: 600 13px var(--font); text-anchor: middle; }
+          .f9 .ts { fill: var(--text-soft); font: 12px var(--font); text-anchor: middle; }
+          .f9 .ln { stroke: var(--accent); stroke-width: 1.8; fill: none; marker-end: url(#a9); }
+          .f9 .lnd { stroke: var(--text-mute); stroke-width: 1.4; fill: none; stroke-dasharray: 6 4; marker-end: url(#a9d); }
+        </style>
+        <defs>
+          <marker id="a9" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="var(--accent)"/>
+          </marker>
+          <marker id="a9d" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="var(--text-mute)"/>
+          </marker>
+        </defs>
+        <g class="f9">
+          <!-- calibración -->
+          <rect class="bx2" x="150" y="24" width="120" height="44" rx="9"/>
+          <text class="ts" x="210" y="52">Calibración</text>
+          <path class="lnd" d="M150,46 L110,46 L110,106"/>
+
+          <!-- cadena principal -->
+          <rect class="bx" x="50" y="112" width="120" height="52" rx="9"/>
+          <text class="t" x="110" y="144">Sensor</text>
+          <path class="ln" d="M172,138 L214,138"/>
+
+          <rect class="bx" x="218" y="104" width="130" height="68" rx="9"/>
+          <text class="t" x="283" y="132">Procesamiento</text>
+          <text class="t" x="283" y="150">analógico</text>
+          <path class="ln" d="M350,138 L392,138"/>
+
+          <rect class="bx" x="396" y="112" width="86" height="52" rx="9"/>
+          <text class="t" x="439" y="144">A/D</text>
+          <path class="ln" d="M484,138 L526,138"/>
+
+          <rect class="bx" x="530" y="104" width="130" height="68" rx="9"/>
+          <text class="t" x="595" y="132">Procesamiento</text>
+          <text class="t" x="595" y="150">de señal</text>
+          <path class="ln" d="M662,138 L704,138"/>
+
+          <rect class="bx" x="708" y="112" width="130" height="52" rx="9"/>
+          <text class="t" x="773" y="137">Presentación</text>
+          <text class="t" x="773" y="154">de salida</text>
+
+          <!-- almacenamiento y transmisión -->
+          <rect class="bx" x="530" y="216" width="130" height="48" rx="9"/>
+          <text class="t" x="595" y="245">Almacenamiento</text>
+          <path class="ln" d="M595,174 L595,212"/>
+
+          <rect class="bx" x="708" y="216" width="130" height="48" rx="9"/>
+          <text class="t" x="773" y="245">Transmisión</text>
+          <path class="ln" d="M773,166 L773,212"/>
+
+          <!-- control y realimentación -->
+          <rect class="bx2" x="218" y="240" width="180" height="52" rx="9"/>
+          <text class="ts" x="308" y="262">Control y</text>
+          <text class="ts" x="308" y="280">realimentación</text>
+          <path class="lnd" d="M218,266 L110,266 L110,168"/>
+          <path class="lnd" d="M398,266 L470,266 L470,180 L439,180 L439,168"/>
+          <path class="lnd" d="M308,240 L308,176"/>
+        </g>
+      </svg>
+      </div>
+      <figcaption>
+        <b>Figura 9.2 · Sistema de instrumentación básico</b> que usa sensores para medir una señal, con
+        capacidad de adquisición, almacenamiento y presentación de datos, junto con control y realimentación.
+      </figcaption>
+    </figure>
+
+    <h3>Presentación de la salida</h3>
+    <p>
+      Los sistemas de instrumentación básicos incluyen también <strong>dispositivos de presentación de
+      salida</strong> que permiten a los operadores humanos ver la señal en un formato fácil de entender.
+      Estas presentaciones pueden ser numéricas o gráficas, discretas o continuas, y permanentes o temporales.
+      La mayoría están pensadas para observarse visualmente, pero algunas ofrecen además
+      <strong>salida audible</strong> —por ejemplo, un pitido con cada latido—.
+    </p>
+
+    <h3>Almacenamiento de datos</h3>
+    <p>
+      Además de mostrar los datos, muchos sistemas de instrumentación tienen capacidad de
+      <strong>almacenarlos</strong>. En algunos dispositivos la señal se guarda brevemente para que pueda
+      producirse un procesamiento posterior o para que un operador examine los datos. En otros casos las
+      señales se almacenan permanentemente, de modo que puedan aplicarse más adelante distintos esquemas de
+      procesamiento. Los <span class="dfn">monitores Holter</span>, por ejemplo, adquieren
+      <strong>24 horas de datos de ECG</strong> que se procesan después para determinar la actividad arrítmica
+      y otras características diagnósticas importantes.
+    </p>
+
+    <h3>Transmisión de datos</h3>
+    <p>
+      Con la invención del teléfono y ahora con Internet, las señales pueden adquirirse con un dispositivo
+      situado en un lugar —quizá el domicilio del paciente— y transmitirse a otro dispositivo para su
+      procesamiento o almacenamiento. Esto ha hecho posible, por ejemplo, ofrecer <strong>realimentación
+      diagnóstica rápida</strong> si un paciente presenta un ritmo cardíaco inusual estando en casa. También
+      ha permitido que centros médicos de zonas rurales transmitan imágenes diagnósticas a hospitales de
+      referencia, de modo que médicos especializados ayuden a los médicos generales a alcanzar diagnósticos
+      más exactos.
+    </p>
+
+    <h3 id="auxiliares">Señal de calibración y elemento de realimentación</h3>
+    <p>Otros dos componentes desempeñan papeles importantes en los sistemas de instrumentación.</p>
+    <div class="grid grid-2" style="margin:20px 0">
+      <div class="card">
+        <span class="card-tag">Imprescindible</span>
+        <h3 style="margin:10px 0 6px;text-transform:none;letter-spacing:-.3px;color:var(--text);font-size:1.05rem">Señal de calibración</h3>
+        <p>
+          Se aplica al sistema de instrumentación en la entrada del sensor una señal con
+          <strong>amplitud y contenido en frecuencia conocidos</strong>. La señal de calibración permite
+          ajustar los componentes del sistema de modo que la salida y la entrada guarden una relación conocida
+          y medida. Sin esta información <strong>es imposible</strong> convertir la salida de un sistema
+          instrumental en una representación con significado del mensurando.
+        </p>
+      </div>
+      <div class="card">
+        <span class="card-tag">Opcional</span>
+        <h3 style="margin:10px 0 6px;text-transform:none;letter-spacing:-.3px;color:var(--text);font-size:1.05rem">Elemento de realimentación</h3>
+        <p>
+          No forma parte de todos los sistemas de instrumentación. Estos dispositivos incluyen los
+          <strong>marcapasos y los ventiladores</strong>, que estimulan el corazón o los pulmones. Algunos
+          recogen datos fisiológicos y estimulan una respuesta —un latido, una respiración— cuando es
+          necesario, o forman parte de sistemas de <strong>biorretroalimentación</strong> en los que el
+          paciente toma conciencia de una medida fisiológica, como la presión arterial, y usa el control
+          consciente para modificar la respuesta fisiológica.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="pager">
+    <a href="capitulo-01.html"><small>← Anterior</small> Capítulo 1 · Conceptos básicos</a>
+    <a href="glosario.html" style="text-align:right"><small>Siguiente →</small> Glosario de términos</a>
+  </div>
+
+  </article>
+</div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Mediciones Clínicas · material de estudio</span>
+    <span><a href="index.html">Inicio</a> · <a href="capitulo-01.html">Capítulo 1</a> · <a href="glosario.html">Glosario</a></span>
+  </div>
+</footer>
+
+<button class="icon-btn" id="toTop" aria-label="Volver arriba">↑</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capítulo 1 · Conceptos básicos de instrumentación médica</title>
+<meta name="description" content="Capítulo 1 completo: terminología, sistema generalizado de instrumentación, modos de operación, restricciones de la medición médica, clasificaciones, entradas interferentes, compensación, bioestadística y características estáticas.">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">◍</span>
+      <span class="brand-text">Mediciones Clínicas<small>Instrumentación biomédica</small></span>
+    </a>
+    <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Inicio</a>
+      <a class="active" href="capitulo-01.html">Capítulo 1</a>
+      <a href="bioinstrumentacion.html">Bioinstrumentación 9.1–9.2</a>
+      <a href="glosario.html">Glosario</a>
+      <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema">☾</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc-head">
+    <span class="eyebrow">Capítulo 1</span>
+    <h1>Conceptos básicos de instrumentación médica</h1>
+    <div class="meta">
+      <span>Walter H. Olson</span>
+      <span>Secciones 1.1 – 1.9</span>
+      <span>Tiempo de lectura ≈ 35 min</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="doc">
+
+  <aside class="toc">
+    <h4>Contenido</h4>
+    <ol>
+      <li><a href="#introduccion">Del invento al producto</a></li>
+      <li class="sub"><a href="#autoanalyzer">El Auto Analyzer de Technicon</a></li>
+      <li class="sub"><a href="#lecciones">Lecciones del caso</a></li>
+      <li><a href="#s11">1.1 Terminología</a></li>
+      <li><a href="#s12">1.2 Sistema generalizado</a></li>
+      <li><a href="#s13">1.3 Modos de operación</a></li>
+      <li><a href="#s14">1.4 Restricciones de la medición</a></li>
+      <li class="sub"><a href="#tabla11">Tabla 1.1 · Parámetros</a></li>
+      <li><a href="#s15">1.5 Clasificaciones</a></li>
+      <li><a href="#s16">1.6 Entradas interferentes</a></li>
+      <li><a href="#s17">1.7 Técnicas de compensación</a></li>
+      <li><a href="#s18">1.8 Bioestadística</a></li>
+      <li><a href="#s19">1.9 Características estáticas</a></li>
+    </ol>
+  </aside>
+
+  <article>
+
+  <section id="introduccion">
+    <h2>Del invento al producto clínico</h2>
+    <p>
+      La invención, el diseño del prototipo, el desarrollo del producto, las pruebas clínicas, la aprobación
+      regulatoria, la fabricación, el <em>marketing</em> y la venta de un nuevo instrumento médico suman un
+      proceso complejo, caro y largo. Muy pocas ideas nuevas sobreviven a los requisitos prácticos, a las
+      barreras humanas y a los inevitables tropiezos de ese camino arduo.
+    </p>
+    <p>
+      Habitualmente hay <strong>una persona que actúa como «campeón»</strong> de un instrumento o dispositivo
+      médico verdaderamente nuevo. Esa persona —que no es necesariamente el inventor— debe tener una visión
+      clara del producto final y de cómo se usará exactamente. Y, sobre todo, debe tener el compromiso y la
+      persistencia para superar problemas técnicos inesperados, convencer a los escépticos y lidiar con el
+      aparato burocrático que es genuinamente necesario para proteger a los pacientes.
+    </p>
+    <p>
+      A continuación se reproduce una de las cinco historias de inventores recogidas en <em>New Medical
+      Devices: Invention, Development and Use</em> (Eckelman, 1988) para ilustrar este proceso. El
+      analizador bioquímico automatizado emplea métodos espectrofotométricos en un sistema de flujo continuo
+      para medir la cantidad de muchas sustancias clínicamente importantes en muestras de sangre u orina.
+    </p>
+
+    <h3 id="autoanalyzer">Desarrollo del Auto Analyzer de Technicon</h3>
+    <div class="callout quote">
+      <div class="callout-title" style="font-style:normal">Edwin C. Whitehead</div>
+      <p>
+        En 1950 Alan Moritz, director del departamento de patología de la Case Western Reserve University y
+        viejo amigo mío, me escribió para hablarme de Leonard Skeggs, un joven de su departamento que había
+        desarrollado un instrumento que podía interesar a Technicon. Yo estaba fuera de mi oficina de Nueva
+        York en un viaje largo y mi padre —cofundador conmigo de Technicon Corporation— abrió la carta.
+        Respondió al Dr. Moritz diciendo que Technicon siempre estaba interesada en nuevos desarrollos y
+        adjuntó un formulario de divulgación confidencial de cuatro páginas. No es de extrañar que el Dr.
+        Moritz pensara que Technicon no estaba realmente interesada en el instrumento de Skeggs, y mi padre
+        archivó el asunto como rutina.
+      </p>
+      <p>
+        Tres años más tarde Ray Roesch, entonces el único vendedor de Technicon, visitaba a Joseph Kahn en el
+        hospital de veteranos de Cleveland. El Dr. Kahn le preguntó por qué Technicon había rechazado el
+        invento de Skeggs. Ray respondió que nunca había oído hablar de él y preguntó: «¿qué invento?». Kahn
+        contestó: «una máquina para automatizar el análisis químico». Cuando Ray me llamó y me preguntó por
+        qué había rechazado la idea, le dije que yo tampoco había oído nada. Al contarme que la idea de
+        Skeggs era automatizar la química clínica, mi reacción fue: «¡vaya! Vamos a verlo y asegurémonos de
+        que Skeggs no se nos escape».
+      </p>
+      <p>
+        Ese fin de semana, Ray Roesch cargó equipo de laboratorio en su furgoneta y llevó a Leonard Skeggs y a
+        su esposa Jean a Nueva York. En Technicon, Skeggs montó un dispositivo sencillo formado por una
+        <strong>bomba peristáltica</strong> para arrastrar la muestra y los flujos de reactivos a través del
+        sistema, un <strong>dializador continuo</strong> para eliminar las moléculas de proteína que pudieran
+        interferir con la reacción muestra-reactivo, y un <strong>espectrofotómetro</strong> equipado con una
+        celda de flujo para monitorizar la reacción. El dispositivo demostró la validez de la idea y
+        entramos enseguida en negociaciones con Skeggs para licenciar la patente del Auto Analyzer: un pago
+        inicial de 6.000 dólares y un 3 % de regalías a partir de cierto número de unidades vendidas.
+      </p>
+      <p>
+        Tras el «rechazo» de Technicon en 1950, Skeggs había llegado a acuerdos primero con Heinecke
+        Instrument Co. y luego con Harshaw Chemical Co. para vender su dispositivo. Ambas compañías
+        supusieron erróneamente que el instrumento era un producto terminado. Ninguna consiguió vender una
+        sola unidad entre 1950 y 1953. No es de extrañar: el instrumento original de Skeggs exigía un costoso
+        proceso de desarrollo para hacerlo robusto y fiable y para adaptar los ensayos químicos manuales
+        originales. Technicon dedicó tres años a refinar el modelo simple de Skeggs hasta convertirlo en un
+        analizador de flujo continuo comercialmente viable.
+      </p>
+      <p>
+        Hubo que superar problemas propios del Auto Analyzer. Como el analizador bombea un flujo continuo de
+        reactivos interrumpido por las muestras, un problema básico era la <strong>interacción entre
+        muestras</strong>. Se alivió introduciendo burbujas de aire como barreras físicas entre ellas. Aun
+        así, el arrastre de muestra en los analizadores de flujo continuo sigue siendo sensible a la
+        formación y el tamaño de las burbujas, al diámetro interno del tubo por el que circulan los fluidos,
+        al patrón de bombeo peristáltico y a otros factores.
+      </p>
+      <p>
+        El desarrollo se financió internamente. En 1953 Technicon facturaba menos de 10 millones de dólares al
+        año: procesadores automáticos de tejidos y archivadores de portaobjetos para histología, colectores
+        automáticos de fracciones para cromatografía y respiradores portátiles para pacientes de polio. Hasta
+        su salida a bolsa en 1969, Technicon nunca pidió dinero prestado ni vendió participaciones. Por eso la
+        <strong>patente</strong> sobre la invención original de Skeggs fue central: sin protección de patente,
+        Technicon nunca habría podido permitirse el costoso desarrollo de este dispositivo.
+      </p>
+      <p>
+        Pronto reconocí que las técnicas de comercialización tradicionales no funcionarían para algo tan
+        revolucionario. Por entonces los instrumentos de laboratorio se vendían por catálogo o por correo a
+        partir de hojas de especificaciones. En cambio, decidimos comercializar el Auto Analyzer como un
+        <strong>sistema completo</strong>: instrumento, reactivos e instrucción. La estrategia consistió en
+        promoverlo en congresos profesionales y mediante artículos científicos, con vendedores directos
+        —nunca agentes ni distribuidores, salvo en países con mercado demasiado pequeño—.
+      </p>
+      <p>
+        Para introducir una tecnología tan radical en laboratorios clínicos conservadores, Technicon decidió
+        realizar <strong>evaluaciones clínicas</strong>, algo inusual entonces y hoy habitual. Una condición
+        importante era que el laboratorio evaluador convocara a su sociedad profesional local para anunciar
+        los resultados; esas reuniones solían acabar en un respaldo entusiasta del director del laboratorio, y
+        creo que eso tuvo mucho que ver con la rápida aceptación del producto.
+      </p>
+      <p>
+        Otras estrategias poco habituales fueron los simposios y los cursos de formación: unos 25 simposios de
+        tres días que atrajeron entre 1.000 y 4.500 científicos en los principales países del mundo. Y como
+        sabíamos que la aceptación podía dañarse irreparablemente por usuarios incompetentes, montamos un
+        programa de formación a gran escala: exigíamos que los compradores acudieran a nuestros centros de
+        formación repartidos por el mundo a un curso de una semana. Calculo que hemos formado a unas
+        <strong>50.000 personas</strong>.
+      </p>
+      <p>
+        La introducción del Auto Analyzer de flujo continuo en 1957 cambió profundamente el carácter del
+        laboratorio clínico y permitió multiplicar por cien el número de pruebas realizadas en una década.
+        Cuando empezamos a desarrollarlo en 1953 estimé un mercado potencial de 250 unidades; hoy se estima
+        que hay más de 50.000 canales de Auto Analyzer en uso en el mundo.
+      </p>
+      <p>
+        Repasando 35 años de historia, concluyo que varios factores influyeron en el éxito. Primero, el Auto
+        Analyzer permitió a la vez una enorme mejora de la calidad de los resultados y una enorme reducción
+        del coste del análisis químico. Segundo, los médicos empezaron a comprender que los datos de
+        laboratorio precisos son útiles para el diagnóstico. Por último, las políticas de reembolso
+        aumentaron la disponibilidad de atención sanitaria.
+      </p>
+      <p style="font-style:normal;font-size:.86rem;color:var(--text-mute);margin:0">
+        Reproducido con permiso de <em>New Medical Devices, Invention, Development and Use</em>,
+        © 1988 National Academy of Sciences, National Academy Press, Washington, D.C.
+      </p>
+    </div>
+
+    <h3 id="lecciones">Lecciones del caso</h3>
+    <p>
+      Esta historia de éxito demuestra que las ideas nuevas importantes rara vez llegan sin fricción al uso
+      clínico generalizado. ¡Probablemente hay <strong>100 historias de fracaso no contadas por cada historia
+      de éxito!</strong> Los inventos suelen hacerlos la persona equivocada, con los contactos y la
+      experiencia equivocados, en el lugar equivocado y en el momento equivocado.
+    </p>
+    <ul>
+      <li>Es importante entender la diferencia entre un <span class="dfn">prototipo tosco de viabilidad</span> y un producto bien desarrollado, fiable y fabricable.</li>
+      <li>Las <span class="dfn">patentes</span> protegen las ideas durante el desarrollo y dan incentivo para hacer las inversiones financieras necesarias.</li>
+      <li>Muchos dispositivos han fracasado porque eran demasiado difíciles de usar, porque la fiabilidad y la robustez eran insuficientes, porque el <em>marketing</em> estaba mal dirigido, porque faltó formación del usuario o porque el servicio técnico era pobre o lento.</li>
+    </ul>
+    <div class="grid grid-2" style="margin:22px 0">
+      <div class="card">
+        <span class="card-tag">Evolutivo</span>
+        <h3 style="margin:10px 0 6px;text-transform:none;letter-spacing:-.3px;color:var(--text);font-size:1.05rem">Producto evolutivo</h3>
+        <p>Un nuevo modelo de un producto existente que añade prestaciones, mejora la tecnología y reduce el coste de producción.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">Revolucionario</span>
+        <h3 style="margin:10px 0 6px;text-transform:none;letter-spacing:-.3px;color:var(--text);font-size:1.05rem">Producto revolucionario</h3>
+        <p>Resuelve un problema totalmente nuevo, o usa un principio o concepto nuevo para resolver mejor un problema antiguo, desplazando a los métodos anteriores.</p>
+      </div>
+    </div>
+    <div class="callout warn">
+      <div class="callout-title">Mejorar la medida no basta</div>
+      <p>Un instrumento médico que mejora el cribado, el diagnóstico o la monitorización <strong>no aporta valor</strong> —no mejora el resultado del paciente— salvo que, como consecuencia de usarlo, mejore también la aplicación de la terapia.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+  <section id="s11">
+    <h2><span class="num">1.1</span>Terminología de la medicina y de los dispositivos médicos</h2>
+    <p>
+      La mayoría de los ingenieros biomédicos aprenden primero las ciencias físicas en el contexto de la
+      ingeniería, la física o la química tradicionales. Cuando se interesan por la medicina suelen cursar al
+      menos una asignatura básica de fisiología, que <strong>no describe la enfermedad ni la terminología
+      patológica</strong>. Por eso se recomienda un texto de terminología médica —como <em>Medical
+      Terminology: An Illustrated Guide</em> (Cohen, 2004)— que enfatiza las raíces latinas y griegas en
+      formato de cuaderno de trabajo con respuestas, casos clínicos, fichas y figuras sencillas. Un
+      diccionario médico no abreviado, como el <em>Dorland's Illustrated Medical Dictionary</em>, resulta a
+      menudo útil.
+    </p>
+    <p>
+      Los médicos usan con frecuencia <span class="dfn">abreviaturas y acrónimos</span> difíciles de
+      localizar, lo que genera ambigüedad o errores. También son muy usados los <span class="dfn">epónimos
+      médicos</span>, que describen enfermedades y síndromes con el nombre de quien los identificó primero
+      (véase el <em>Dictionary of Medical Eponyms</em>, Firkin y Whitworth, 1996).
+    </p>
+    <p>
+      El nombre con que se designa un instrumento o dispositivo médico debe ser <strong>informativo,
+      consistente y breve</strong>. Algunas fuentes de referencia para la nomenclatura:
+    </p>
+    <ul>
+      <li><em>Health Devices Sourcebook</em> (anual): directorio de productos, nombres comerciales, fabricantes y servicios relacionados de EE. UU. y Canadá; usa nomenclatura aceptada internacionalmente y un sistema de codificación numérica para más de <strong>5.000 categorías</strong> de producto.</li>
+      <li><em>Product Development Directory</em>: lista los productos médicos por el nombre estándar de categoría de la FDA desde la promulgación de las <em>Medical Devices Amendments</em> en abril de 1976.</li>
+      <li><em>Encyclopedia of Medical Devices and Instrumentation</em> (Webster, 2006): descripciones detalladas.</li>
+    </ul>
+    <div class="callout warn">
+      <div class="callout-title">Cuidado con los préstamos terminológicos</div>
+      <p>Conviene evitar tomar prestada terminología médica para describir aspectos técnicos de dispositivos o instrumentos: pueden aparecer ambigüedades confusas.</p>
+    </div>
+    <p>
+      La información reciente sobre instrumentación médica puede encontrarse buscando en servidores de la
+      World Wide Web (por ejemplo <em>google.com</em> o <em>uspto.gov</em>), en catálogos de bibliotecas en
+      línea y en bases de datos electrónicas de revistas como Engineering Village, Science Citation Index o
+      PubMed.
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <section id="s12">
+    <h2><span class="num">1.2</span>Sistema generalizado de instrumentación médica</h2>
+    <p>
+      Todo sistema de instrumentación tiene al menos algunos de los componentes funcionales de la figura 1.1.
+      El <strong>flujo principal de información va de izquierda a derecha</strong>. Los elementos y relaciones
+      dibujados con línea discontinua no son esenciales. La diferencia principal entre este sistema de
+      instrumentación médica y los sistemas de instrumentación convencionales es que
+      <strong>la fuente de las señales es tejido vivo, o energía aplicada a tejido vivo</strong>.
+    </p>
+
+    <figure class="figure">
+      <div class="scroll">
+      <svg viewBox="0 0 920 340" role="img" aria-label="Diagrama del sistema generalizado de instrumentación" style="min-width:680px">
+        <style>
+          .f1 .bx { fill: var(--surface-2); stroke: var(--accent); stroke-width: 1.6; }
+          .f1 .bxd { fill: none; stroke: var(--text-mute); stroke-width: 1.4; stroke-dasharray: 6 4; }
+          .f1 .t { fill: var(--text); font: 600 13px var(--font); text-anchor: middle; }
+          .f1 .ts { fill: var(--text-soft); font: 12px var(--font); text-anchor: middle; }
+          .f1 .ln { stroke: var(--accent); stroke-width: 1.8; fill: none; marker-end: url(#a1); }
+          .f1 .lnd { stroke: var(--text-mute); stroke-width: 1.4; fill: none; stroke-dasharray: 6 4; marker-end: url(#a1d); }
+        </style>
+        <defs>
+          <marker id="a1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="var(--accent)"/>
+          </marker>
+          <marker id="a1d" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="var(--text-mute)"/>
+          </marker>
+        </defs>
+        <g class="f1">
+          <!-- fila principal -->
+          <text class="t" x="60" y="160">Mensurando</text>
+          <text class="ts" x="60" y="180">(tejido vivo)</text>
+          <path class="ln" d="M112,152 L172,152"/>
+
+          <rect class="bx" x="178" y="126" width="120" height="54" rx="9"/>
+          <text class="t" x="238" y="158">Sensor</text>
+          <path class="ln" d="M300,152 L360,152"/>
+
+          <rect class="bx" x="366" y="118" width="150" height="70" rx="9"/>
+          <text class="t" x="441" y="147">Acondicionamiento</text>
+          <text class="t" x="441" y="166">de señal</text>
+          <path class="ln" d="M518,152 L578,152"/>
+
+          <rect class="bx" x="584" y="126" width="130" height="54" rx="9"/>
+          <text class="t" x="649" y="151">Presentación</text>
+          <text class="t" x="649" y="168">de salida</text>
+          <path class="ln" d="M716,152 L790,152"/>
+          <text class="t" x="850" y="148">Salida</text>
+          <text class="t" x="850" y="165">perceptible</text>
+
+          <!-- calibración -->
+          <rect class="bxd" x="178" y="26" width="120" height="46" rx="9"/>
+          <text class="ts" x="238" y="45">Señal de</text>
+          <text class="ts" x="238" y="62">calibración</text>
+          <path class="lnd" d="M238,74 L238,120"/>
+
+          <!-- control y realimentación -->
+          <rect class="bxd" x="330" y="256" width="220" height="46" rx="9"/>
+          <text class="ts" x="440" y="275">Control y</text>
+          <text class="ts" x="440" y="292">realimentación</text>
+          <path class="lnd" d="M370,256 L300,256 L238,256 L238,186"/>
+          <path class="lnd" d="M470,256 L470,194"/>
+
+          <!-- almacenamiento y transmisión -->
+          <rect class="bxd" x="584" y="230" width="130" height="44" rx="9"/>
+          <text class="ts" x="649" y="258">Almacenamiento</text>
+          <path class="lnd" d="M649,186 L649,226"/>
+
+          <rect class="bxd" x="584" y="290" width="130" height="44" rx="9"/>
+          <text class="ts" x="649" y="318">Transmisión</text>
+          <path class="lnd" d="M714,252 L760,252 L760,312 L718,312"/>
+        </g>
+      </svg>
+      </div>
+      <figcaption>
+        <b>Figura 1.1 · Sistema generalizado de instrumentación.</b> El sensor convierte la energía o la
+        información procedente del mensurando en otra forma (normalmente eléctrica). Esa señal se procesa y se
+        presenta para que las personas puedan percibir la información. Los elementos y conexiones dibujados
+        con línea discontinua son opcionales en algunas aplicaciones.
+      </figcaption>
+    </figure>
+
+    <h3>Mensurando</h3>
+    <p>
+      La cantidad física, propiedad o condición que el sistema mide se denomina <span class="dfn">mensurando</span>
+      (<em>measurand</em>). Su <strong>accesibilidad</strong> es importante, porque puede ser:
+    </p>
+    <ul>
+      <li><strong>interno</strong> —la presión sanguínea—;</li>
+      <li><strong>superficial</strong>, en la superficie del cuerpo —el potencial del electrocardiograma—;</li>
+      <li><strong>emanado del cuerpo</strong> —la radiación infrarroja—;</li>
+      <li><strong>derivado de una muestra de tejido</strong> extraída del cuerpo —sangre o una biopsia—.</li>
+    </ul>
+    <p>La mayoría de los mensurandos médicamente importantes se agrupan en estas categorías:</p>
+    <div class="pill-row">
+      <span class="pill">biopotencial</span>
+      <span class="pill">presión</span>
+      <span class="pill">flujo</span>
+      <span class="pill">dimensiones (imagen)</span>
+      <span class="pill">desplazamiento (velocidad, aceleración, fuerza)</span>
+      <span class="pill">impedancia</span>
+      <span class="pill">temperatura</span>
+      <span class="pill">concentraciones químicas</span>
+    </div>
+    <p style="margin-top:16px">El mensurando puede estar localizado en un órgano o estructura anatómica concreta.</p>
+
+    <h3>Sensor</h3>
+    <p>
+      En general, el término <span class="dfn">transductor</span> se define como un dispositivo que convierte
+      una forma de energía en otra. Un <span class="dfn">sensor</span> convierte un mensurando físico en una
+      salida eléctrica. El sensor debería responder <strong>solo</strong> a la forma de energía presente en el
+      mensurando, excluyendo todas las demás, e interactuar con el sistema vivo de forma que minimice la
+      energía extraída y sea mínimamente invasivo.
+    </p>
+    <p>
+      Muchos sensores tienen un <span class="dfn">elemento sensor primario</span> —por ejemplo un diafragma,
+      que convierte presión en desplazamiento— y un <span class="dfn">elemento de conversión variable</span>
+      —por ejemplo una galga extensométrica, que convierte ese desplazamiento en tensión eléctrica—. A veces
+      la sensibilidad del sensor puede ajustarse en un rango amplio modificando el elemento sensor primario.
+      Muchos elementos de conversión variable necesitan <strong>energía eléctrica externa</strong> para
+      producir la salida del sensor.
+    </p>
+
+    <h3>Acondicionamiento de señal</h3>
+    <p>
+      Normalmente la salida del sensor no puede acoplarse directamente al dispositivo de presentación. Los
+      acondicionadores simples pueden limitarse a amplificar y filtrar la señal, o meramente a adaptar la
+      impedancia del sensor a la del visualizador. A menudo las salidas del sensor se convierten a forma
+      digital y se procesan con circuitos digitales especializados o con un microcomputador. El filtrado, por
+      ejemplo, puede reducir señales indeseables del sensor, promediar señales repetitivas para reducir el
+      ruido, o convertir la información del dominio del tiempo al dominio de la frecuencia.
+    </p>
+
+    <h3>Presentación de salida</h3>
+    <p>
+      Los resultados del proceso de medida deben mostrarse en una forma que el operador humano pueda percibir.
+      La mejor forma puede ser <strong>numérica o gráfica, discreta o continua, permanente o temporal</strong>,
+      según el mensurando concreto y el uso que el operador vaya a dar a la información. Aunque la mayoría de
+      las presentaciones se apoyan en la vista, cierta información —como las señales ultrasónicas Doppler— se
+      percibe mejor por otros sentidos (en este caso, el oído). Los controles de usuario y la presentación
+      deberían ajustarse a las guías de ingeniería de factores humanos para el diseño de dispositivos médicos
+      (AAMI, 1993).
+    </p>
+
+    <h3>Elementos auxiliares</h3>
+    <p>
+      Debe aplicarse una <span class="dfn">señal de calibración</span> con las propiedades del mensurando a la
+      entrada del sensor, o lo más pronto posible en la cadena de procesamiento de señal.
+    </p>
+    <p>
+      Pueden requerirse muchas formas de <span class="dfn">control y realimentación</span> para provocar el
+      mensurando, ajustar el sensor y el acondicionador, y dirigir el flujo de salida hacia la presentación, el
+      almacenamiento o la transmisión; el control puede ser automático o manual.
+    </p>
+    <p>
+      Los datos pueden <span class="dfn">almacenarse</span> brevemente para satisfacer las necesidades del
+      acondicionamiento o para que el operador examine los datos previos a una condición de alarma. También
+      pueden almacenarse <em>antes</em> del acondicionamiento, de modo que después se puedan aplicar esquemas
+      de procesamiento distintos. Por último, los principios convencionales de comunicaciones permiten
+      <span class="dfn">transmitir</span> los datos a pantallas remotas en controles de enfermería, centros
+      médicos o instalaciones de procesamiento de datos médicos.
+    </p>
+  </section>
+
+  <hr class="rule">
+  <section id="s13">
+    <h2><span class="num">1.3</span>Modos alternativos de operación</h2>
+
+    <h3>Modo directo e indirecto</h3>
+    <p>
+      A menudo el mensurando deseado puede acoplarse directamente a un sensor porque es fácilmente accesible o
+      porque existen procedimientos invasivos aceptables. Cuando <strong>no</strong> es accesible, se puede
+      recurrir a otro mensurando que guarde una relación conocida con el deseado, o a alguna forma de energía
+      o material que interactúe con el mensurando deseado para generar un mensurando nuevo que sí sea
+      accesible.
+    </p>
+    <ul>
+      <li>El <strong>gasto cardíaco</strong> (volumen de sangre bombeado por minuto) determinado a partir de medidas de respiración y concentración de gases en sangre, o por dilución de colorante.</li>
+      <li>La <strong>morfología de órganos internos</strong> determinada a partir de las sombras de rayos X.</li>
+      <li>Los <strong>volúmenes pulmonares</strong> determinados a partir de las variaciones de impedancia torácica (pletismografía de impedancia).</li>
+    </ul>
+
+    <h3>Modo por muestreo y modo continuo</h3>
+    <p>
+      Algunos mensurandos —como la temperatura corporal o las concentraciones iónicas— cambian tan lentamente
+      que pueden muestrearse con poca frecuencia. Otras magnitudes —como el electrocardiograma o el flujo de
+      gases respiratorios— pueden requerir <strong>monitorización continua</strong>. El contenido en
+      frecuencia del mensurando, el objetivo de la medida, la condición del paciente y la posible
+      responsabilidad legal del médico influyen en la frecuencia con que se adquieren los datos médicos.
+      Muchos de los datos recogidos nunca llegan a usarse.
+    </p>
+
+    <h3>Sensores generadores y moduladores</h3>
+    <div class="grid grid-2" style="margin:18px 0">
+      <div class="card">
+        <span class="card-tag">Generador</span>
+        <h3 style="margin:10px 0 6px;text-transform:none;letter-spacing:-.3px;color:var(--text);font-size:1.05rem">Sensor generador</h3>
+        <p>Produce su señal de salida a partir de la energía tomada directamente del mensurando. Ejemplo: la <strong>célula fotovoltaica</strong>, que entrega una tensión relacionada con su irradiación sin ninguna fuente de energía externa adicional.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">Modulador</span>
+        <h3 style="margin:10px 0 6px;text-transform:none;letter-spacing:-.3px;color:var(--text);font-size:1.05rem">Sensor modulador</h3>
+        <p>Usa el mensurando para alterar el flujo de energía procedente de una fuente externa, de forma que afecta a la salida. Ejemplo: la <strong>célula fotoconductora</strong>; para medir su cambio de resistencia con la irradiación hay que aplicarle energía externa.</p>
+      </div>
+    </div>
+
+    <h3>Modo analógico y modo digital</h3>
+    <p>
+      Las señales que transportan información de medida son o bien <span class="dfn">analógicas</span>
+      —continuas y capaces de tomar cualquier valor dentro del rango dinámico— o bien
+      <span class="dfn">digitales</span> —discretas y capaces de tomar solo un número finito de valores
+      distintos—. La mayoría de los sensores disponibles operan en modo analógico, aunque se han desarrollado
+      algunos dispositivos de medida inherentemente digitales.
+    </p>
+    <p>
+      El uso creciente del procesamiento digital de señal ha exigido usar <strong>convertidores A/D y
+      D/A</strong> para interconectar computadores con sensores analógicos y con visualizadores analógicos.
+      Se han desarrollado sensores digitales indirectos que usan elementos sensores primarios analógicos y
+      elementos de conversión variable digitales (codificadores ópticos de eje). También existen sensores
+      <span class="dfn">cuasi-digitales</span>, como los termómetros de cristal de cuarzo, cuya salida tiene
+      frecuencia, tasa de pulsos o duración de pulso variable, fácilmente convertible a señales digitales.
+    </p>
+    <div class="callout tip">
+      <div class="callout-title">Ventajas del modo digital… y una excepción clínica</div>
+      <p>
+        Las ventajas del modo digital incluyen mayor exactitud, repetibilidad, fiabilidad e inmunidad al
+        ruido; además, normalmente no requiere calibración periódica. Sin embargo, muchos clínicos prefieren
+        las presentaciones analógicas cuando deben determinar si una variable fisiológica está dentro de
+        ciertos límites y cuando observan un parámetro que puede cambiar rápido, como la frecuencia cardíaca
+        latido a latido: en ese caso los indicadores digitales cambian de número tan deprisa que resultan
+        difíciles y molestos de observar.
+      </p>
+    </div>
+
+    <h3>Modo en tiempo real y en tiempo diferido</h3>
+    <p>
+      Los sensores deben adquirir las señales <strong>en tiempo real</strong>, según ocurren realmente. Sin
+      embargo, la salida del sistema de medida puede no mostrar el resultado de inmediato, porque algunos
+      tipos de procesamiento —promediados, transformaciones— necesitan bastante entrada antes de producir
+      resultados. Esos retardos cortos suelen ser aceptables, salvo que de la salida dependan tareas urgentes
+      de realimentación y control. En algunas medidas, como los cultivos celulares, pueden hacer falta varios
+      días antes de obtener una salida.
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <section id="s14">
+    <h2><span class="num">1.4</span>Restricciones de la medición médica</h2>
+    <p>
+      Los rangos principales de medida y de frecuencia de cada parámetro son factores determinantes en el
+      diseño de todos los componentes del instrumento de la figura 1.1. La tabla 1.1 ofrece una visión general
+      de las magnitudes y rangos de frecuencia típicos; los rangos mostrados son aproximados y pretenden
+      incluir valores normales y anormales.
+    </p>
+    <div class="grid grid-3" style="margin:20px 0">
+      <div class="card stat">
+        <div class="num">μV</div>
+        <div class="lbl">La mayoría de las tensiones están en el rango de microvoltios</div>
+      </div>
+      <div class="card stat">
+        <div class="num">100 mm Hg</div>
+        <div class="lbl">Presiones bajas: ≈ 1,93 psi ≈ 13,3 kPa</div>
+      </div>
+      <div class="card stat">
+        <div class="num">cd y bajas f</div>
+        <div class="lbl">Todas las señales están en el rango de audiofrecuencia o por debajo, y muchas contienen corriente continua</div>
+      </div>
+    </div>
+    <p>
+      La mayoría de los rangos de medida son bastante bajos comparados con los parámetros no médicos. Estas
+      propiedades generales <strong>limitan las opciones prácticas</strong> del diseñador en todos los
+      aspectos del diseño del instrumento.
+    </p>
+
+    <h3>Variables inaccesibles</h3>
+    <p>
+      Muchas variables cruciales de los sistemas vivos son inaccesibles porque no puede obtenerse una interfaz
+      mensurando-sensor adecuada sin dañar el sistema. A diferencia de muchos sistemas físicos complejos, un
+      sistema biológico <strong>no puede apagarse ni desmontarse por partes</strong> durante la medida.
+      Incluso evitando la interferencia de otros sistemas fisiológicos, el tamaño físico de muchos sensores
+      impide formar una interfaz adecuada. Esas variables inaccesibles deben medirse indirectamente, o bien
+      deben aplicarse correcciones a los datos afectados por el proceso de medida. El gasto cardíaco es una
+      medida importante y notoriamente inaccesible.
+    </p>
+
+    <h3>Variabilidad de los datos fisiológicos</h3>
+    <p>
+      Las variables medidas del cuerpo humano o de animales rara vez son <strong>deterministas</strong>. La
+      mayoría varían con el tiempo aun cuando todos los factores controlables se mantengan fijos, y varían
+      ampliamente entre pacientes normales aun en condiciones similares. Esta variabilidad inherente se ha
+      documentado a nivel molecular, de órgano e incluso de cuerpo entero, y muchas variaciones anatómicas
+      internas acompañan a las diferencias externas evidentes entre pacientes.
+    </p>
+    <p>
+      Las grandes tolerancias de las medidas fisiológicas se deben en parte a las interacciones entre muchos
+      sistemas fisiológicos: existen numerosos <strong>lazos de realimentación</strong> entre ellos y muchas
+      de esas interrelaciones se comprenden mal. Rara vez es viable controlar o neutralizar el efecto de esos
+      otros sistemas sobre la variable medida. El método más común para lidiar con esta variabilidad consiste
+      en asumir funciones de distribución estadísticas y probabilísticas empíricas, y comparar después las
+      medidas individuales con esas normas (véase la sección 1.8).
+    </p>
+
+    <h3 id="tabla11">Tabla 1.1 · Parámetros médicos y fisiológicos</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Parámetro o técnica de medida</th>
+            <th>Rango principal de medida</th>
+            <th>Rango de frecuencia de la señal (Hz)</th>
+            <th>Sensor o método estándar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="param">Balistocardiografía (BCG)</td><td>0–7 mg</td><td>cd–40</td><td>Acelerómetro, galga extensométrica</td></tr>
+          <tr><td class="param">Balistocardiografía (desplazamiento)</td><td>0–100 μm</td><td>cd–40</td><td>Transformador diferencial variable lineal (LVDT)</td></tr>
+          <tr><td class="param">Presión vesical</td><td>1–100 cm H<sub>2</sub>O</td><td>cd–10</td><td>Manómetro de galga extensométrica</td></tr>
+          <tr><td class="param">Flujo sanguíneo</td><td>1–300 ml/s</td><td>cd–20</td><td>Caudalímetro electromagnético o ultrasónico</td></tr>
+          <tr><td class="param">Presión arterial · directa</td><td>10–400 mm Hg</td><td>cd–50</td><td>Manómetro de galga extensométrica</td></tr>
+          <tr><td class="param">Presión arterial · indirecta</td><td>25–400 mm Hg</td><td>cd–60</td><td>Manguito, auscultación</td></tr>
+          <tr><td class="param">Presión venosa</td><td>0–50 mm Hg</td><td>cd–50</td><td>Galga extensométrica</td></tr>
+          <tr><td class="param">Gases en sangre · P<sub>O₂</sub></td><td>30–100 mm Hg</td><td>cd–2</td><td>Electrodo específico, volumétrico o manométrico</td></tr>
+          <tr><td class="param">Gases en sangre · P<sub>CO₂</sub></td><td>40–100 mm Hg</td><td>cd–2</td><td>Electrodo específico, volumétrico o manométrico</td></tr>
+          <tr><td class="param">Gases en sangre · P<sub>N₂</sub></td><td>1–3 mm Hg</td><td>cd–2</td><td>Electrodo específico, volumétrico o manométrico</td></tr>
+          <tr><td class="param">Gases en sangre · P<sub>CO</sub></td><td>0,1–0,4 mm Hg</td><td>cd–2</td><td>Electrodo específico, volumétrico o manométrico</td></tr>
+          <tr><td class="param">pH sanguíneo</td><td>6,8–7,8 unidades de pH</td><td>cd–2</td><td>Electrodo específico</td></tr>
+          <tr><td class="param">Gasto cardíaco</td><td>4–25 l/min</td><td>cd–20</td><td>Dilución de colorante, método de Fick</td></tr>
+          <tr><td class="param">Electrocardiografía (ECG)</td><td>0,5–4 mV</td><td>0,01–250</td><td>Electrodos de piel</td></tr>
+          <tr><td class="param">Electroencefalografía (EEG)</td><td>5–300 μV</td><td>cd–150</td><td>Electrodos de cuero cabelludo</td></tr>
+          <tr><td class="param">Electrocorticografía y profundidad cerebral</td><td>10–5.000 μV</td><td>cd–150</td><td>Electrodos de superficie cerebral o profundos</td></tr>
+          <tr><td class="param">Electrogastrografía (EGG)</td><td>10–1.000 μV</td><td>cd–1</td><td>Electrodos de superficie cutánea</td></tr>
+          <tr><td class="param">Electrogastrografía (superficie gástrica)</td><td>0,5–80 mV</td><td>cd–1</td><td>Electrodos en la superficie del estómago</td></tr>
+          <tr><td class="param">Electromiografía (EMG)</td><td>0,1–5 mV</td><td>cd–10.000</td><td>Electrodos de aguja</td></tr>
+          <tr><td class="param">Electrooculograma (EOG)</td><td>50–3.500 μV</td><td>cd–50</td><td>Electrodos de contacto</td></tr>
+          <tr><td class="param">Electrorretinograma (ERG)</td><td>0–900 μV</td><td>cd–50</td><td>Electrodos de contacto</td></tr>
+          <tr><td class="param">Respuesta galvánica de la piel (GSR)</td><td>1–500 kΩ</td><td>0,01–1</td><td>Electrodos de piel</td></tr>
+          <tr><td class="param">pH gástrico</td><td>3–13 unidades de pH</td><td>cd–1</td><td>Electrodo de pH; electrodo de antimonio</td></tr>
+          <tr><td class="param">Presión gastrointestinal</td><td>0–100 cm H<sub>2</sub>O</td><td>cd–10</td><td>Manómetro de galga extensométrica</td></tr>
+          <tr><td class="param">Fuerzas gastrointestinales</td><td>1–50 g</td><td>cd–1</td><td>Sistema de desplazamiento, LVDT</td></tr>
+          <tr><td class="param">Potenciales nerviosos</td><td>0,01–3 mV</td><td>cd–10.000</td><td>Electrodos de superficie o de aguja</td></tr>
+          <tr><td class="param">Fonocardiografía</td><td>Rango dinámico 80 dB, umbral ≈ 100 Pa</td><td>5–2.000</td><td>Micrófono</td></tr>
+          <tr><td class="param">Pletismografía (cambio de volumen)</td><td>Varía con el órgano medido</td><td>cd–30</td><td>Cámara de desplazamiento o cambio de impedancia</td></tr>
+          <tr><td class="param">Pletismografía circulatoria</td><td>0–30 ml</td><td>cd–30</td><td>Cámara de desplazamiento o cambio de impedancia</td></tr>
+          <tr><td class="param">Función respiratoria · neumotacografía (caudal)</td><td>0–600 l/min</td><td>cd–40</td><td>Cabezal neumotacográfico y presión diferencial</td></tr>
+          <tr><td class="param">Frecuencia respiratoria</td><td>2–50 respiraciones/min</td><td>0,1–10</td><td>Galga en el tórax, impedancia, termistor nasal</td></tr>
+          <tr><td class="param">Volumen corriente (tidal)</td><td>50–1.000 ml/respiración</td><td>0,1–10</td><td>Los métodos anteriores</td></tr>
+          <tr><td class="param">Temperatura corporal</td><td>32–40 °C (90–104 °F)</td><td>cd–0,1</td><td>Termistor, termopar</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.85rem;color:var(--text-mute)">
+      Fuente: revisado de <em>Medical Engineering</em>, C. D. Ray (ed.), © 1974 Year Book Medical Publishers,
+      Inc., Chicago. Usado con permiso.
+    </p>
+
+    <h3>Energía aplicada al tejido vivo</h3>
+    <p>
+      Casi todas las medidas biomédicas dependen o bien de alguna forma de energía aplicada al tejido vivo, o
+      bien de energía aplicada como consecuencia incidental del funcionamiento del sensor. Las técnicas de
+      imagen por rayos X y por ultrasonidos, o los caudalímetros sanguíneos electromagnéticos y Doppler,
+      dependen de energía aplicada externamente que interactúa con el tejido vivo.
+    </p>
+    <p>
+      Los <strong>niveles seguros</strong> de estos tipos de energía son difíciles de establecer, porque
+      muchos mecanismos de daño tisular no se comprenden bien. El feto es particularmente vulnerable durante
+      las primeras etapas del desarrollo. El calentamiento del tejido es un efecto que debe limitarse, porque
+      incluso cambios fisiológicos reversibles pueden afectar a las medidas; y en algunos casos se ha
+      demostrado daño tisular a nivel molecular con niveles de energía sorprendentemente bajos.
+    </p>
+
+    <h3>El entorno médico</h3>
+    <p>
+      Operar instrumentos en el entorno médico impone restricciones adicionales importantes. El equipo debe
+      ser <strong>fiable, fácil de operar y capaz de soportar abuso físico</strong> y exposición a productos
+      químicos corrosivos. El equipo electrónico debe diseñarse para minimizar los riesgos de choque
+      eléctrico. La seguridad de pacientes y personal médico debe considerarse en todas las fases del diseño y
+      las pruebas. Las <em>Medical Device Amendments</em> de 1976 y la <em>Safe Medical Devices Act</em> de
+      1990 enmiendan la <em>Federal Food, Drug and Cosmetics Act</em> para garantizar la seguridad y la
+      eficacia de los dispositivos médicos destinados a uso humano.
+    </p>
+  </section>
+
+  <hr class="rule">
+  <section id="s15">
+    <h2><span class="num">1.5</span>Clasificación de los instrumentos biomédicos</h2>
+    <p>
+      El estudio de los instrumentos biomédicos puede abordarse desde al menos <strong>cuatro puntos de
+      vista</strong>. Cada esquema de clasificación tiene sus ventajas y sus solapamientos.
+    </p>
+    <div class="grid grid-2" style="margin:20px 0">
+      <div class="card">
+        <span class="card-tag">1 · magnitud sensada</span>
+        <h3 style="margin:10px 0 6px;text-transform:none;letter-spacing:-.3px;color:var(--text);font-size:1.05rem">Según la cantidad que se mide</h3>
+        <p>Presión, flujo, temperatura… Su ventaja es que facilita <strong>comparar los distintos métodos</strong> disponibles para medir una misma magnitud.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">2 · principio de transducción</span>
+        <h3 style="margin:10px 0 6px;text-transform:none;letter-spacing:-.3px;color:var(--text);font-size:1.05rem">Según el principio de transducción</h3>
+        <p>Resistivo, inductivo, capacitivo, ultrasónico o electroquímico. Las distintas aplicaciones de cada principio refuerzan la comprensión del concepto y hacen evidentes nuevas aplicaciones.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">3 · sistema orgánico</span>
+        <h3 style="margin:10px 0 6px;text-transform:none;letter-spacing:-.3px;color:var(--text);font-size:1.05rem">Según el sistema del organismo</h3>
+        <p>Cardiovascular, pulmonar, nervioso, endocrino… Aísla todas las medidas importantes para el especialista, pero produce un <strong>solapamiento considerable</strong> de magnitudes y principios.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">4 · especialidad clínica</span>
+        <h3 style="margin:10px 0 6px;text-transform:none;letter-spacing:-.3px;color:var(--text);font-size:1.05rem">Según la especialidad médica</h3>
+        <p>Pediatría, obstetricia, cardiología, radiología… Valioso para el personal médico interesado en instrumentos especializados. Ciertas medidas —como la presión arterial— son importantes para muchas especialidades a la vez.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="s16">
+    <h2><span class="num">1.6</span>Entradas interferentes y modificadoras</h2>
+    <ul>
+      <li><span class="dfn">Entradas deseadas</span>: son los mensurandos que el instrumento está diseñado para aislar.</li>
+      <li><span class="dfn">Entradas interferentes</span>: magnitudes que afectan al instrumento de forma inadvertida como consecuencia de los principios usados para adquirir y procesar las entradas deseadas. Si el aislamiento espacial o temporal del mensurando es incompleto, la entrada interferente puede ser incluso <strong>la misma magnitud</strong> que la entrada deseada.</li>
+      <li><span class="dfn">Entradas modificadoras</span>: magnitudes indeseadas que afectan indirectamente a la salida alterando el comportamiento del propio instrumento. Pueden afectar al procesamiento tanto de las entradas deseadas como de las interferentes.</li>
+    </ul>
+    <p>Algunas magnitudes indeseables pueden actuar a la vez como entrada modificadora y como entrada interferente.</p>
+
+    <figure class="figure">
+      <div class="scroll">
+      <svg viewBox="0 0 900 360" role="img" aria-label="Sistema simplificado de registro electrocardiográfico" style="min-width:660px">
+        <style>
+          .f2 .body { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.6; }
+          .f2 .w { stroke: var(--accent); stroke-width: 2; fill: none; }
+          .f2 .loop { fill: var(--accent-2-soft); stroke: var(--accent-2); stroke-width: 1.4; stroke-dasharray: 5 4; }
+          .f2 .t { fill: var(--text); font: 600 13px var(--font); }
+          .f2 .ts { fill: var(--text-soft); font: 12px var(--font); }
+          .f2 .tm { fill: var(--text-mute); font: 12px var(--font); }
+          .f2 .dash { stroke: var(--text-mute); stroke-width: 1.4; fill: none; stroke-dasharray: 5 4; marker-end: url(#a2d); }
+          .f2 .amp { fill: var(--surface-2); stroke: var(--accent); stroke-width: 1.6; }
+        </style>
+        <defs>
+          <marker id="a2d" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="var(--text-mute)"/>
+          </marker>
+        </defs>
+        <g class="f2">
+          <!-- cuerpo -->
+          <ellipse class="body" cx="120" cy="190" rx="78" ry="105"/>
+          <text class="ts" x="120" y="196" text-anchor="middle">Paciente</text>
+          <text class="tm" x="120" y="214" text-anchor="middle">Z_cuerpo</text>
+
+          <!-- electrodos -->
+          <circle cx="192" cy="140" r="8" fill="var(--accent)"/>
+          <circle cx="192" cy="244" r="8" fill="var(--accent)"/>
+          <text class="ts" x="182" y="120" text-anchor="middle">Electrodo 1</text>
+          <text class="ts" x="182" y="278" text-anchor="middle">Electrodo 2</text>
+
+          <!-- impedancias de electrodo -->
+          <rect x="228" y="128" width="46" height="24" rx="5" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.4"/>
+          <text class="ts" x="251" y="145" text-anchor="middle">Z₁</text>
+          <rect x="228" y="232" width="46" height="24" rx="5" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.4"/>
+          <text class="ts" x="251" y="249" text-anchor="middle">Z₂</text>
+
+          <!-- cables y lazo sombreado -->
+          <path class="w" d="M200,140 L228,140"/>
+          <path class="w" d="M274,140 L470,140"/>
+          <path class="w" d="M200,244 L228,244"/>
+          <path class="w" d="M274,244 L470,244"/>
+          <rect class="loop" x="300" y="150" width="150" height="84" rx="6"/>
+          <text class="tm" x="375" y="197" text-anchor="middle">lazo del cable</text>
+
+          <!-- campo magnético -->
+          <text class="t" x="560" y="46">Campo magnético ca de 60 Hz</text>
+          <path class="dash" d="M600,58 L470,140"/>
+          <path class="dash" d="M560,62 L400,150"/>
+          <text class="tm" x="560" y="76">entrada interferente</text>
+
+          <!-- corrientes de desplazamiento capacitivas -->
+          <path class="dash" d="M60,60 L92,96"/>
+          <text class="tm" x="10" y="50">Corrientes de</text>
+          <text class="tm" x="10" y="66">desplazamiento</text>
+
+          <!-- amplificador diferencial -->
+          <path class="amp" d="M480,110 L480,274 L600,192 z"/>
+          <text class="t" x="506" y="150">+</text>
+          <text class="t" x="506" y="246">−</text>
+          <text class="ts" x="500" y="300">Amplificador diferencial</text>
+          <path class="w" d="M600,192 L680,192"/>
+          <text class="t" x="690" y="188">v_salida</text>
+
+          <!-- tierra -->
+          <path class="w" d="M120,296 L120,326"/>
+          <path class="w" d="M104,326 L136,326 M110,333 L130,333 M116,340 L124,340"/>
+        </g>
+      </svg>
+      </div>
+      <figcaption>
+        <b>Figura 1.2 · Sistema simplificado de registro electrocardiográfico.</b> Dos posibles entradas
+        interferentes son los campos magnéticos parásitos y el ruido acoplado capacitivamente. La orientación
+        de los cables del paciente y los cambios en la impedancia electrodo-piel son dos posibles entradas
+        modificadoras. Z₁ y Z₂ representan las impedancias de la interfaz electrodo-piel.
+      </figcaption>
+    </figure>
+
+    <p>
+      El sistema de registro electrocardiográfico típico de la figura 1.2 ilustra estos conceptos. La
+      <strong>entrada deseada</strong> es la tensión electrocardiográfica <em>v</em><sub>ecg</sub> que aparece
+      entre los dos electrodos situados en la superficie corporal.
+    </p>
+    <p>
+      Una <strong>entrada interferente</strong> es la tensión de ruido de 60 Hz inducida en el lazo sombreado
+      por los campos magnéticos ambientales de corriente alterna. La tensión deseada y la interferente están
+      <em>en serie</em>, de modo que ambas componentes aparecen a la entrada del amplificador diferencial.
+      Además, la diferencia entre las corrientes de desplazamiento acopladas capacitivamente que circulan por
+      cada electrodo y por el cuerpo hacia tierra provoca que aparezca una tensión interferente a través de
+      <em>Z</em><sub>cuerpo</sub> entre los dos electrodos, y dos tensiones interferentes a través de las
+      impedancias de electrodo <em>Z</em><sub>1</sub> y <em>Z</em><sub>2</sub>.
+    </p>
+    <div class="callout">
+      <div class="callout-title">Ejemplo de entrada modificadora</div>
+      <p>
+        La orientación de los cables del paciente: si el plano de los cables es <strong>paralelo</strong> al
+        campo magnético de ca, la interferencia introducida magnéticamente es nula; si es
+        <strong>perpendicular</strong>, la interferencia es máxima.
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule">
+  <section id="s17">
+    <h2><span class="num">1.7</span>Técnicas de compensación</h2>
+    <p>
+      Los efectos de la mayoría de entradas interferentes y modificadoras pueden reducirse o eliminarse
+      alterando el diseño de los componentes esenciales del instrumento, o añadiendo componentes nuevos
+      diseñados para contrarrestar las entradas indeseadas. La primera alternativa es preferible cuando es
+      viable, porque el resultado suele ser más simple. Por desgracia, los diseñadores rara vez pueden
+      eliminar la fuente real de las entradas indeseadas.
+    </p>
+
+    <h3>Insensibilidad inherente</h3>
+    <p>
+      Si todos los componentes del instrumento son inherentemente sensibles solo a las entradas deseadas, las
+      entradas interferentes y modificadoras obviamente no tienen efecto. En el electrocardiógrafo, un ejemplo
+      es <strong>trenzar los cables de los electrodos</strong> para reducir el número de líneas de flujo
+      magnético que atraviesan el lazo sombreado de la figura 1.2: la tensión del ruido inducido es
+      proporcional al área de ese lazo. Los efectos del movimiento del electrodo también pueden reducirse con
+      técnicas específicas.
+    </p>
+
+    <h3>Realimentación negativa</h3>
+    <p>
+      Cuando una entrada modificadora no puede evitarse, mejorar el comportamiento del instrumento exige una
+      estrategia que haga la salida <strong>menos dependiente</strong> de la función de transferencia
+      <em>G</em><sub>d</sub>. El método de realimentación negativa toma una porción de la salida,
+      <em>H</em><sub>f</sub>, en cada instante y la devuelve a la entrada; esta señal dependiente de la salida
+      se resta de la entrada y la diferencia se convierte en la entrada efectiva del sistema. Para una entrada
+      <em>x</em><sub>d</sub> y una salida <em>y</em>:
+    </p>
+    <div class="eq"><span>(x<sub>d</sub> − H<sub>f</sub> y) · G<sub>d</sub> = y</span><span class="tag">(1.1)</span></div>
+    <div class="eq"><span>x<sub>d</sub> G<sub>d</sub> = y (1 + H<sub>f</sub> G<sub>d</sub>)</span><span class="tag">(1.2)</span></div>
+    <div class="eq">
+      <span>y =
+        <span class="frac"><span class="top">G<sub>d</sub></span><span class="bot">1 + H<sub>f</sub> G<sub>d</sub></span></span>
+        · x<sub>d</sub>
+      </span><span class="tag">(1.3)</span>
+    </div>
+    <p>
+      Como <em>G</em><sub>d</sub> normalmente incluye amplificación, se cumple
+      <em>H</em><sub>f</sub><em>G</em><sub>d</sub> ≫ 1 y por tanto
+      <em>y</em> ≈ (1/<em>H</em><sub>f</sub>)·<em>x</em><sub>d</sub>. Esta conocida relación muestra que
+      <strong>solo el elemento de realimentación</strong> <em>H</em><sub>f</sub> determina la salida para una
+      entrada dada. Naturalmente, la estrategia falla si <em>H</em><sub>f</sub> también resulta afectado por
+      entradas modificadoras.
+    </p>
+    <div class="grid grid-2" style="margin:18px 0">
+      <div class="card">
+        <span class="card-tag" style="background:var(--accent-soft);color:var(--accent)">Ventajas</span>
+        <p style="margin-top:10px">El dispositivo de realimentación suele manejar menos potencia, por lo que es más exacto y lineal. También se necesita menos potencia de señal de entrada, de modo que se produce menos carga sobre la fuente.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag" style="background:var(--warn-soft);color:var(--warn)">Desventaja</span>
+        <p style="margin-top:10px">La principal desventaja es que puede aparecer <strong>inestabilidad dinámica</strong> que lleve a oscilaciones, sobre todo si <em>G</em><sub>d</sub> contiene retardos temporales.</p>
+      </div>
+    </div>
+
+    <h3>Filtrado de señal</h3>
+    <p>
+      Un filtro separa señales según su frecuencia; la mayoría lo hacen atenuando la parte de la señal que
+      está en una o más bandas de frecuencia. Una definición más general de filtro es «un dispositivo o
+      programa que separa datos, señales o material de acuerdo con criterios especificados» (IEEE, 1997).
+    </p>
+    <p>
+      Los filtros pueden insertarse <strong>en la entrada</strong> del instrumento, <strong>en algún punto
+      intermedio</strong> o <strong>en la salida</strong>. De hecho, las limitaciones de los sentidos humanos
+      pueden usarse para filtrar componentes indeseados procedentes de los dispositivos de presentación: un
+      ejemplo es aprovechar la fusión del parpadeo (<em>flicker fusion</em>) para las imágenes que cambian
+      rápidamente en un escáner ultrasónico en tiempo real.
+    </p>
+    <h4>Filtrado en la entrada</h4>
+    <p>
+      Bloquea las entradas interferentes y modificadoras sin alterar la entrada deseada. Los elementos de
+      filtro pueden ser dispositivos distintos que bloquean o dejan pasar todas las entradas, o un único
+      dispositivo que bloquea selectivamente solo las indeseadas. Muchos diseñadores no usan filtros
+      eléctricos de entrada, sino principios <strong>mecánicos, neumáticos, térmicos o electromagnéticos</strong>
+      para bloquear entradas ambientales indeseadas: por ejemplo, montar los instrumentos sobre soportes
+      antivibratorios, o emplear <strong>apantallamiento electromagnético</strong> para bloquear campos
+      eléctricos y magnéticos interferentes como los indicados en la figura 1.2.
+    </p>
+    <h4>Filtrado intermedio</h4>
+    <p>
+      A menudo se incorporan filtros electrónicos en alguna etapa intermedia. Para facilitar el filtrado
+      basado en diferencias de frecuencia se usan mezcladores y moduladores que desplazan las señales deseadas
+      o indeseadas a otro rango de frecuencias donde el filtrado es más efectivo. Los computadores digitales
+      filtran señales mediante técnicas de comparación con plantillas y diversas propiedades en el dominio del
+      tiempo; estos filtros pueden incluso tener criterios dependientes del tiempo o de la señal para aislar
+      la señal deseada.
+    </p>
+    <h4>Filtrado en la salida</h4>
+    <p>
+      Es posible, aunque suele ser más difícil porque las señales de salida deseadas e indeseadas están
+      superpuestas. La selectividad necesaria puede ser más fácil de lograr con señales de salida de mayor
+      nivel.
+    </p>
+
+    <h3>Entradas opuestas</h3>
+    <p>
+      Cuando las entradas interferentes o modificadoras no pueden filtrarse, pueden usarse
+      <strong>entradas interferentes adicionales</strong> para cancelar las componentes indeseadas de la
+      salida. Estas entradas intencionadas pueden ser iguales a las que se quieren cancelar; en general, la
+      entrada inevitable y la opuesta añadida pueden ser bastante distintas, siempre que las dos componentes
+      de salida sean iguales de modo que se produzca la cancelación.
+    </p>
+    <p>
+      Las dos salidas deben cancelarse a pesar de las variaciones de todas las entradas interferentes
+      inevitables y de las variaciones de las entradas deseadas. La cancelación puede implementarse antes o
+      después de combinar las salidas deseada e indeseada, y el procesamiento por <em>G</em><sub>d</sub> puede
+      aplicarse tanto a la señal intencionada como a la inevitable. El método de entradas opuestas también
+      sirve para cancelar los efectos de entradas modificadoras.
+    </p>
+    <p>
+      El método implica correcciones automáticas en tiempo real. En la práctica, las correcciones de salida se
+      calculan a menudo manualmente o por computador y se aplican <em>después</em> de recoger los datos, lo
+      que exige conocimiento cuantitativo de la entrada interferente o modificadora en el momento de la medida
+      y de cómo afecta a la salida. Este método suele ser engorroso, pierde la información en tiempo real y se
+      usa habitualmente solo para entradas interferentes bastante estáticas, como la temperatura y la presión
+      atmosférica.
+    </p>
+    <div class="callout tip">
+      <div class="callout-title">Dos ejemplos</div>
+      <p>
+        <strong>(a)</strong> Inducir intencionadamente una tensión a partir del mismo campo magnético de 60 Hz
+        presente en la figura 1.2, amplificarla e invertirla hasta lograr la cancelación de la interferencia
+        de 60 Hz en la salida. La desventaja evidente es que la ganancia del amplificador debe reajustarse
+        cada vez que cambia la geometría del lazo.
+      </p>
+      <p style="margin-bottom:0">
+        <strong>(b)</strong> En circuitos electrónicos que deben operar en un rango amplio de temperaturas se
+        usan <strong>termistores</strong> (resistores dependientes de la temperatura) para contrarrestar los
+        cambios inevitables, dependientes de la temperatura, en las características de elementos activos como
+        transistores y circuitos integrados.
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule">
+  <section id="s18">
+    <h2><span class="num">1.8</span>Bioestadística</h2>
+    <p>La aplicación de la estadística a los datos médicos se usa para:</p>
+    <ul>
+      <li>diseñar experimentos y estudios clínicos;</li>
+      <li>resumir, explorar, analizar y presentar datos;</li>
+      <li>extraer inferencias de los datos mediante estimación o contraste de hipótesis;</li>
+      <li>evaluar procedimientos diagnósticos;</li>
+      <li>asistir a la toma de decisiones clínicas.</li>
+    </ul>
+
+    <h3>Tipos de estudio</h3>
+    <p>
+      Los estudios de investigación médica pueden ser <span class="dfn">observacionales</span> —se observan y
+      registran características de uno o más grupos de pacientes— o <span class="dfn">experimentales de
+      intervención</span> —se investiga el efecto de un procedimiento o tratamiento—.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Diseño</th><th>Descripción</th></tr></thead>
+        <tbody>
+          <tr><td class="param">Series de casos</td><td>El estudio observacional más simple: describe alguna característica de un grupo. No tiene sujetos control; solo sirve para identificar preguntas de investigación futuras.</td></tr>
+          <tr><td class="param">Casos y controles</td><td>Usa individuos seleccionados por tener (o no tener) cierto desenlace o enfermedad y mira <strong>hacia atrás</strong> para encontrar posibles causas o factores de riesgo.</td></tr>
+          <tr><td class="param">Transversal</td><td>Analiza características de los pacientes en <strong>un momento concreto</strong> para determinar el estado de una enfermedad o condición.</td></tr>
+          <tr><td class="param">De cohortes</td><td>Pregunta <strong>prospectivamente</strong> si una característica dada es un precursor o factor de riesgo de un desenlace o enfermedad.</td></tr>
+          <tr><td class="param">Ensayo clínico controlado</td><td>El desenlace de los pacientes a los que se administra un fármaco, dispositivo o procedimiento se compara con el de pacientes que reciben un placebo u otro tratamiento aceptado. Es <em>no controlado</em> si no existe tal comparación.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Los <strong>controles concurrentes</strong> son los mejores, porque los pacientes se seleccionan del
+      mismo modo y para el mismo periodo. Se prefiere el <strong>estudio doble ciego con asignación
+      aleatoria</strong> de los pacientes a las opciones de tratamiento, porque este diseño minimiza el sesgo
+      del investigador y del paciente. Cada vez se exigen más estudios de resultados médicos que demuestren
+      mejoras coste-efectivas en la salud del paciente antes de adoptar y reembolsar nuevas tecnologías
+      médicas.
+    </p>
+
+    <h3>Tipos de datos y estadística descriptiva</h3>
+    <p>
+      Los <span class="dfn">datos cuantitativos</span> se miden en una escala numérica continua o discreta con
+      cierta precisión. Los <span class="dfn">datos cualitativos</span>, cuyos valores encajan en categorías,
+      se miden en escalas <strong>nominales</strong> que muestran los nombres de las categorías; se usa una
+      escala <strong>ordinal</strong> cuando las categorías exhiben un orden inherente. La estadística
+      descriptiva resume los datos y sus atributos; las distribuciones —empíricas o teóricas— reflejan los
+      valores de una variable y la frecuencia de aparición de esos valores.
+    </p>
+
+    <h4>Medidas de tendencia central</h4>
+    <div class="eq">
+      <span>x̄ = <span class="frac"><span class="top">Σ x<sub>i</sub></span><span class="bot">n</span></span></span>
+      <span class="tag">(1.4)</span>
+    </div>
+    <ul>
+      <li>La <span class="dfn">media</span> es la suma de los valores observados dividida por el número de observaciones; funciona mejor como medida de tendencia central para <strong>distribuciones simétricas</strong>.</li>
+      <li>La <span class="dfn">mediana</span> es el valor para el cual la mitad de las observaciones son menores y la mitad mayores; se usa con datos numéricos <strong>asimétricos</strong> o con datos ordinales.</li>
+      <li>La <span class="dfn">moda</span> es la observación que ocurre con más frecuencia; se usa en distribuciones <strong>bimodales</strong>.</li>
+      <li>La <span class="dfn">media geométrica</span> es la raíz <em>n</em>-ésima del producto de las observaciones; se usa con datos en <strong>escala logarítmica</strong>.</li>
+    </ul>
+    <div class="eq">
+      <span>GM = <sup>n</sup>√( x<sub>1</sub> · x<sub>2</sub> · x<sub>3</sub> ··· x<sub>n</sub> )</span>
+      <span class="tag">(1.5)</span>
+    </div>
+
+    <h4>Medidas de dispersión</h4>
+    <p>
+      Describen la variación de las observaciones. El <span class="dfn">rango</span> —diferencia entre la
+      observación mayor y la menor— se usa para enfatizar los valores extremos. La <span class="dfn">desviación
+      estándar</span> mide la dispersión de los datos en torno a la media:
+    </p>
+    <div class="eq">
+      <span>s = √( <span class="frac"><span class="top">Σ (x<sub>i</sub> − x̄)²</span><span class="bot">n − 1</span></span> )</span>
+      <span class="tag">(1.6)</span>
+    </div>
+    <p>
+      Se usa junto con la media para distribuciones simétricas de datos numéricos. Con independencia del tipo
+      de distribución simétrica, al menos el <strong>75 % de los valores</strong> se sitúa siempre entre
+      x̄ − 2s y x̄ + 2s. El <span class="dfn">coeficiente de variación</span> estandariza la variación y
+      permite comparar dos distribuciones numéricas medidas en escalas diferentes:
+    </p>
+    <div class="eq">
+      <span>CV = ( <span class="frac"><span class="top">s</span><span class="bot">x̄</span></span> ) × 100 %</span>
+      <span class="tag">(1.7)</span>
+    </div>
+    <p>
+      Un <span class="dfn">percentil</span> da el porcentaje de la distribución que es menor o igual que el
+      número del percentil; puede usarse con la mediana para datos ordinales o numéricos asimétricos. El
+      <span class="dfn">rango intercuartílico</span> es la diferencia entre los percentiles 25 y 75, y por
+      tanto describe el 50 % central de una distribución de cualquier forma. El
+      <span class="dfn">error estándar de la media</span> (SEM), es decir, la desviación estándar de la media,
+      <em>s</em><sub>x̄</sub> = <em>s</em>/√(<em>n</em>−1), expresa la variabilidad esperable
+      <strong>entre las medias</strong> de muestras futuras, mientras que la desviación estándar describe la
+      variabilidad esperable <strong>entre individuos</strong> de muestras futuras.
+    </p>
+
+    <div class="callout">
+      <div class="callout-title">Ejemplo 1.1</div>
+      <p>
+        Las muestras tomadas de una población son <strong>1, 1, 3, 5, 5</strong>. Estimar la media x̄, la
+        desviación estándar <em>s</em> y la desviación estándar de la media <em>s</em><sub>x̄</sub>.
+      </p>
+      <p style="margin-bottom:0"><strong>Respuesta.</strong></p>
+      <div class="eq"><span>x̄ = (1 + 1 + 3 + 5 + 5) / 5 = 3</span><span class="tag">media</span></div>
+      <div class="eq"><span>s = { [(1−3)² + (1−3)² + (3−3)² + (5−3)² + (5−3)²] / (5−1) }<sup>1/2</sup> = (16/4)<sup>1/2</sup> = 2</span><span class="tag">desv. estándar</span></div>
+      <div class="eq"><span>s<sub>x̄</sub> = s / √(n−1) = 2 / √(5−1) = 1</span><span class="tag">SEM</span></div>
+    </div>
+
+    <h4>Correlación</h4>
+    <p>
+      A menudo necesitamos estudiar relaciones entre dos características numéricas. El
+      <span class="dfn">coeficiente de correlación</span> <em>r</em> mide la relación entre las variables
+      numéricas <em>X</em> e <em>Y</em> para observaciones apareadas:
+    </p>
+    <div class="eq">
+      <span>r =
+        <span class="frac">
+          <span class="top">Σ (X<sub>i</sub> − X̄)(Y<sub>i</sub> − Ȳ)</span>
+          <span class="bot">√( Σ(X<sub>i</sub> − X̄)² · Σ(Y<sub>i</sub> − Ȳ)² )</span>
+        </span>
+      </span>
+      <span class="tag">(1.8)</span>
+    </div>
+    <ul>
+      <li>Varía de <strong>−1</strong> (relación lineal negativa) a <strong>+1</strong> (relación lineal positiva); <strong>0</strong> indica que no hay relación lineal entre <em>X</em> e <em>Y</em>.</li>
+      <li>Es independiente de las unidades empleadas para medir las variables, que pueden ser diferentes.</li>
+      <li>Como la desviación estándar, está fuertemente influido por los <strong>valores atípicos</strong>.</li>
+      <li>Como mide solo relaciones en línea recta, puede ser pequeño para una relación curvilínea fuerte.</li>
+      <li>Una correlación alta <strong>no implica</strong> una relación causa-efecto entre las variables.</li>
+    </ul>
+
+    <h4>Estimación y contraste de hipótesis</h4>
+    <p>
+      La estimación y el contraste de hipótesis son dos maneras de inferir un valor en una población de
+      sujetos a partir de un conjunto de observaciones extraídas de una muestra. En la
+      <span class="dfn">estimación</span> se calculan <strong>intervalos de confianza</strong> para un
+      estadístico como la media: indican que un porcentaje —digamos el 95 %— de tales intervalos contiene el
+      verdadero valor de la media poblacional, es decir, el grado de confianza que podemos tener en que
+      contengan la media verdadera.
+    </p>
+    <p>
+      El <span class="dfn">contraste de hipótesis</span> revela si la muestra aporta evidencia suficiente para
+      rechazar la <strong>hipótesis nula</strong>, que normalmente se formula como un enunciado que expresa lo
+      contrario de lo que creemos cierto. El <span class="dfn">valor P</span> es la probabilidad de obtener,
+      si la hipótesis nula es cierta, un resultado al menos tan extremo como el observado; indica con qué
+      frecuencia ocurriría la diferencia observada solo por azar si nada más que el azar afectara al
+      resultado. Las tendencias recientes favorecen el uso de la estimación y los intervalos de confianza
+      frente al contraste de hipótesis.
+    </p>
+
+    <h4>Exactitud de un procedimiento diagnóstico</h4>
+    <p>Los métodos para medir la exactitud de una prueba diagnóstica usan tres piezas de información:</p>
+    <div class="grid grid-3" style="margin:18px 0">
+      <div class="card">
+        <h3 style="margin:0 0 8px;font-size:.95rem">Sensibilidad</h3>
+        <div class="eq" style="margin:0 0 10px"><span>VP / (VP + FN)</span></div>
+        <p>Probabilidad de que la prueba dé resultados <strong>verdaderos positivos</strong> en pacientes que realmente tienen la enfermedad. Una prueba con sensibilidad alta tiene tasa baja de falsos negativos (FN).</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px;font-size:.95rem">Especificidad</h3>
+        <div class="eq" style="margin:0 0 10px"><span>VN / (VN + FP)</span></div>
+        <p>Probabilidad de que la prueba dé resultados negativos en pacientes que <strong>no</strong> tienen la enfermedad. Una prueba con especificidad alta tiene tasa baja de falsos positivos (FP).</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px;font-size:.95rem">Prevalencia</h3>
+        <div class="eq" style="margin:0 0 10px"><span>(VP + FN) / (VN + VP + FN + FP)</span></div>
+        <p>Probabilidad previa de la condición antes de la prueba: todas las personas enfermas divididas por todas las personas.</p>
+      </div>
+    </div>
+    <p>
+      Existen varios métodos para revisar la probabilidad de que un paciente tenga una condición a partir de
+      los resultados de una prueba diagnóstica. Tener en cuenta el resultado de un procedimiento diagnóstico
+      es solo una parte del complejo proceso de decisión clínica: también se usan el <strong>análisis mediante
+      árboles de decisión</strong> y otras formas de análisis de decisión que incluyen implicaciones
+      económicas, en un esfuerzo por tomar decisiones óptimas.
+    </p>
+  </section>
+
+  <hr class="rule">
+  <section id="s19">
+    <h2><span class="num">1.9</span>Características estáticas generalizadas</h2>
+    <p>
+      Para que los compradores puedan comparar los instrumentos disponibles comercialmente y evaluar nuevos
+      diseños hacen falta <strong>criterios cuantitativos</strong> de comportamiento. Esos criterios deben
+      especificar con claridad hasta qué punto un instrumento mide bien la entrada deseada y cuánto depende su
+      salida de las entradas interferentes y modificadoras. Las características de comportamiento se
+      subdividen habitualmente en dos clases según la frecuencia de las señales de entrada.
+    </p>
+    <div class="grid grid-2" style="margin:20px 0">
+      <div class="card">
+        <span class="card-tag">Estáticas</span>
+        <p style="margin-top:10px">Describen el comportamiento del instrumento para entradas de corriente continua o de frecuencia muy baja. Las propiedades de la salida para un rango amplio de entradas constantes muestran la calidad de la medida, incluidos los efectos no lineales y estadísticos. Algunos sensores, como los piezoeléctricos, responden solo a entradas variables en el tiempo y <strong>no tienen características estáticas</strong>.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">Dinámicas</span>
+        <p style="margin-top:10px">Requieren ecuaciones diferenciales o integrales para describir la calidad de las medidas. Aunque dependen de las estáticas, las no linealidades y la variabilidad estadística suelen ignorarse para entradas dinámicas porque las ecuaciones se vuelven difíciles de resolver. Las características completas se aproximan por la <strong>suma</strong> de las estáticas y las dinámicas; esta simplificación necesaria explica a menudo las diferencias entre el comportamiento real y el ideal.</p>
+      </div>
+    </div>
+
+    <h3>Exactitud</h3>
+    <p>
+      La <span class="dfn">exactitud</span> de una magnitud medida es la diferencia entre el valor verdadero y
+      el valor medido, dividida por el valor verdadero; esa razón se expresa normalmente en porcentaje. Como
+      el valor verdadero rara vez está disponible, el valor verdadero aceptado o valor de referencia debe ser
+      trazable al organismo nacional de metrología (en EE. UU., el <em>National Institute of Standards and
+      Technology</em>).
+    </p>
+    <p>La exactitud:</p>
+    <ul>
+      <li>varía normalmente a lo largo del rango de la magnitud medida;</li>
+      <li>suele empeorar al disminuir el valor de fondo de escala en un instrumento multirrango;</li>
+      <li>varía a menudo con la frecuencia de las entradas deseadas, interferentes y modificadoras.</li>
+    </ul>
+    <p>
+      Es una medida del <strong>error total</strong>, sin considerar el tipo o la fuente del error, y se asume
+      que la probabilidad de medir por defecto y por exceso es la misma. Puede expresarse como porcentaje de
+      lectura, porcentaje de fondo de escala, ± un número de dígitos en lecturas digitales, o ±1/2 de la
+      división más pequeña en una escala analógica. A menudo se expresa como suma de varias de estas formas;
+      por ejemplo, en un dispositivo digital: <em>±0,01 % de la lectura ±0,015 % del fondo de escala ±1
+      dígito</em>. Si la exactitud se expresa simplemente como porcentaje, normalmente se sobreentiende que es
+      del fondo de escala. Algunos fabricantes especifican la exactitud solo para un periodo de tiempo
+      limitado.
+    </p>
+
+    <h3>Precisión</h3>
+    <p>
+      La <span class="dfn">precisión</span> de una medida expresa el número de alternativas distinguibles
+      entre las cuales se selecciona un resultado dado. Por ejemplo, un medidor que muestra 2,434 V es más
+      preciso que otro que muestra 2,43 V. Sin embargo, medidas de alta precisión <strong>no implican</strong>
+      alta exactitud, porque la precisión no hace ninguna comparación con el valor verdadero.
+    </p>
+
+    <h3>Resolución</h3>
+    <p>
+      La <span class="dfn">resolución</span> es la menor cantidad incremental que puede medirse con certeza.
+      Si la magnitud medida parte de cero, el término <span class="dfn">umbral</span> es sinónimo de
+      resolución. La resolución expresa el grado en que pueden discriminarse valores casi iguales de una
+      magnitud.
+    </p>
+
+    <h3>Reproducibilidad</h3>
+    <p>
+      La capacidad de un instrumento de dar la misma salida para entradas iguales aplicadas a lo largo de
+      cierto periodo de tiempo se denomina <span class="dfn">reproducibilidad</span> o repetibilidad. La
+      reproducibilidad no implica exactitud: por ejemplo, un reloj digital averiado con indicador AM/PM da
+      valores muy reproducibles que solo son exactos <strong>una vez al día</strong>.
+    </p>
+
+    <h3>Control estadístico</h3>
+    <p>
+      La exactitud de un instrumento no tiene sentido salvo que se consideren todos los factores, como el
+      entorno y el método de uso. El <span class="dfn">control estadístico</span> asegura que las variaciones
+      aleatorias de las magnitudes medidas, procedentes de todos los factores que influyen en el proceso de
+      medida, sean tolerables. Cualquier error sistemático o sesgo puede eliminarse mediante calibración y
+      factores de corrección, pero las variaciones aleatorias plantean un problema más difícil. El mensurando
+      o el instrumento pueden introducir variaciones estadísticas que hagan las salidas no reproducibles. Si
+      la causa de esa variabilidad no puede eliminarse, hay que usar análisis estadístico para determinar la
+      variación del error; <strong>realizar múltiples medidas y promediar</strong> los resultados mejora la
+      estimación del valor verdadero.
+    </p>
+
+    <h3>Sensibilidad estática</h3>
+    <p>
+      Una <span class="dfn">calibración estática</span> se realiza manteniendo constantes todas las entradas
+      —deseadas, interferentes y modificadoras— excepto una. Esa entrada se varía incrementalmente a lo largo
+      del rango normal de operación, obteniéndose un rango de salidas incrementales. La
+      <span class="dfn">sensibilidad estática</span> de un instrumento o sistema es la razón entre la magnitud
+      incremental de salida y la magnitud incremental de entrada; esta razón es la componente estática de
+      <em>G</em><sub>d</sub> para entradas deseadas dentro del rango de las entradas incrementales.
+    </p>
+    <p>
+      La pendiente incremental puede obtenerse de la <strong>secante</strong> entre dos puntos adyacentes o de
+      la <strong>tangente</strong> en un punto de la curva de calibración. La sensibilidad estática puede ser
+      constante solo en una parte del rango normal de operación, como muestra la figura 1.3(a).
+    </p>
+
+    <figure class="figure">
+      <div class="scroll">
+      <svg viewBox="0 0 900 372" role="img" aria-label="Curvas de sensibilidad estática y derivas" style="min-width:660px">
+        <style>
+          .f3 .ax { stroke: var(--text-mute); stroke-width: 1.4; fill: none; }
+          .f3 .cv { stroke: var(--accent); stroke-width: 2.4; fill: none; }
+          .f3 .cd { stroke: var(--accent-2); stroke-width: 2; fill: none; stroke-dasharray: 6 4; }
+          .f3 .cw { stroke: var(--warn); stroke-width: 2; fill: none; stroke-dasharray: 2 4; }
+          .f3 .t { fill: var(--text); font: 600 12px var(--font); }
+          .f3 .ts { fill: var(--text-soft); font: 11px var(--font); }
+          .f3 .tm { fill: var(--text-mute); font: 11px var(--font); }
+          .f3 .hl { stroke: var(--text-mute); stroke-width: 1; stroke-dasharray: 3 3; fill: none; }
+        </style>
+        <g class="f3">
+          <!-- (a) -->
+          <text class="t" x="40" y="20">(a) Curva de sensibilidad estática</text>
+          <path class="ax" d="M60,250 L60,40 M60,250 L400,250"/>
+          <text class="ts" x="16" y="46">y (salida)</text>
+          <text class="ts" x="345" y="272">x_d (entrada)</text>
+          <path class="cv" d="M60,214 C110,206 130,196 170,176 L300,110 C330,94 350,86 385,82"/>
+          <path class="hl" d="M200,161 L280,161 M280,161 L280,121"/>
+          <text class="tm" x="240" y="177" text-anchor="middle">Δx_d</text>
+          <text class="tm" x="288" y="146">Δy</text>
+          <text class="ts" x="196" y="212">pendiente m = Δy / Δx_d</text>
+          <circle cx="60" cy="214" r="4" fill="var(--accent)"/>
+          <text class="tm" x="20" y="218">b</text>
+          <text class="ts" x="250" y="240">y = m·x_d + b</text>
+
+          <!-- (b) -->
+          <text class="t" x="500" y="20">(b) Deriva de cero y de sensibilidad</text>
+          <path class="ax" d="M520,250 L520,40 M520,250 L870,250"/>
+          <text class="ts" x="476" y="46">y (salida)</text>
+          <text class="ts" x="805" y="272">x_d (entrada)</text>
+          <path class="cw" d="M520,230 L860,60"/>
+          <path class="cd" d="M520,196 L860,76"/>
+          <path class="cv" d="M520,230 L860,110"/>
+          <path class="cd" d="M520,264 L860,144"/>
+          <path class="cw" d="M520,230 L860,166"/>
+          <text class="ts" x="856" y="54" text-anchor="end" fill="var(--warn)">+</text>
+          <text class="ts" x="856" y="70" text-anchor="end" fill="var(--accent-2)">+</text>
+          <text class="ts" x="856" y="138" text-anchor="end" fill="var(--accent-2)">−</text>
+          <text class="ts" x="856" y="182" text-anchor="end" fill="var(--warn)">−</text>
+          <!-- leyenda -->
+          <rect x="450" y="292" width="420" height="74" rx="9" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
+          <path class="cv" d="M466,312 L508,312"/>
+          <text class="ts" x="518" y="316">característica de diseño</text>
+          <path class="cd" d="M466,334 L508,334"/>
+          <text class="ts" x="518" y="338">deriva de cero (± desplazamiento paralelo)</text>
+          <path class="cw" d="M466,356 L508,356"/>
+          <text class="ts" x="518" y="360">deriva de sensibilidad (± cambio de pendiente)</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>
+        <b>Figura 1.3 · (a)</b> Curva de sensibilidad estática que relaciona la entrada deseada
+        <em>x</em><sub>d</sub> con la salida <em>y</em>; la sensibilidad estática puede ser constante solo en
+        un rango limitado de entradas. <b>(b)</b> Deriva de cero y deriva de sensibilidad; las líneas
+        discontinuas indican que ambas derivas pueden ser negativas.
+      </figcaption>
+    </figure>
+
+    <p>
+      Para datos entrada-salida que indican una curva de calibración en línea recta, la pendiente <em>m</em> y
+      la ordenada en el origen <em>b</em> de la recta que minimiza la suma de los cuadrados de las diferencias
+      entre los puntos y la recta vienen dadas por:
+    </p>
+    <div class="eq">
+      <span>m =
+        <span class="frac">
+          <span class="top">n Σ(x<sub>d</sub> y) − (Σx<sub>d</sub>)(Σy)</span>
+          <span class="bot">n Σx<sub>d</sub>² − (Σx<sub>d</sub>)²</span>
+        </span>
+      </span><span class="tag">(1.9)</span>
+    </div>
+    <div class="eq">
+      <span>b =
+        <span class="frac">
+          <span class="top">(Σy)(Σx<sub>d</sub>²) − (Σx<sub>d</sub> y)(Σx<sub>d</sub>)</span>
+          <span class="bot">n Σx<sub>d</sub>² − (Σx<sub>d</sub>)²</span>
+        </span>
+      </span><span class="tag">(1.10)</span>
+    </div>
+    <div class="eq"><span>y = m·x<sub>d</sub> + b</span><span class="tag">(1.11)</span></div>
+    <p>
+      donde <em>n</em> es el número total de puntos y cada sumatorio se extiende a los <em>n</em> puntos. La
+      sensibilidad estática de los <strong>sensores moduladores</strong> se da normalmente <em>por voltio de
+      excitación</em>, porque la tensión de salida es proporcional a la tensión de excitación. Por ejemplo, la
+      sensibilidad estática de un sensor de presión sanguínea con puente de galgas extensométricas podría ser
+      <strong>50 μV · V⁻¹ · mm Hg⁻¹</strong>.
+    </p>
+
+    <h3>Deriva de cero</h3>
+    <p>
+      Las entradas interferentes o modificadoras pueden afectar a la curva de calibración estática de varias
+      maneras. Hay <span class="dfn">deriva de cero</span> cuando todos los valores de salida aumentan o
+      disminuyen en la misma cantidad absoluta: la pendiente de la curva de sensibilidad no cambia, pero la
+      ordenada en el origen aumenta o disminuye, como en la figura 1.3(b). Pueden causar deriva de cero:
+    </p>
+    <div class="pill-row">
+      <span class="pill">desalineación de fabricación</span>
+      <span class="pill">variaciones de la temperatura ambiente</span>
+      <span class="pill">histéresis</span>
+      <span class="pill">vibración</span>
+      <span class="pill">choque mecánico</span>
+      <span class="pill">sensibilidad a fuerzas en direcciones no deseadas</span>
+    </div>
+    <p style="margin-top:16px">
+      Un cambio en la tensión de offset de continua en los electrodos del ejemplo del electrocardiógrafo
+      (figura 1.2) es un ejemplo de deriva de cero. Los cambios lentos del offset no causan problema porque el
+      amplificador de ECG está acoplado en alterna; los cambios rápidos debidos al movimiento del sujeto sí
+      producen un artefacto de baja frecuencia en la salida.
+    </p>
+
+    <h3>Deriva de sensibilidad</h3>
+    <p>
+      Cuando la <strong>pendiente</strong> de la curva de calibración cambia como resultado de una entrada
+      interferente o modificadora, se produce una <span class="dfn">deriva de sensibilidad</span>, que causa un
+      error proporcional a la magnitud de la entrada. La pendiente puede aumentar o disminuir, como indica la
+      figura 1.3(b). La deriva de sensibilidad puede deberse a tolerancias de fabricación, variaciones de la
+      fuente de alimentación, no linealidades y cambios de temperatura y presión ambiente. Las variaciones de
+      la ganancia de tensión del amplificador del electrocardiógrafo debidas a fluctuaciones de la tensión de
+      la fuente de continua o a cambios de temperatura son ejemplos de deriva de sensibilidad.
+    </p>
+
+    <h3>Linealidad</h3>
+    <p>
+      Un sistema o elemento es <span class="dfn">lineal</span> si tiene propiedades tales que, si
+      <em>y</em><sub>1</sub> es la respuesta a <em>x</em><sub>1</sub> e <em>y</em><sub>2</sub> es la respuesta
+      a <em>x</em><sub>2</sub>, entonces <em>y</em><sub>1</sub> + <em>y</em><sub>2</sub> es la respuesta a
+      <em>x</em><sub>1</sub> + <em>x</em><sub>2</sub>, y <em>K·y</em><sub>1</sub> es la respuesta a
+      <em>K·x</em><sub>1</sub>. Estos dos requisitos —<strong>aditividad</strong> y
+      <strong>homogeneidad</strong>— se satisfacen claramente en un instrumento cuya curva de calibración es
+      una línea recta.
+    </p>
+
+    <figure class="figure">
+      <div class="scroll">
+      <svg viewBox="0 0 900 300" role="img" aria-label="Definición de linealidad y banda de tolerancia" style="min-width:660px">
+        <style>
+          .f4 .bx { fill: var(--surface-2); stroke: var(--accent); stroke-width: 1.5; }
+          .f4 .ax { stroke: var(--text-mute); stroke-width: 1.4; fill: none; }
+          .f4 .cv { stroke: var(--accent); stroke-width: 2.4; fill: none; }
+          .f4 .band { fill: none; stroke: var(--accent-2); stroke-width: 1.6; stroke-dasharray: 6 4; }
+          .f4 .t { fill: var(--text); font: 600 12px var(--font); }
+          .f4 .ts { fill: var(--text-soft); font: 11px var(--font); }
+          .f4 .ln { stroke: var(--text-soft); stroke-width: 1.5; fill: none; marker-end: url(#a4); }
+        </style>
+        <defs>
+          <marker id="a4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="var(--text-soft)"/>
+          </marker>
+        </defs>
+        <g class="f4">
+          <!-- (a) definición -->
+          <text class="t" x="30" y="20">(a) Definición de linealidad</text>
+          <path class="ln" d="M30,70 L84,70"/><text class="ts" x="26" y="62">x₁</text>
+          <rect class="bx" x="90" y="48" width="96" height="44" rx="8"/>
+          <text class="ts" x="138" y="68" text-anchor="middle">sistema</text>
+          <text class="ts" x="138" y="84" text-anchor="middle">lineal</text>
+          <path class="ln" d="M186,70 L240,70"/><text class="ts" x="244" y="62">y₁</text>
+
+          <path class="ln" d="M30,140 L84,140"/><text class="ts" x="26" y="132">x₂</text>
+          <rect class="bx" x="90" y="118" width="96" height="44" rx="8"/>
+          <text class="ts" x="138" y="138" text-anchor="middle">sistema</text>
+          <text class="ts" x="138" y="154" text-anchor="middle">lineal</text>
+          <path class="ln" d="M186,140 L240,140"/><text class="ts" x="244" y="132">y₂</text>
+
+          <path class="ln" d="M18,210 L84,210"/><text class="ts" x="6" y="202">x₁+x₂</text>
+          <rect class="bx" x="90" y="188" width="96" height="44" rx="8"/>
+          <text class="ts" x="138" y="208" text-anchor="middle">sistema</text>
+          <text class="ts" x="138" y="224" text-anchor="middle">lineal</text>
+          <path class="ln" d="M186,210 L240,210"/><text class="ts" x="244" y="202">y₁+y₂</text>
+
+          <path class="ln" d="M22,272 L84,272"/><text class="ts" x="10" y="264">K·x₁</text>
+          <rect class="bx" x="90" y="250" width="96" height="44" rx="8"/>
+          <text class="ts" x="138" y="270" text-anchor="middle">sistema</text>
+          <text class="ts" x="138" y="286" text-anchor="middle">lineal</text>
+          <path class="ln" d="M186,272 L240,272"/><text class="ts" x="244" y="264">K·y₁</text>
+
+          <!-- (b) banda de tolerancia -->
+          <text class="t" x="430" y="20">(b) No linealidad independiente</text>
+          <path class="ax" d="M450,260 L450,44 M450,260 L870,260"/>
+          <text class="ts" x="406" y="50">y (salida)</text>
+          <text class="ts" x="800" y="282">x_d (entrada)</text>
+          <path class="cv" d="M450,250 L860,70"/>
+          <text class="ts" x="690" y="176">recta de mínimos cuadrados</text>
+          <!-- banda: ancho constante (fondo de escala) al principio, proporcional después -->
+          <path class="band" d="M450,232 L636,150 L860,42"/>
+          <path class="band" d="M450,268 L636,186 L860,102"/>
+          <circle cx="636" cy="168" r="4.5" fill="var(--warn)"/>
+          <text class="ts" x="560" y="122" fill="var(--accent-2)">±B % del fondo de escala</text>
+          <text class="ts" x="700" y="240" fill="var(--accent-2)">±A % de la lectura</text>
+          <text class="ts" x="596" y="216" fill="var(--warn)">punto donde A % lectura = B % fondo de escala</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>
+        <b>Figura 1.4 · (a)</b> Definición básica de linealidad de un sistema o elemento: el mismo sistema
+        lineal se muestra cuatro veces para entradas distintas. <b>(b)</b> Ilustración gráfica de la no
+        linealidad independiente: igual a ±A % de la lectura o ±B % del fondo de escala, el que sea mayor (es
+        decir, el que permita el error mayor).
+      </figcaption>
+    </figure>
+
+    <p>
+      Conviene tener presente, sin embargo, que <strong>una exactitud alta no implica necesariamente
+      linealidad</strong>. En la práctica ningún instrumento tiene una respuesta perfectamente lineal, por lo
+      que hace falta una medida de la desviación respecto de la linealidad. La <span class="dfn">no linealidad
+      independiente</span> expresa la desviación máxima de los puntos respecto de la recta ajustada por
+      mínimos cuadrados como <strong>±A % de la lectura</strong> o <strong>±B % del fondo de escala</strong>,
+      el que sea mayor (es decir, el que permita el error mayor).
+    </p>
+    <p>
+      Para lecturas altas, la cifra de porcentaje de lectura es deseable porque la mayoría de los errores son
+      proporcionales a la lectura. Para lecturas pequeñas cerca de cero, en cambio, el porcentaje de fondo de
+      escala es más realista, porque no es factible comprobar desviaciones de un pequeño porcentaje de la
+      lectura cerca del cero. Todos los puntos de datos deben caer dentro del «embudo» de la figura 1.4(b).
+      Para la mayoría de instrumentos esencialmente lineales, si las demás fuentes de error son mínimas,
+      <strong>la exactitud es igual a la no linealidad</strong>.
+    </p>
+
+    <h3>Rangos de entrada</h3>
+    <p>Se aplican varios rangos máximos de las magnitudes de entrada permitidas según las condiciones:</p>
+    <ul>
+      <li><span class="dfn">Entradas mínimas resolubles</span>: imponen una cota inferior a la magnitud que se puede medir.</li>
+      <li><span class="dfn">Rango normal de operación lineal</span>: especifica las entradas máximas o casi máximas que dan salidas lineales. El rango lineal estático y el dinámico pueden ser distintos.</li>
+      <li><span class="dfn">Rango máximo de operación</span>: la mayor entrada que no daña el instrumento. Operar en la parte alta de este rango tiene más probabilidad de ser no lineal.</li>
+      <li><span class="dfn">Condiciones de almacenamiento</span>: límites ambientales y de entradas interferentes que no deben excederse cuando el instrumento no está en uso.</li>
+    </ul>
+    <p>
+      Estos rangos no siempre son simétricos respecto de la entrada nula, en particular los de almacenamiento.
+      Los rangos de operación típicos de los sensores de presión sanguínea tienen un sesgo positivo, por
+      ejemplo de <strong>+200 mm Hg a −60 mm Hg</strong> (+26,6 a −8,0 kPa).
+    </p>
+
+    <h3>Impedancia de entrada</h3>
+    <p>
+      Como los sensores e instrumentos biomédicos suelen convertir magnitudes no eléctricas en tensión o
+      corriente, se introduce un concepto generalizado de <span class="dfn">impedancia de entrada</span>. Es
+      necesario para evaluar correctamente en qué medida los instrumentos <strong>perturban la magnitud que se
+      mide</strong>.
+    </p>
+    <p>
+      Para cada entrada deseada <em>X</em><sub>d1</sub> que se busca medir existe otra magnitud de entrada
+      implícita <em>X</em><sub>d2</sub> tal que el producto <em>X</em><sub>d1</sub> · <em>X</em><sub>d2</sub>
+      tiene dimensiones de <strong>potencia</strong>. Ese producto representa la tasa instantánea a la que se
+      transfiere energía a través de la interfaz tejido-sensor. La impedancia de entrada generalizada
+      <em>Z</em><sub>x</sub> es la razón entre el equivalente fasorial de una variable de entrada de
+      <em>esfuerzo</em> sinusoidal en régimen permanente (tensión, fuerza, presión) y el equivalente fasorial
+      de una variable de entrada de <em>flujo</em> sinusoidal en régimen permanente (corriente, velocidad,
+      caudal).
+    </p>
+    <div class="eq">
+      <span>Z<sub>x</sub> =
+        <span class="frac"><span class="top">X<sub>d1</sub></span><span class="bot">X<sub>d2</sub></span></span>
+        =
+        <span class="frac"><span class="top">variable de esfuerzo</span><span class="bot">variable de flujo</span></span>
+      </span><span class="tag">(1.12)</span>
+    </div>
+    <div class="callout tip">
+      <div class="callout-title">Pares esfuerzo–flujo habituales</div>
+      <p style="margin-bottom:0">
+        Tensión y corriente (eléctrico) · fuerza y velocidad (mecánico) · presión y caudal (fluídico). En los
+        tres casos su producto es potencia, y su cociente define una impedancia generalizada que indica cuánta
+        energía extrae el sensor del sistema vivo.
+      </p>
+    </div>
+  </section>
+
+  <div class="pager">
+    <a href="index.html"><small>← Anterior</small> Inicio</a>
+    <a href="bioinstrumentacion.html" style="text-align:right"><small>Siguiente →</small> Bioinstrumentación · 9.1 y 9.2</a>
+  </div>
+
+  </article>
+</div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Mediciones Clínicas · material de estudio</span>
+    <span><a href="index.html">Inicio</a> · <a href="bioinstrumentacion.html">Bioinstrumentación</a> · <a href="glosario.html">Glosario</a></span>
+  </div>
+</footer>
+
+<button class="icon-btn" id="toTop" aria-label="Volver arriba">↑</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

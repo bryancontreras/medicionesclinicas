@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glosario y comparación de los dos sistemas</title>
+<meta name="description" content="Glosario de términos de instrumentación médica y comparación entre el sistema generalizado (figura 1.1) y el sistema básico de bioinstrumentación (figura 9.2).">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">◍</span>
+      <span class="brand-text">Mediciones Clínicas<small>Instrumentación biomédica</small></span>
+    </a>
+    <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Inicio</a>
+      <a href="capitulo-01.html">Capítulo 1</a>
+      <a href="bioinstrumentacion.html">Bioinstrumentación 9.1–9.2</a>
+      <a class="active" href="glosario.html">Glosario</a>
+      <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema">☾</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc-head">
+    <span class="eyebrow">Repaso</span>
+    <h1>Glosario y comparación de los dos sistemas</h1>
+    <div class="meta"><span>Términos de los capítulos 1 y 9</span><span>Referencia rápida</span></div>
+  </div>
+</div>
+
+<div class="wrap narrow" style="padding-bottom:70px">
+  <article>
+
+  <section>
+    <h2>Los dos diagramas, lado a lado</h2>
+    <p>
+      Ambos capítulos describen la misma cadena de medida con vocabulario ligeramente distinto. La figura 1.1
+      es el <em>sistema generalizado de instrumentación</em>; la figura 9.2, el <em>sistema básico de
+      bioinstrumentación</em>, que explicita el paso de analógico a digital.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Figura 1.1 (cap. 1)</th><th>Figura 9.2 (cap. 9)</th><th>Función</th></tr></thead>
+        <tbody>
+          <tr><td class="param">Mensurando</td><td>Mensurando</td><td>Cantidad, propiedad o condición medida; en medicina, tejido vivo o energía aplicada a él.</td></tr>
+          <tr><td class="param">Sensor</td><td>Sensor</td><td>Convierte el mensurando físico en una salida eléctrica.</td></tr>
+          <tr><td class="param">Acondicionamiento de señal</td><td>Procesamiento analógico + A/D + procesamiento de señal</td><td>Amplifica, filtra, acondiciona, digitaliza y procesa.</td></tr>
+          <tr><td class="param">Presentación de salida</td><td>Presentación de salida</td><td>Numérica o gráfica, discreta o continua, permanente o temporal; a veces audible.</td></tr>
+          <tr><td class="param">Señal de calibración</td><td>Calibración</td><td>Señal de amplitud y frecuencia conocidas aplicada a la entrada del sensor.</td></tr>
+          <tr><td class="param">Control y realimentación</td><td>Control y realimentación</td><td>Provoca el mensurando, ajusta el sistema, o estimula al paciente (marcapasos, ventilador).</td></tr>
+          <tr><td class="param">Almacenamiento</td><td>Almacenamiento</td><td>Temporal (examen previo a alarma) o permanente (Holter de 24 h).</td></tr>
+          <tr><td class="param">Transmisión</td><td>Transmisión</td><td>Envío a estaciones de enfermería, centros médicos o telemedicina.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>Glosario</h2>
+
+    <h3>Cadena de medida</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+        <tbody>
+          <tr><td class="param">Mensurando</td><td>Cantidad física, propiedad o condición que el sistema mide. Puede ser interno, superficial, emanado del cuerpo o derivado de una muestra de tejido.</td></tr>
+          <tr><td class="param">Transductor</td><td>Dispositivo que convierte una forma de energía en otra.</td></tr>
+          <tr><td class="param">Sensor</td><td>Convierte un mensurando físico en una salida eléctrica; debe responder solo a la energía del mensurando y ser mínimamente invasivo.</td></tr>
+          <tr><td class="param">Elemento sensor primario</td><td>Parte del sensor que realiza la primera conversión (p. ej. un diafragma: presión → desplazamiento).</td></tr>
+          <tr><td class="param">Elemento de conversión variable</td><td>Convierte la magnitud intermedia en señal eléctrica (p. ej. galga extensométrica: desplazamiento → tensión). Suele requerir energía externa.</td></tr>
+          <tr><td class="param">Señal de calibración</td><td>Señal de amplitud y contenido en frecuencia conocidos que permite fijar una relación conocida entre entrada y salida.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Modos de operación</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+        <tbody>
+          <tr><td class="param">Modo directo / indirecto</td><td>Medir el mensurando deseado con el sensor, o medir otro con relación conocida cuando el deseado es inaccesible.</td></tr>
+          <tr><td class="param">Muestreo / continuo</td><td>Magnitudes lentas (temperatura, iones) se muestrean; otras (ECG, flujo respiratorio) exigen monitorización continua.</td></tr>
+          <tr><td class="param">Sensor generador</td><td>Obtiene la energía de su señal de salida directamente del mensurando (célula fotovoltaica).</td></tr>
+          <tr><td class="param">Sensor modulador</td><td>Usa el mensurando para alterar el flujo de energía de una fuente externa (célula fotoconductora).</td></tr>
+          <tr><td class="param">Señal analógica / digital</td><td>Continua y de cualquier valor dentro del rango dinámico / discreta y con un número finito de valores.</td></tr>
+          <tr><td class="param">Sensor cuasi-digital</td><td>Salida con frecuencia, tasa o duración de pulso variable, fácilmente convertible a digital (termómetro de cuarzo).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Entradas y compensación</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+        <tbody>
+          <tr><td class="param">Entrada deseada</td><td>El mensurando que el instrumento está diseñado para aislar.</td></tr>
+          <tr><td class="param">Entrada interferente</td><td>Magnitud que afecta al instrumento de forma inadvertida por los propios principios de adquisición y procesamiento.</td></tr>
+          <tr><td class="param">Entrada modificadora</td><td>Magnitud indeseada que altera el comportamiento del instrumento y afecta indirectamente a la salida.</td></tr>
+          <tr><td class="param">Insensibilidad inherente</td><td>Diseñar componentes sensibles solo a la entrada deseada (p. ej. trenzar los cables de electrodo).</td></tr>
+          <tr><td class="param">Realimentación negativa</td><td>Realimentar parte de la salida para que <em>y</em> ≈ (1/H<sub>f</sub>)x<sub>d</sub>; riesgo de inestabilidad dinámica.</td></tr>
+          <tr><td class="param">Filtrado</td><td>Separar señales según su frecuencia; en la entrada, en una etapa intermedia o en la salida.</td></tr>
+          <tr><td class="param">Entradas opuestas</td><td>Añadir una interferencia intencionada que cancele la componente indeseada de la salida.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Características estáticas</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+        <tbody>
+          <tr><td class="param">Exactitud</td><td>(Valor verdadero − valor medido) / valor verdadero, en porcentaje. Mide el error total, sin distinguir tipo ni fuente.</td></tr>
+          <tr><td class="param">Precisión</td><td>Número de alternativas distinguibles entre las que se selecciona el resultado. No implica exactitud.</td></tr>
+          <tr><td class="param">Resolución</td><td>Menor cantidad incremental medible con certeza; si se parte de cero se llama umbral.</td></tr>
+          <tr><td class="param">Reproducibilidad</td><td>Dar la misma salida para entradas iguales a lo largo del tiempo. No implica exactitud.</td></tr>
+          <tr><td class="param">Control estadístico</td><td>Garantiza que las variaciones aleatorias procedentes de todos los factores del proceso de medida sean tolerables.</td></tr>
+          <tr><td class="param">Sensibilidad estática</td><td>Razón entre la salida incremental y la entrada incremental en una calibración estática.</td></tr>
+          <tr><td class="param">Deriva de cero</td><td>Todas las salidas cambian en la misma cantidad absoluta; la pendiente no cambia, la ordenada en el origen sí.</td></tr>
+          <tr><td class="param">Deriva de sensibilidad</td><td>Cambia la pendiente de la curva de calibración; el error es proporcional a la magnitud de la entrada.</td></tr>
+          <tr><td class="param">No linealidad independiente</td><td>Desviación máxima respecto de la recta de mínimos cuadrados: ±A % de la lectura o ±B % del fondo de escala, el mayor de los dos.</td></tr>
+          <tr><td class="param">Impedancia de entrada generalizada</td><td>Cociente entre la variable de esfuerzo y la variable de flujo; indica cuánta energía extrae el sensor del sistema vivo.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Bioestadística</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+        <tbody>
+          <tr><td class="param">Media / mediana / moda</td><td>Tendencia central para distribuciones simétricas / datos asimétricos u ordinales / distribuciones bimodales.</td></tr>
+          <tr><td class="param">Desviación estándar</td><td>Dispersión de los datos en torno a la media; al menos el 75 % de los valores cae entre x̄ ± 2s.</td></tr>
+          <tr><td class="param">Coeficiente de variación</td><td>(s/x̄)·100 %; permite comparar distribuciones medidas en escalas distintas.</td></tr>
+          <tr><td class="param">Error estándar de la media</td><td>s/√(n−1); variabilidad esperable entre las medias de muestras futuras.</td></tr>
+          <tr><td class="param">Coeficiente de correlación</td><td>De −1 a +1; mide solo relaciones lineales y no implica causalidad.</td></tr>
+          <tr><td class="param">Valor P</td><td>Probabilidad de obtener, siendo cierta la hipótesis nula, un resultado al menos tan extremo como el observado.</td></tr>
+          <tr><td class="param">Sensibilidad / especificidad</td><td>VP/(VP+FN) — pocos falsos negativos / VN/(VN+FP) — pocos falsos positivos.</td></tr>
+          <tr><td class="param">Prevalencia</td><td>(VP+FN)/(VN+VP+FN+FP): probabilidad previa de la condición antes de la prueba.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="pager">
+    <a href="bioinstrumentacion.html"><small>← Anterior</small> Bioinstrumentación · 9.1 y 9.2</a>
+    <a href="index.html" style="text-align:right"><small>Volver →</small> Inicio</a>
+  </div>
+
+  </article>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Mediciones Clínicas · material de estudio</span>
+    <span><a href="index.html">Inicio</a> · <a href="capitulo-01.html">Capítulo 1</a> · <a href="bioinstrumentacion.html">Bioinstrumentación</a></span>
+  </div>
+</footer>
+
+<button class="icon-btn" id="toTop" aria-label="Volver arriba">↑</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
