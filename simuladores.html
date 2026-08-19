@@ -129,6 +129,13 @@
           </div>
         </div>
         <div class="sim-canvas-wrap"><canvas id="noiseCanvas"></canvas></div>
+        <div class="callout warn" id="simSaturado" style="display:none; margin:14px 0 0; padding:10px 14px">
+          <p style="margin:0; font-size:.84rem">
+            La señal excede la escala del osciloscopio (−3 a +4 mV) y aparece recortada:
+            así se ve una <strong>saturación</strong> real del amplificador. Reduce la deriva o
+            activa una técnica de compensación.
+          </p>
+        </div>
         <div class="eq" style="margin-top:16px; flex-wrap:wrap">
           <span>Retroalimentación negativa:</span>
           <span>y = G<sub>d</sub> / (1 + H<sub>f</sub>G<sub>d</sub>) · x<sub>d</sub> ≈ (1/H<sub>f</sub>) · x<sub>d</sub> cuando H<sub>f</sub>G<sub>d</sub> ≫ 1</span>

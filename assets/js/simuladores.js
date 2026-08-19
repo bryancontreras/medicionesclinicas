@@ -2,6 +2,8 @@
 (function () {
   'use strict';
 
+  var FONT = '"Segoe UI", system-ui, -apple-system, Arial, sans-serif';
+
   /* ---- Cambio de pestañas ---- */
   window.mcSwitchSimTab = function (name) {
     var panels = { noise: 'panelNoise', calib: 'panelCalib' };
@@ -35,27 +37,102 @@
     return { ctx: ctx, width: rect.width, height: rect.height };
   }
 
-  function drawAxes(ctx, w, h, pad, xLabel, yLabel, textColor, gridColor) {
-    ctx.strokeStyle = gridColor;
+  /* ---- Motor de gráficas ----
+     cfg = { xMin, xMax, yMin, yMax, xTicks, yTicks, xFmt, yFmt,
+             xLabel, yLabel, series: [{ data: [{x, y}], color, width, dash }] }
+     Las series se recortan al área de trazado: una señal que excede el rango
+     del eje desaparece por el borde en lugar de desbordar la tarjeta. */
+  function drawChart(canvas, cfg) {
+    var fit = fitCanvas(canvas);
+    var ctx = fit.ctx, w = fit.width, h = fit.height;
+    ctx.clearRect(0, 0, w, h);
+
+    var textColor = cssVar('--text-mute', '#6b7a90');
+    var gridColor = cssVar('--border', '#d9e1ec');
+
+    var pad = { l: 54, r: 14, t: 14, b: 42 };
+    var plotW = w - pad.l - pad.r;
+    var plotH = h - pad.t - pad.b;
+    if (plotW <= 10 || plotH <= 10) { return; }
+
+    function xPix(x) { return pad.l + ((x - cfg.xMin) / (cfg.xMax - cfg.xMin)) * plotW; }
+    function yPix(y) { return pad.t + (1 - (y - cfg.yMin) / (cfg.yMax - cfg.yMin)) * plotH; }
+
+    ctx.font = '11px ' + FONT;
     ctx.lineWidth = 1;
+
+    /* Rejilla horizontal y rótulos del eje Y */
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    cfg.yTicks.forEach(function (v) {
+      var y = Math.round(yPix(v)) + 0.5;
+      ctx.strokeStyle = gridColor;
+      ctx.beginPath();
+      ctx.moveTo(pad.l, y);
+      ctx.lineTo(pad.l + plotW, y);
+      ctx.stroke();
+      ctx.fillStyle = textColor;
+      ctx.fillText(cfg.yFmt ? cfg.yFmt(v) : String(v), pad.l - 8, y);
+    });
+
+    /* Rejilla vertical y rótulos del eje X */
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    cfg.xTicks.forEach(function (v) {
+      var x = Math.round(xPix(v)) + 0.5;
+      ctx.strokeStyle = gridColor;
+      ctx.beginPath();
+      ctx.moveTo(x, pad.t);
+      ctx.lineTo(x, pad.t + plotH);
+      ctx.stroke();
+      ctx.fillStyle = textColor;
+      ctx.fillText(cfg.xFmt ? cfg.xFmt(v) : String(v), x, pad.t + plotH + 7);
+    });
+
+    /* Ejes */
+    ctx.strokeStyle = textColor;
     ctx.beginPath();
-    ctx.moveTo(pad.l, pad.t);
-    ctx.lineTo(pad.l, h - pad.b);
-    ctx.lineTo(w - pad.r, h - pad.b);
+    ctx.moveTo(Math.round(pad.l) + 0.5, pad.t);
+    ctx.lineTo(Math.round(pad.l) + 0.5, Math.round(pad.t + plotH) + 0.5);
+    ctx.lineTo(pad.l + plotW, Math.round(pad.t + plotH) + 0.5);
     ctx.stroke();
 
+    /* Títulos de los ejes */
     ctx.fillStyle = textColor;
-    ctx.font = '11px Segoe UI, sans-serif';
+    ctx.font = '11px ' + FONT;
     ctx.textAlign = 'center';
-    ctx.fillText(xLabel, pad.l + (w - pad.l - pad.r) / 2, h - 6);
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(cfg.xLabel, pad.l + plotW / 2, h - 2);
     ctx.save();
-    ctx.translate(12, pad.t + (h - pad.t - pad.b) / 2);
+    ctx.translate(11, pad.t + plotH / 2);
     ctx.rotate(-Math.PI / 2);
-    ctx.fillText(yLabel, 0, 0);
+    ctx.textBaseline = 'top';
+    ctx.fillText(cfg.yLabel, 0, 0);
+    ctx.restore();
+
+    /* Series, recortadas al área de trazado */
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(pad.l, pad.t, plotW, plotH);
+    ctx.clip();
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    cfg.series.forEach(function (s) {
+      ctx.strokeStyle = s.color;
+      ctx.lineWidth = s.width;
+      ctx.setLineDash(s.dash || []);
+      ctx.beginPath();
+      s.data.forEach(function (p, i) {
+        var px = xPix(p.x), py = yPix(p.y);
+        if (i === 0) { ctx.moveTo(px, py); } else { ctx.lineTo(px, py); }
+      });
+      ctx.stroke();
+      ctx.setLineDash([]);
+    });
     ctx.restore();
   }
 
-  /* ---- Panel 1: Simulador de ruido y filtros ---- */
+  /* ---- Panel 1: simulador de ruido y filtros (1.6 y 1.7) ---- */
   function genECG(t) {
     var cycle = t % 0.8;
     var ecg = 0;
@@ -84,107 +161,67 @@
     var steps = 150;
     var raw = [];
     var comp = [];
+    var saturated = false;
     for (var i = 0; i < steps; i++) {
       var t = i * 0.01;
       var ecg = genECG(t);
       var noise = hasNoise ? 0.6 * Math.sin(2 * Math.PI * 60 * t) : 0;
-      raw.push((ecg * sensDrift) + zeroDrift + noise);
+      var alteredVal = (ecg * sensDrift) + zeroDrift + noise;
+      raw.push({ x: t, y: alteredVal });
 
       var effNoise = compTwisted ? 0 : noise;
       var effGain = compFeedback ? 1.0 : sensDrift;
       var effOffset = compFilter ? 0 : zeroDrift;
-      comp.push((ecg * effGain) + effOffset + effNoise);
+      var compensatedVal = (ecg * effGain) + effOffset + effNoise;
+      comp.push({ x: t, y: compensatedVal });
+
+      if (alteredVal > 4 || alteredVal < -3 || compensatedVal > 4 || compensatedVal < -3) {
+        saturated = true;
+      }
     }
 
-    var textColor = cssVar('--text-mute', '#6b7a90');
-    var gridColor = cssVar('--border', '#d9e1ec');
-    var fit = fitCanvas(canvas);
-    var ctx = fit.ctx, w = fit.width, h = fit.height;
-    ctx.clearRect(0, 0, w, h);
-
-    var pad = { l: 40, r: 12, t: 12, b: 26 };
-    var yMin = -3, yMax = 4;
-    var plotW = w - pad.l - pad.r;
-    var plotH = h - pad.t - pad.b;
-
-    function xPix(i) { return pad.l + (i / (steps - 1)) * plotW; }
-    function yPix(v) { return pad.t + (1 - (v - yMin) / (yMax - yMin)) * plotH; }
-
-    drawAxes(ctx, w, h, pad, 'Tiempo (s)', 'Voltaje (mV)', textColor, gridColor);
-
-    ctx.strokeStyle = gridColor;
-    ctx.setLineDash([2, 3]);
-    [0, 1, 2, 3, -1, -2].forEach(function (v) {
-      var y = yPix(v);
-      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke();
+    drawChart(canvas, {
+      xMin: 0, xMax: 1.49,
+      yMin: -3, yMax: 4,
+      xTicks: [0, 0.25, 0.5, 0.75, 1.0, 1.25],
+      yTicks: [-3, -2, -1, 0, 1, 2, 3, 4],
+      xFmt: function (v) { return v.toFixed(2); },
+      yFmt: function (v) { return String(v); },
+      xLabel: 'Tiempo (s)',
+      yLabel: 'Voltaje (mV)',
+      series: [
+        { data: raw, color: '#e5484d', width: 1.4 },
+        { data: comp, color: '#0e8f86', width: 2 }
+      ]
     });
-    ctx.setLineDash([]);
 
-    function drawLine(data, color, width) {
-      ctx.strokeStyle = color;
-      ctx.lineWidth = width;
-      ctx.beginPath();
-      data.forEach(function (v, i) {
-        var x = xPix(i), y = yPix(v);
-        if (i === 0) { ctx.moveTo(x, y); } else { ctx.lineTo(x, y); }
-      });
-      ctx.stroke();
-    }
-
-    drawLine(raw, '#e5484d', 1.4);
-    drawLine(comp, '#0e8f86', 2);
+    var warn = document.getElementById('simSaturado');
+    if (warn) { warn.style.display = saturated ? 'block' : 'none'; }
   }
 
-  /* ---- Panel 2: Calibración ---- */
+  /* ---- Panel 2: curva de calibración (1.9) ---- */
   function drawCalibChart() {
     var canvas = document.getElementById('calibCanvas');
     if (!canvas) { return; }
 
     var xVals = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-    var ideal = xVals.map(function (x) { return 2 * x + 5; });
-    var zeroDrift = xVals.map(function (x) { return 2 * x + 20; });
-    var sensDrift = xVals.map(function (x) { return 2.8 * x + 5; });
-
-    var textColor = cssVar('--text-mute', '#6b7a90');
-    var gridColor = cssVar('--border', '#d9e1ec');
-    var fit = fitCanvas(canvas);
-    var ctx = fit.ctx, w = fit.width, h = fit.height;
-    ctx.clearRect(0, 0, w, h);
-
-    var pad = { l: 46, r: 16, t: 14, b: 30 };
-    var yMin = 0, yMax = 300;
-    var plotW = w - pad.l - pad.r;
-    var plotH = h - pad.t - pad.b;
-
-    function xPix(x) { return pad.l + (x / 100) * plotW; }
-    function yPix(y) { return pad.t + (1 - (y - yMin) / (yMax - yMin)) * plotH; }
-
-    drawAxes(ctx, w, h, pad, 'Entrada deseada (xd)', 'Salida del instrumento (y)', textColor, gridColor);
-
-    ctx.strokeStyle = gridColor;
-    ctx.setLineDash([2, 3]);
-    [50, 100, 150, 200, 250].forEach(function (v) {
-      var y = yPix(v);
-      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke();
-    });
-    ctx.setLineDash([]);
-
-    function drawSeries(data, color, width, dash) {
-      ctx.strokeStyle = color;
-      ctx.lineWidth = width;
-      ctx.setLineDash(dash || []);
-      ctx.beginPath();
-      xVals.forEach(function (x, i) {
-        var px = xPix(x), py = yPix(data[i]);
-        if (i === 0) { ctx.moveTo(px, py); } else { ctx.lineTo(px, py); }
-      });
-      ctx.stroke();
-      ctx.setLineDash([]);
+    function serie(fn) {
+      return xVals.map(function (x) { return { x: x, y: fn(x) }; });
     }
 
-    drawSeries(ideal, '#0e8f86', 2.5);
-    drawSeries(zeroDrift, '#b4610d', 1.6, [5, 4]);
-    drawSeries(sensDrift, '#e5484d', 1.6, [3, 3]);
+    drawChart(canvas, {
+      xMin: 0, xMax: 100,
+      yMin: 0, yMax: 300,
+      xTicks: [0, 20, 40, 60, 80, 100],
+      yTicks: [0, 50, 100, 150, 200, 250, 300],
+      xLabel: 'Entrada deseada (xd)',
+      yLabel: 'Salida del instrumento (y)',
+      series: [
+        { data: serie(function (x) { return 2 * x + 5; }), color: '#0e8f86', width: 2.5 },
+        { data: serie(function (x) { return 2 * x + 20; }), color: '#b4610d', width: 1.6, dash: [5, 4] },
+        { data: serie(function (x) { return 2.8 * x + 5; }), color: '#e5484d', width: 1.6, dash: [3, 3] }
+      ]
+    });
   }
 
   /* ---- Calculadora de estadística descriptiva ---- */
@@ -248,23 +285,20 @@
     mcCalcDiagnostic();
     drawNoiseChart();
 
+    function redraw() {
+      drawNoiseChart();
+      if (document.getElementById('panelCalib').classList.contains('active')) { drawCalibChart(); }
+    }
+
     var resizeTimer = null;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function () {
-        drawNoiseChart();
-        if (document.getElementById('panelCalib').classList.contains('active')) { drawCalibChart(); }
-      }, 120);
+      resizeTimer = setTimeout(redraw, 120);
     });
 
     var themeBtn = document.getElementById('themeBtn');
     if (themeBtn) {
-      themeBtn.addEventListener('click', function () {
-        setTimeout(function () {
-          drawNoiseChart();
-          if (document.getElementById('panelCalib').classList.contains('active')) { drawCalibChart(); }
-        }, 10);
-      });
+      themeBtn.addEventListener('click', function () { setTimeout(redraw, 10); });
     }
   });
 })();
