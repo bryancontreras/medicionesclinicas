@@ -316,7 +316,14 @@ footer.site a { color: var(--text-soft); }
 
 /* ---------- Presentación embebida ---------- */
 .embed-slides {
-  position: relative; width: 100%; padding-top: 58.52%; /* 1280 x 749 */
+  /* aspect-ratio, no el truco de padding-top en %: ese porcentaje se resuelve
+     contra el ancho del contenedor, y al acotar el elemento con max-width la
+     altura se quedaria fija y deformaria la diapositiva. */
+  position: relative; width: 100%; aspect-ratio: 1280 / 749;
+  /* Acotado para que la diapositiva quepa entera en la ventana: si sobresale,
+     al pulsar dentro el navegador la desplaza a la vista al recibir el foco y
+     la pagina salta. 102vh de ancho equivale a ~60vh de alto. */
+  max-width: min(820px, 102vh); margin-left: auto; margin-right: auto;
   background: var(--surface-2); border: 1px solid var(--border);
   border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
 }
