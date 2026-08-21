@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bioinstrumentación · Introducción, 9.1 y 9.2</title>
-<meta name="description" content="Capítulo 9 de bioinstrumentación: objetivos y esquema del capítulo, 9.1 Introducción con los hitos históricos de la instrumentación médica y 9.2 Sistema básico de bioinstrumentación.">
+<meta name="description" content="Capítulo 9 de bioinstrumentación: objetivos del capítulo, 9.1 Introducción con los hitos históricos de la instrumentación médica y 9.2 Sistema básico de bioinstrumentación.">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
 </head>
@@ -20,8 +20,8 @@
     <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Inicio</a>
+      <a class="active" href="bioinstrumentacion.html">Capítulo 0</a>
       <a href="capitulo-01.html">Capítulo 1</a>
-      <a class="active" href="bioinstrumentacion.html">Bioinstrumentación 9.1–9.2</a>
       <a href="glosario.html">Glosario</a>
       <a href="simuladores.html">Simuladores</a>
       <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema">☾</button>
@@ -31,7 +31,7 @@
 
 <div class="wrap">
   <div class="doc-head">
-    <span class="eyebrow">Capítulo 9 · Bioinstrumentación</span>
+    <span class="eyebrow">Capítulo 0 · Bioinstrumentación</span>
     <h1>Introducción y sistema básico de bioinstrumentación</h1>
     <div class="meta">
       <span>John D. Enderle, PhD</span>
@@ -48,7 +48,6 @@
     <h4>Contenido</h4>
     <ol>
       <li><a href="#objetivos">Objetivos del capítulo</a></li>
-      <li><a href="#esquema">Esquema del capítulo</a></li>
       <li><a href="#s91">9.1 Introducción</a></li>
       <li class="sub"><a href="#antes1900">Antes de 1900</a></li>
       <li class="sub"><a href="#electronica">La electrónica en la medicina</a></li>
@@ -77,36 +76,6 @@
     </ul>
   </section>
 
-  <section id="esquema">
-    <h2>Esquema del capítulo</h2>
-    <p>
-      Los dos temas tratados en esta página —<strong>9.1</strong> y <strong>9.2</strong>— son la puerta de
-      entrada al resto del capítulo, que desarrolla la teoría de circuitos necesaria para la bioinstrumentación.
-    </p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Sección</th><th>Tema</th><th>Página</th></tr></thead>
-        <tbody>
-          <tr><td class="param">9.1</td><td><strong>Introducción</strong></td><td>510</td></tr>
-          <tr><td class="param">9.2</td><td><strong>Sistema básico de bioinstrumentación</strong></td><td>512</td></tr>
-          <tr><td class="param">9.3</td><td>Carga, corriente, tensión, potencia y energía</td><td>514</td></tr>
-          <tr><td class="param">9.4</td><td>Resistencia</td><td>520</td></tr>
-          <tr><td class="param">9.5</td><td>Análisis de redes lineales</td><td>531</td></tr>
-          <tr><td class="param">9.6</td><td>Linealidad y superposición</td><td>537</td></tr>
-          <tr><td class="param">9.7</td><td>Teorema de Thévenin</td><td>541</td></tr>
-          <tr><td class="param">9.8</td><td>Inductores</td><td>544</td></tr>
-          <tr><td class="param">9.9</td><td>Capacitores</td><td>548</td></tr>
-          <tr><td class="param">9.10</td><td>Enfoque general para resolver circuitos con resistores, capacitores e inductores</td><td>551</td></tr>
-          <tr><td class="param">9.11</td><td>Amplificadores operacionales</td><td>560</td></tr>
-          <tr><td class="param">9.12</td><td>Señales variables en el tiempo</td><td>572</td></tr>
-          <tr><td class="param">9.13</td><td>Filtros analógicos activos</td><td>578</td></tr>
-          <tr><td class="param">9.14</td><td>Diseño en bioinstrumentación</td><td>588</td></tr>
-          <tr><td class="param">9.15</td><td>Ejercicios</td><td>591</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
   <hr class="rule">
 
   <section id="s91">
@@ -121,8 +90,8 @@
     <div class="callout">
       <div class="callout-title">Recorrido del capítulo</div>
       <p style="margin-bottom:0">
-        Se comienza con la descripción de las variables usadas en teoría de circuitos —<strong>carga,
-        corriente, tensión, potencia y energía</strong>—. A continuación se introducen las <strong>leyes de
+        Se comienza con la descripción de las variables usadas en teoría de circuitos: <strong>carga,
+        corriente, tensión, potencia y energía</strong>. A continuación se introducen las <strong>leyes de
         Kirchhoff</strong> de corriente y tensión, seguidas de la resistencia, la simplificación de circuitos
         resistivos y el cálculo de tensiones y corrientes. Después se presentan las técnicas de análisis de
         circuitos, la inductancia y la capacitancia, y la resolución de circuitos por el método de las
@@ -250,8 +219,8 @@
       <p style="margin-bottom:0">
         Hoy existe una amplia variedad de dispositivos médicos y sistemas de instrumentación. Algunos se usan
         para <strong>monitorizar</strong> el estado del paciente o adquirir información con fines
-        diagnósticos —por ejemplo, los equipos de ECG y EEG—, mientras que otros se usan para
-        <strong>controlar funciones fisiológicas</strong> —por ejemplo, marcapasos y ventiladores—. Algunos
+        diagnósticos, por ejemplo los equipos de ECG y EEG, mientras que otros se usan para
+        <strong>controlar funciones fisiológicas</strong>, por ejemplo marcapasos y ventiladores. Algunos
         dispositivos, como los marcapasos, son implantables, mientras que muchos otros se usan de forma no
         invasiva. Este capítulo se centra en las características comunes a los dispositivos que se emplean
         para adquirir y procesar datos fisiológicos.
@@ -271,8 +240,8 @@
     </p>
     <p>
       Los <strong>sensores</strong> se usan para convertir mensurandos físicos en salidas eléctricas. Las
-      salidas de estos biosensores son <span class="dfn">señales analógicas</span> —es decir, señales
-      continuas— que se envían al bloque de procesamiento analógico y conversión digital. Allí las señales se
+      salidas de estos biosensores son <span class="dfn">señales analógicas</span>, es decir, señales
+      continuas, que se envían al bloque de procesamiento analógico y conversión digital. Allí las señales se
       <strong>amplifican, filtran, acondicionan y convierten a forma digital</strong>. Una vez digitalizadas y
       convertidas a una forma que puede almacenarse y procesarse por computadores digitales, pueden aplicarse
       muchos más métodos de acondicionamiento de señal.
@@ -357,7 +326,7 @@
       salida</strong> que permiten a los operadores humanos ver la señal en un formato fácil de entender.
       Estas presentaciones pueden ser numéricas o gráficas, discretas o continuas, y permanentes o temporales.
       La mayoría están pensadas para observarse visualmente, pero algunas ofrecen además
-      <strong>salida audible</strong> —por ejemplo, un pitido con cada latido—.
+      <strong>salida audible</strong>; por ejemplo, un pitido con cada latido.
     </p>
 
     <h3>Almacenamiento de datos</h3>
@@ -374,7 +343,7 @@
     <h3>Transmisión de datos</h3>
     <p>
       Con la invención del teléfono y ahora con Internet, las señales pueden adquirirse con un dispositivo
-      situado en un lugar —quizá el domicilio del paciente— y transmitirse a otro dispositivo para su
+      situado en un lugar, quizá el domicilio del paciente, y transmitirse a otro dispositivo para su
       procesamiento o almacenamiento. Esto ha hecho posible, por ejemplo, ofrecer <strong>realimentación
       diagnóstica rápida</strong> si un paciente presenta un ritmo cardíaco inusual estando en casa. También
       ha permitido que centros médicos de zonas rurales transmitan imágenes diagnósticas a hospitales de
@@ -402,7 +371,7 @@
         <p>
           No forma parte de todos los sistemas de instrumentación. Estos dispositivos incluyen los
           <strong>marcapasos y los ventiladores</strong>, que estimulan el corazón o los pulmones. Algunos
-          recogen datos fisiológicos y estimulan una respuesta —un latido, una respiración— cuando es
+          recogen datos fisiológicos y estimulan una respuesta, un latido o una respiración, cuando es
           necesario, o forman parte de sistemas de <strong>biorretroalimentación</strong> en los que el
           paciente toma conciencia de una medida fisiológica, como la presión arterial, y usa el control
           consciente para modificar la respuesta fisiológica.
@@ -412,8 +381,8 @@
   </section>
 
   <div class="pager">
-    <a href="capitulo-01.html"><small>← Anterior</small> Capítulo 1 · Conceptos básicos</a>
-    <a href="glosario.html" style="text-align:right"><small>Siguiente →</small> Glosario de términos</a>
+    <a href="index.html"><small>← Anterior</small> Inicio</a>
+    <a href="capitulo-01.html" style="text-align:right"><small>Siguiente →</small> Capítulo 1 · Conceptos básicos</a>
   </div>
 
   </article>
