@@ -6,8 +6,8 @@
 
   /* ---- Cambio de pestañas ---- */
   window.mcSwitchSimTab = function (name) {
-    var panels = { noise: 'panelNoise', calib: 'panelCalib' };
-    var buttons = { noise: 'tabBtnNoise', calib: 'tabBtnCalib' };
+    var panels = { noise: 'panelNoise', calib: 'panelCalib', monitor: 'panelMonitor' };
+    var buttons = { noise: 'tabBtnNoise', calib: 'tabBtnCalib', monitor: 'tabBtnMonitor' };
     Object.keys(panels).forEach(function (key) {
       var panel = document.getElementById(panels[key]);
       var btn = document.getElementById(buttons[key]);
@@ -16,6 +16,8 @@
     });
     if (name === 'calib') { drawCalibChart(); }
     if (name === 'noise') { drawNoiseChart(); }
+    /* El monitor vive en su propio módulo: se entera del cambio por este evento. */
+    document.dispatchEvent(new CustomEvent('mc:simtab', { detail: { tab: name } }));
   };
 
   function cssVar(name, fallback) {
