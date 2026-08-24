@@ -13,6 +13,9 @@ Sitio estático (HTML + CSS + JS, sin dependencias) con el material de la asigna
   completa de parámetros médicos y fisiológicos), 1.5 Clasificaciones, 1.6 Entradas interferentes y
   modificadoras, 1.7 Técnicas de compensación, 1.8 Bioestadística y 1.9 Características estáticas
   generalizadas. Incluye enlace de descarga del material complementario en PDF.
+- **`ejercicios.html`** — ejemplo resuelto sobre un glucómetro electroquímico y ejercicio de clase sobre
+  un transductor de presión arterial, para los temas **1.8 Bioestadística** y
+  **1.9 Características estáticas generalizadas**. El ejercicio se publica sin clave de respuestas.
 - **`glosario.html`** — glosario de términos y comparación entre la figura 1.1 y la figura 9.2.
 - **`simuladores.html`** — laboratorio interactivo con tres pestañas:
   - *Ruido y filtros*: inyecta interferencias y derivas sobre un ECG sintético y aplica las técnicas
@@ -27,6 +30,7 @@ Sitio estático (HTML + CSS + JS, sin dependencias) con el material de la asigna
 
 - Diseño responsivo, tema claro/oscuro con preferencia guardada en `localStorage`.
 - Índice lateral fijo con resaltado de la sección visible y barra de progreso de lectura.
+- Cinta de navegación con desplegable de capítulos, que se aplana en el menú móvil.
 - Figuras 1.1, 1.2, 1.3, 1.4, 9.1 y 9.2 redibujadas como SVG inline que siguen el tema activo.
 - Ecuaciones (1.1)–(1.12) maquetadas en HTML, sin librerías externas.
 - Gráficas y trazos de los simuladores dibujados sobre `<canvas>`, sin librerías de terceros.
@@ -38,10 +42,11 @@ Sitio estático (HTML + CSS + JS, sin dependencias) con el material de la asigna
 index.html               portada
 bioinstrumentacion.html  Capítulo 0
 capitulo-01.html         Capítulo 1
-glosario.html            glosario
+ejercicios.html          ejercicios y ejemplos resueltos
 simuladores.html         laboratorio interactivo
+glosario.html            glosario
 assets/css/styles.css    hoja de estilos común
-assets/js/main.js        tema, navegación, progreso e índice lateral
+assets/js/main.js        tema, navegación, desplegable, progreso e índice lateral
 assets/js/simuladores.js pestañas, gráficas y calculadoras
 assets/js/monitor.js     monitor de signos vitales
 assets/docs/             material complementario en PDF

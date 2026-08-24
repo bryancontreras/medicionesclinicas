@@ -47,6 +47,26 @@
       });
     }
 
+    /* ---- Desplegable de capítulos ---- */
+    var drop = document.querySelector('.nav-drop');
+    var dropBtn = drop && drop.querySelector('.nav-drop-btn');
+    if (drop && dropBtn) {
+      var setDrop = function (open) {
+        drop.classList.toggle('open', open);
+        dropBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      dropBtn.addEventListener('click', function (ev) {
+        ev.stopPropagation();
+        setDrop(!drop.classList.contains('open'));
+      });
+      document.addEventListener('click', function (ev) {
+        if (!drop.contains(ev.target)) { setDrop(false); }
+      });
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Escape' || ev.key === 'Esc') { setDrop(false); }
+      });
+    }
+
     /* ---- Botón "volver arriba" y barra de progreso ---- */
     var toTop = document.getElementById('toTop');
     var progress = document.getElementById('progress');

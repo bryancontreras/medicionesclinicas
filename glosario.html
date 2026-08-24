@@ -20,10 +20,18 @@
     <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Inicio</a>
-      <a href="bioinstrumentacion.html">Capítulo 0</a>
-      <a href="capitulo-01.html">Capítulo 1</a>
-      <a class="active" href="glosario.html">Glosario</a>
+      <div class="nav-drop">
+        <button type="button" class="nav-drop-btn" aria-expanded="false" aria-haspopup="true">
+          Capítulos<span class="caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-menu">
+          <a href="bioinstrumentacion.html">Capítulo 0<small>Bioinstrumentación · 9.1 y 9.2</small></a>
+          <a href="capitulo-01.html">Capítulo 1<small>Conceptos básicos de instrumentación médica</small></a>
+        </div>
+      </div>
+      <a href="ejercicios.html">Ejercicios</a>
       <a href="simuladores.html">Simuladores</a>
+      <a class="active" href="glosario.html">Glosario</a>
       <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema">☾</button>
     </nav>
   </div>
@@ -153,8 +161,8 @@
   </section>
 
   <div class="pager">
-    <a href="capitulo-01.html"><small>← Anterior</small> Capítulo 1 · Conceptos básicos</a>
-    <a href="simuladores.html" style="text-align:right"><small>Siguiente →</small> Simuladores y calculadoras</a>
+    <a href="simuladores.html"><small>← Anterior</small> Simuladores y calculadoras</a>
+    <a href="index.html" style="text-align:right"><small>Volver →</small> Inicio</a>
   </div>
 
   </article>
@@ -163,7 +171,7 @@
 <footer class="site">
   <div class="wrap">
     <span>Mediciones Clínicas · material de estudio</span>
-    <span><a href="index.html">Inicio</a> · <a href="bioinstrumentacion.html">Capítulo 0</a> · <a href="capitulo-01.html">Capítulo 1</a> · <a href="simuladores.html">Simuladores</a></span>
+    <span><a href="index.html">Inicio</a> · <a href="bioinstrumentacion.html">Capítulo 0</a> · <a href="capitulo-01.html">Capítulo 1</a> · <a href="ejercicios.html">Ejercicios</a> · <a href="simuladores.html">Simuladores</a></span>
   </div>
 </footer>
 

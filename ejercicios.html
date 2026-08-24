@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejercicios · Bioestadística y características estáticas</title>
+<meta name="description" content="Ejemplo resuelto sobre un glucómetro electroquímico y ejercicio de clase sobre un transductor de presión arterial, para los temas 1.8 Bioestadística y 1.9 Características estáticas generalizadas.">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">◍</span>
+      <span class="brand-text">Mediciones Clínicas<small>Instrumentación biomédica</small></span>
+    </a>
+    <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Inicio</a>
+      <div class="nav-drop">
+        <button type="button" class="nav-drop-btn" aria-expanded="false" aria-haspopup="true">
+          Capítulos<span class="caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-menu">
+          <a href="bioinstrumentacion.html">Capítulo 0<small>Bioinstrumentación · 9.1 y 9.2</small></a>
+          <a href="capitulo-01.html">Capítulo 1<small>Conceptos básicos de instrumentación médica</small></a>
+        </div>
+      </div>
+      <a class="active" href="ejercicios.html">Ejercicios</a>
+      <a href="simuladores.html">Simuladores</a>
+      <a href="glosario.html">Glosario</a>
+      <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema">☾</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc-head">
+    <span class="eyebrow">Ejercicios · Capítulo 1</span>
+    <h1>Bioestadística y características estáticas</h1>
+    <div class="meta">
+      <span>Temas 1.8 y 1.9</span>
+      <span>Ejemplo resuelto + ejercicio de clase</span>
+      <span>Tiempo estimado ≈ 50 min</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="doc">
+
+  <aside class="toc">
+    <h4>Contenido</h4>
+    <ol>
+      <li><a href="#idea">Idea pedagógica</a></li>
+      <li><a href="#ejemplo">Ejemplo resuelto · Glucómetro</a></li>
+      <li class="sub"><a href="#ej-a">A. Estadística descriptiva</a></li>
+      <li class="sub"><a href="#ej-b">B. Exactitud diagnóstica</a></li>
+      <li class="sub"><a href="#ej-c">C. Curva de calibración</a></li>
+      <li class="sub"><a href="#ej-d">D. Exactitud y precisión</a></li>
+      <li class="sub"><a href="#ej-e">E. Tipos de deriva</a></li>
+      <li><a href="#ejercicio">Ejercicio · Transductor de presión</a></li>
+      <li class="sub"><a href="#bloque18">Bloque 1.8</a></li>
+      <li class="sub"><a href="#bloque19">Bloque 1.9</a></li>
+      <li><a href="#comprobar">Comprobar los resultados</a></li>
+    </ol>
+  </aside>
+
+  <article>
+
+  <section id="idea">
+    <h2>Idea pedagógica</h2>
+    <p>
+      Cada bloque usa <strong>un equipo como hilo conductor</strong>. El ejemplo emplea un
+      <strong>glucómetro electroquímico</strong> de glucosa capilar; el ejercicio, un
+      <strong>transductor de presión arterial</strong> con puente de galgas extensométricas. Ambos son
+      mediciones clínicas y ninguno es un termómetro.
+    </p>
+    <p>
+      El objetivo es que se vea que la estadística descriptiva, la exactitud diagnóstica, la calibración
+      por mínimos cuadrados y las derivas se aplican de la misma forma a cualquier instrumento.
+    </p>
+    <div class="callout">
+      <div class="callout-title">Cómo trabajarlo</div>
+      <p style="margin-bottom:0">
+        Estudia primero el ejemplo resuelto y después resuelve el ejercicio con las mismas herramientas.
+        Reporta siempre las <strong>unidades</strong> y comenta cada resultado en una frase: un número sin
+        interpretación no responde la pregunta.
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="ejemplo">
+    <h2>Ejemplo resuelto · Glucómetro electroquímico</h2>
+    <p>
+      Un laboratorio de la Facultad evalúa un glucómetro de tira reactiva. La tira genera una
+      <strong>corriente eléctrica</strong> (en nanoamperios, nA) proporcional a la concentración de glucosa
+      mediante la reacción de la glucosa oxidasa; el equipo convierte esa corriente al valor mostrado en
+      mg/dL. Se realizan tres estudios: repetibilidad sobre una solución control, un tamizaje diagnóstico y
+      una calibración frente a estándares de referencia.
+    </p>
+
+    <h3 id="ej-a">A · Estadística descriptiva sobre solución control</h3>
+    <p>
+      Se mide <strong>8 veces</strong> una solución control cuyo valor nominal es 100 mg/dL.
+      Lecturas (mg/dL):
+    </p>
+    <div class="eq"><span>96, 100, 102, 98, 104, 100, 101, 99</span><span class="tag">n = 8</span></div>
+    <p>
+      Estimar media, mediana, desviación estándar <em>s</em>, coeficiente de variación CV y error estándar
+      de la media <em>s</em><sub>x̄</sub>.
+    </p>
+
+    <p style="margin-bottom:0"><strong>Solución.</strong></p>
+    <p>Media (ec. 1.4):</p>
+    <div class="eq">
+      <span>x̄ = (96 + 100 + 102 + 98 + 104 + 100 + 101 + 99) / 8 = 800 / 8 = 100 mg/dL</span>
+    </div>
+    <p>
+      Mediana: ordenadas → 96, 98, 99, <strong>100, 100</strong>, 101, 102, 104 → promedio de los dos
+      centrales = <strong>100 mg/dL</strong>. Media ≈ mediana, así que la distribución es aproximadamente
+      simétrica y la media junto con <em>s</em> son descriptores adecuados.
+    </p>
+    <p>
+      Desviación estándar (ec. 1.6). Desviaciones respecto a la media: −4, 0, +2, −2, +4, 0, +1, −1; suma de
+      cuadrados = 16 + 0 + 4 + 4 + 16 + 0 + 1 + 1 = 42.
+    </p>
+    <div class="eq">
+      <span>s = √( <span class="frac"><span class="top">Σ (x<sub>i</sub> − x̄)²</span><span class="bot">n − 1</span></span> ) = √( 42 / 7 ) = √6 ≈ 2.45 mg/dL</span>
+    </div>
+    <p>Coeficiente de variación (ec. 1.7):</p>
+    <div class="eq">
+      <span>CV = ( <span class="frac"><span class="top">s</span><span class="bot">x̄</span></span> ) × 100 % = (2.45 / 100) × 100 % ≈ 2.4 %</span>
+    </div>
+    <p>Error estándar de la media, con la convención del texto <em>s</em><sub>x̄</sub> = <em>s</em>/√(n−1):</p>
+    <div class="eq">
+      <span>s<sub>x̄</sub> = s / √(n − 1) = 2.45 / √7 ≈ 0.93 mg/dL</span>
+    </div>
+    <div class="callout">
+      <div class="callout-title">Interpretación</div>
+      <p style="margin-bottom:0">
+        <em>s</em> ≈ 2.45 mg/dL describe la dispersión <strong>entre lecturas individuales</strong>;
+        <em>s</em><sub>x̄</sub> ≈ 0.93 mg/dL describe la dispersión esperada <strong>entre las medias</strong>
+        de futuras muestras. El CV bajo, en torno al 2.4 %, indica buena repetibilidad del equipo en este nivel.
+      </p>
+    </div>
+
+    <h3 id="ej-b">B · Exactitud de un procedimiento diagnóstico</h3>
+    <p>
+      El glucómetro se usa para <strong>tamizaje de diabetes</strong> con punto de corte de glucosa en ayuno
+      ≥ 126 mg/dL. Se compara contra el diagnóstico de referencia, glucosa plasmática de laboratorio, en
+      200 personas:
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th></th><th>Enfermo (referencia +)</th><th>Sano (referencia −)</th><th>Total</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="param">Prueba +</td><td>VP = 45</td><td>FP = 15</td><td>60</td></tr>
+          <tr><td class="param">Prueba −</td><td>FN = 5</td><td>VN = 135</td><td>140</td></tr>
+          <tr><td class="param">Total</td><td>50</td><td>150</td><td>200</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-bottom:0"><strong>Solución.</strong></p>
+    <div class="eq">
+      <span>Sensibilidad = <span class="frac"><span class="top">VP</span><span class="bot">VP + FN</span></span> = 45 / 50 = 0.90 = 90 %</span>
+    </div>
+    <div class="eq">
+      <span>Especificidad = <span class="frac"><span class="top">VN</span><span class="bot">VN + FP</span></span> = 135 / 150 = 0.90 = 90 %</span>
+    </div>
+    <div class="eq">
+      <span>Prevalencia = <span class="frac"><span class="top">VP + FN</span><span class="bot">VN + VP + FN + FP</span></span> = 50 / 200 = 0.25 = 25 %</span>
+    </div>
+    <div class="callout">
+      <div class="callout-title">Interpretación</div>
+      <p style="margin-bottom:0">
+        Sensibilidad del 90 % significa baja tasa de falsos negativos: detecta 9 de cada 10 enfermos.
+        Especificidad del 90 % significa baja tasa de falsos positivos. La sensibilidad y la especificidad
+        <strong>no dependen de la prevalencia</strong>; describen la prueba, no a la población.
+      </p>
+    </div>
+    <div class="callout quote">
+      <div class="callout-title" style="font-style:normal">Para profundizar (opcional)</div>
+      <p style="margin-bottom:0">
+        El valor de una prueba positiva sí depende de la prevalencia. Con estos datos, el valor predictivo
+        positivo es VP/(VP+FP) = 45/60 = 75 %, y el negativo VN/(VN+FN) = 135/140 ≈ 96 %. Buena excusa para
+        discutir por qué una prueba «muy buena» da muchos falsos positivos cuando la enfermedad es rara.
+      </p>
+    </div>
+
+    <h3 id="ej-c">C · Curva de calibración y sensibilidad estática</h3>
+    <p>
+      Se aplican <strong>estándares de glucosa de concentración conocida</strong> y se registra la corriente
+      de la tira. Datos entrada-salida:
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Glucosa de referencia x<sub>d</sub> (mg/dL)</th><th>0</th><th>50</th><th>100</th><th>150</th><th>200</th><th>250</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="param">Corriente de salida y (nA)</td><td>12</td><td>108</td><td>212</td><td>309</td><td>408</td><td>511</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Ajustar la recta <em>y</em> = <em>m</em>·x<sub>d</sub> + <em>b</em> por mínimos cuadrados
+      (ec. 1.9 a 1.11) y obtener la sensibilidad estática.
+    </p>
+
+    <p style="margin-bottom:0"><strong>Solución.</strong> Con <em>n</em> = 6:</p>
+    <div class="eq"><span>Σx<sub>d</sub> = 750 · Σy = 1560 · Σ(x<sub>d</sub> y) = 282 300 · Σx<sub>d</sub>² = 137 500</span></div>
+    <div class="eq">
+      <span>m =
+        <span class="frac">
+          <span class="top">n Σ(x<sub>d</sub> y) − (Σx<sub>d</sub>)(Σy)</span>
+          <span class="bot">n Σx<sub>d</sub>² − (Σx<sub>d</sub>)²</span>
+        </span>
+        = <span class="frac"><span class="top">6(282 300) − (750)(1560)</span><span class="bot">6(137 500) − (750)²</span></span>
+        = <span class="frac"><span class="top">523 800</span><span class="bot">262 500</span></span>
+        ≈ 1.995 nA·(mg/dL)<sup>−1</sup></span>
+    </div>
+    <div class="eq">
+      <span>b =
+        <span class="frac">
+          <span class="top">(Σy)(Σx<sub>d</sub>²) − (Σx<sub>d</sub> y)(Σx<sub>d</sub>)</span>
+          <span class="bot">n Σx<sub>d</sub>² − (Σx<sub>d</sub>)²</span>
+        </span>
+        = <span class="frac"><span class="top">2 775 000</span><span class="bot">262 500</span></span>
+        ≈ 10.6 nA</span>
+    </div>
+    <p>
+      La <strong>sensibilidad estática</strong> es ≈ <strong>1.99 nA·(mg/dL)<sup>−1</sup></strong>, la
+      pendiente de la recta. El corte <em>b</em> ≈ 10.6 nA es la corriente de fondo con concentración cero.
+    </p>
+    <p>
+      <strong>Linealidad.</strong> La mayor desviación de un punto respecto a la recta ajustada ocurre en
+      50 mg/dL, con un residual de unos −2.3 nA. Sobre un fondo de escala de ≈ 511 nA, la
+      <strong>no linealidad independiente</strong> es ≈ 2.3/511 ≈ <strong>±0.5 % del fondo de escala</strong>:
+      el instrumento es esencialmente lineal, y en ese caso la exactitud es prácticamente igual a la no
+      linealidad.
+    </p>
+
+    <h3 id="ej-d">D · Exactitud, precisión, resolución y reproducibilidad</h3>
+    <p>Con la información anterior, clasificar cada afirmación:</p>
+    <ol>
+      <li>
+        El equipo muestra la lectura en pasos de <strong>1 mg/dL</strong>. Esto es la
+        <span class="dfn">resolución</span>: el menor incremento distinguible.
+      </li>
+      <li>
+        Repetir la medición de la solución control da CV ≈ 2.4 % (parte A). Esto es
+        <span class="dfn">reproducibilidad o precisión</span>: concordancia entre repeticiones,
+        <em>sin</em> comparar con el valor verdadero.
+      </li>
+      <li>
+        Una lectura de 96 mg/dL sobre una solución cuyo valor verdadero es 100 mg/dL da un error de
+        4/100 = 4 %. Esto es <span class="dfn">exactitud</span>: diferencia respecto al valor verdadero de
+        referencia.
+      </li>
+    </ol>
+    <div class="callout warn">
+      <div class="callout-title">Punto clave que suele confundirse</div>
+      <p style="margin-bottom:0">
+        Un glucómetro puede ser <strong>muy preciso</strong>, con lecturas casi idénticas al repetir, y a la
+        vez <strong>poco exacto</strong>, con todas desviadas del valor real por un sesgo.
+        Precisión ≠ exactitud.
+      </p>
+    </div>
+
+    <h3 id="ej-e">E · Deriva de cero frente a deriva de sensibilidad</h3>
+    <p>Tras dos alteraciones se recalibra el equipo:</p>
+    <ul>
+      <li>
+        <strong>Escenario 1:</strong> con glucosa 0, la corriente de fondo pasa de 10.6 nA a
+        <strong>18 nA</strong>, y en <em>todos</em> los puntos la salida sube unos 7 nA; la pendiente no cambia.
+      </li>
+      <li>
+        <strong>Escenario 2:</strong> con tiras de un lote nuevo, la pendiente cae de 1.99 a
+        <strong>1.80 nA·(mg/dL)<sup>−1</sup></strong>; en cero casi no hay cambio, pero el error crece con la
+        concentración.
+      </li>
+    </ul>
+
+    <p style="margin-bottom:0"><strong>Solución.</strong></p>
+    <ul>
+      <li>
+        Escenario 1 es <span class="dfn">deriva de cero</span>: se desplaza la ordenada al origen con la
+        misma pendiente, así que el error absoluto es constante. Causas típicas: temperatura ambiente,
+        histéresis, envejecimiento del sensor.
+      </li>
+      <li>
+        Escenario 2 es <span class="dfn">deriva de sensibilidad</span>: cambia la pendiente, así que el error
+        es <strong>proporcional</strong> a la entrada. Causas típicas: tolerancias de fabricación del lote,
+        variaciones de la fuente de alimentación, no linealidades.
+      </li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section id="ejercicio">
+    <h2>Ejercicio de clase · Transductor de presión arterial</h2>
+    <div class="callout">
+      <div class="callout-title">Para el alumno</div>
+      <p style="margin-bottom:0">
+        Un transductor de presión arterial usa un <strong>puente de galgas extensométricas</strong> excitado a
+        5.0 V; su salida es una tensión, en mV, proporcional a la presión aplicada. Resuelve los dos bloques
+        con las mismas herramientas del ejemplo. Reporta unidades y comenta cada resultado en una frase.
+      </p>
+    </div>
+
+    <h3 id="bloque18">Bloque 1.8 · Bioestadística</h3>
+
+    <h4>1 · Repetibilidad</h4>
+    <p>
+      Para verificar la repetibilidad, se mantiene una línea de referencia a 100 mmHg y se registran
+      7 lecturas (mmHg):
+    </p>
+    <div class="eq"><span>98, 101, 99, 103, 100, 102, 97</span><span class="tag">n = 7</span></div>
+    <p>
+      Calcula media, mediana, <em>s</em>, CV y <em>s</em><sub>x̄</sub>. ¿La distribución parece simétrica?
+    </p>
+
+    <h4>2 · Tamizaje de hipertensión</h4>
+    <p>
+      El monitor automático, un método indirecto, se usa para tamizaje de hipertensión frente a un método de
+      referencia, en 250 pacientes:
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th></th><th>Hipertenso (ref +)</th><th>Normotenso (ref −)</th><th>Total</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="param">Prueba +</td><td>VP = 64</td><td>FP = 17</td><td>81</td></tr>
+          <tr><td class="param">Prueba −</td><td>FN = 16</td><td>VN = 153</td><td>169</td></tr>
+          <tr><td class="param">Total</td><td>80</td><td>170</td><td>250</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Calcula <strong>sensibilidad, especificidad y prevalencia</strong>. ¿Qué le pasaría a estos tres valores
+      si la prueba se aplicara en una población con el doble de prevalencia?
+    </p>
+
+    <h4>3 · Correlación entre método directo e indirecto</h4>
+    <p>
+      Se comparan la presión sistólica <strong>directa (X)</strong> e <strong>indirecta (Y)</strong> en
+      6 pacientes (mmHg):
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>X (directa)</th><th>120</th><th>130</th><th>140</th><th>150</th><th>160</th><th>170</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="param">Y (indirecta)</td><td>118</td><td>135</td><td>138</td><td>152</td><td>155</td><td>172</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Calcula el coeficiente de correlación <em>r</em> (ec. 1.8) e interprétalo. ¿Una <em>r</em> alta demuestra
+      que un método <em>causa</em> al otro?
+    </p>
+
+    <h3 id="bloque19">Bloque 1.9 · Características estáticas</h3>
+
+    <h4>4 · Calibración del transductor</h4>
+    <p>Calibración frente a un manómetro de referencia, con excitación de 5.0 V:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Presión de referencia x<sub>d</sub> (mmHg)</th><th>0</th><th>50</th><th>100</th><th>150</th><th>200</th><th>250</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="param">Salida y (mV)</td><td>1.1</td><td>13.4</td><td>26.2</td><td>38.1</td><td>50.8</td><td>63.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ol type="a">
+      <li>Ajusta <em>y</em> = <em>m</em>·x<sub>d</sub> + <em>b</em> por mínimos cuadrados y reporta <em>m</em> y <em>b</em>.</li>
+      <li>
+        Da la <strong>sensibilidad estática</strong> en mV/mmHg y <strong>por voltio de excitación</strong>
+        (μV·V<sup>−1</sup>·mmHg<sup>−1</sup>). Compárala con el valor de referencia del texto, en torno a
+        50 μV·V<sup>−1</sup>·mmHg<sup>−1</sup>.
+      </li>
+      <li>Si el monitor muestra la presión en pasos de 1 mmHg, ¿cuál es la <strong>resolución</strong>?</li>
+    </ol>
+
+    <h4>5 · Identificar el tipo de deriva</h4>
+    <ul>
+      <li>
+        <strong>(i)</strong> Al calentarse el equipo, con 0 mmHg aplicados la salida marca 3.1 mV en vez de
+        1.1 mV, y en cada punto de calibración la salida es unos 2 mV mayor; la pendiente no cambia.
+      </li>
+      <li>
+        <strong>(ii)</strong> La excitación baja de 5.0 V a 4.5 V; todas las salidas se reducen alrededor
+        de un 10 %.
+      </li>
+    </ul>
+
+    <h4>6 · Discusión</h4>
+    <p>
+      Explica con el concepto de <strong>impedancia de entrada</strong> por qué conectar el transductor no
+      debería alterar la presión que se pretende medir. ¿Qué variable de <em>esfuerzo</em> y de <em>flujo</em>
+      forman el par en este caso? (Ec. 1.12.)
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <section id="comprobar">
+    <h2>Comprobar los resultados</h2>
+    <p>
+      Las calculadoras de la página de simuladores cubren buena parte de estos cálculos, así que sirven para
+      contrastar lo que hayas obtenido a mano, nunca para sustituirlo:
+    </p>
+    <ul>
+      <li>
+        <strong>Estadística descriptiva</strong>: media, desviación estándar, error estándar y coeficiente de
+        variación, para los apartados 1 y A.
+      </li>
+      <li>
+        <strong>Matriz diagnóstica 2×2</strong>: sensibilidad, especificidad, prevalencia y valor predictivo
+        positivo, para los apartados 2 y B.
+      </li>
+      <li>
+        <strong>Curva de calibración</strong>: recta ideal frente a deriva de cero y de sensibilidad, para los
+        apartados 4, 5 y E.
+      </li>
+    </ul>
+    <p>
+      <a class="btn btn-primary" href="simuladores.html">Abrir los simuladores →</a>
+    </p>
+  </section>
+
+  <div class="pager">
+    <a href="capitulo-01.html"><small>← Anterior</small> Capítulo 1 · Conceptos básicos</a>
+    <a href="simuladores.html" style="text-align:right"><small>Siguiente →</small> Simuladores y calculadoras</a>
+  </div>
+
+  </article>
+</div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Mediciones Clínicas · material de estudio</span>
+    <span><a href="index.html">Inicio</a> · <a href="bioinstrumentacion.html">Capítulo 0</a> · <a href="capitulo-01.html">Capítulo 1</a> · <a href="simuladores.html">Simuladores</a> · <a href="glosario.html">Glosario</a></span>
+  </div>
+</footer>
+
+<button class="icon-btn" id="toTop" aria-label="Volver arriba">↑</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

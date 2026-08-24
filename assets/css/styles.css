@@ -88,6 +88,29 @@ a:hover { text-decoration: underline; }
 .nav-links a:hover { background: var(--surface-2); text-decoration: none; color: var(--text); }
 .nav-links a.active { background: var(--accent-soft); color: var(--accent); }
 
+/* ---------- Menú desplegable de capítulos ---------- */
+.nav-drop { position: relative; }
+.nav-drop-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; border-radius: 8px; font-size: 15px; font-weight: 500;
+  color: var(--text-soft); background: none; border: 0; cursor: pointer;
+  font-family: var(--font); line-height: inherit;
+}
+.nav-drop-btn:hover { background: var(--surface-2); color: var(--text); }
+.nav-drop-btn.active { background: var(--accent-soft); color: var(--accent); }
+.nav-drop-btn .caret { font-size: 10px; transition: transform .18s; }
+.nav-drop.open .nav-drop-btn .caret { transform: rotate(180deg); }
+.nav-menu {
+  display: none; position: absolute; top: calc(100% + 8px); left: 0; z-index: 60;
+  min-width: 264px; padding: 6px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.nav-drop.open .nav-menu { display: block; }
+.nav-menu a { display: block; padding: 9px 12px; border-radius: 8px; font-size: 14.5px; }
+.nav-menu a small { display: block; font-size: 12px; font-weight: 400; color: var(--text-mute); margin-top: 1px; }
+.nav-menu a.active small { color: inherit; opacity: .8; }
+
 .icon-btn {
   width: 38px; height: 38px; flex: none; display: grid; place-items: center;
   border: 1px solid var(--border); background: var(--surface); color: var(--text-soft);
@@ -106,6 +129,21 @@ a:hover { text-decoration: underline; }
   }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 10px 12px; }
+
+  .nav-drop { position: static; }
+  .nav-drop-btn, .nav-drop-btn.active {
+    width: 100%; justify-content: flex-start; pointer-events: none;
+    padding: 12px 12px 4px; background: none;
+    font-size: 11px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--text-mute);
+  }
+  .nav-drop-btn .caret { display: none; }
+  .nav-menu {
+    display: block; position: static; min-width: 0; padding: 0;
+    background: none; border: 0; box-shadow: none;
+  }
+  .nav-menu a { padding: 10px 12px; }
+  .nav-menu a small { display: none; }
 }
 
 /* ---------- Contenedores ---------- */
