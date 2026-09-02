@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mediciones Clínicas — Instrumentación biomédica</title>
+<title>Mediciones Clínicas · Instrumentación biomédica</title>
 <meta name="description" content="Material de estudio sobre conceptos básicos de instrumentación médica (Capítulo 1) y bioinstrumentación (Capítulo 9, temas 9.1 y 9.2).">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
@@ -20,8 +20,18 @@
     <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
     <nav class="nav-links" id="navLinks">
       <a class="active" href="index.html">Inicio</a>
-      <a href="capitulo-01.html">Capítulo 1</a>
-      <a href="bioinstrumentacion.html">Bioinstrumentación 9.1–9.2</a>
+      <div class="nav-drop">
+        <button type="button" class="nav-drop-btn" aria-expanded="false" aria-haspopup="true">
+          Capítulos<span class="caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-menu">
+          <a href="bioinstrumentacion.html">Capítulo 0<small>Bioinstrumentación · 9.1 y 9.2</small></a>
+          <a href="capitulo-01.html">Capítulo 1<small>Conceptos básicos de instrumentación médica</small></a>
+          <a href="tema2-ph.html">Tema 2<small>Transductores químicos y pH</small></a>
+        </div>
+      </div>
+      <a href="ejercicios.html">Ejercicios</a>
+      <a href="simuladores.html">Simuladores</a>
       <a href="glosario.html">Glosario</a>
       <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema">☾</button>
     </nav>
@@ -33,15 +43,15 @@
     <span class="eyebrow">Material de estudio</span>
     <h1>Conceptos básicos de<br>instrumentación médica y bioinstrumentación</h1>
     <p class="lead">
-      Sitio de apoyo para la asignatura de mediciones clínicas. Reúne el <strong>Capítulo 1 completo</strong>
-      —«Conceptos básicos de instrumentación médica»— y los temas <strong>9.1 Introducción</strong> y
-      <strong>9.2 Sistema básico de bioinstrumentación</strong> del capítulo de bioinstrumentación:
-      terminología, el sistema generalizado de medición, modos de operación, restricciones de la medida
-      clínica, bioestadística y características estáticas de los instrumentos.
+      Sitio de apoyo para la asignatura de mediciones clínicas. Reúne el <strong>Capítulo 0</strong> de
+      bioinstrumentación, con los temas <strong>9.1 Introducción</strong> y <strong>9.2 Sistema básico de
+      bioinstrumentación</strong>, y el <strong>Capítulo 1 completo</strong>, «Conceptos básicos de
+      instrumentación médica»: terminología, el sistema generalizado de medición, modos de operación,
+      restricciones de la medida clínica, bioestadística y características estáticas de los instrumentos.
     </p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="capitulo-01.html">Comenzar con el Capítulo 1 →</a>
-      <a class="btn btn-ghost" href="bioinstrumentacion.html">Ir a Bioinstrumentación</a>
+      <a class="btn btn-primary" href="bioinstrumentacion.html">Comenzar con el Capítulo 0 →</a>
+      <a class="btn btn-ghost" href="capitulo-01.html">Ir al Capítulo 1</a>
     </div>
   </div>
 </section>
@@ -50,9 +60,21 @@
 <section class="section">
   <div class="wrap">
     <h2 class="section-title">Contenido</h2>
-    <p class="section-sub">Dos módulos complementarios: el marco conceptual de la medición clínica y el sistema instrumental que la hace posible.</p>
+    <p class="section-sub">El marco conceptual de la medición clínica, el sistema instrumental que la hace posible y el material para practicarlo.</p>
 
     <div class="grid grid-2">
+      <a class="card" href="bioinstrumentacion.html">
+        <span class="card-tag">Capítulo 0 · 9.1 y 9.2</span>
+        <h3>Bioinstrumentación</h3>
+        <p>Objetivos del capítulo, recorrido histórico de la electrónica aplicada a la medicina y anatomía funcional de un sistema básico de bioinstrumentación.</p>
+        <ul class="card-list">
+          <li>Objetivos de aprendizaje del capítulo</li>
+          <li>9.1 Introducción e hitos históricos</li>
+          <li>9.2 Sistema básico de bioinstrumentación</li>
+          <li>Señal de calibración y elementos de realimentación</li>
+        </ul>
+      </a>
+
       <a class="card" href="capitulo-01.html">
         <span class="card-tag">Capítulo 1 · completo</span>
         <h3>Conceptos básicos de instrumentación médica</h3>
@@ -70,18 +92,56 @@
         </ul>
       </a>
 
-      <a class="card" href="bioinstrumentacion.html">
-        <span class="card-tag">Capítulo 9 · 9.1 y 9.2</span>
-        <h3>Bioinstrumentación</h3>
-        <p>Objetivos del capítulo, recorrido histórico de la electrónica aplicada a la medicina y anatomía funcional de un sistema básico de bioinstrumentación.</p>
+      <a class="card" href="tema2-ph.html">
+        <span class="card-tag">Tema 2</span>
+        <h3>Transductores químicos y medición de pH</h3>
+        <p>Principios electroquímicos del electrodo de pH, la ecuación de Nernst, electrodos de ion selectivo y aplicaciones clínicas de la gasometría arterial.</p>
         <ul class="card-list">
-          <li>Objetivos de aprendizaje del capítulo</li>
-          <li>Esquema del capítulo (9.1 a 9.15)</li>
-          <li>9.1 Introducción e hitos históricos</li>
-          <li>9.2 Sistema básico de bioinstrumentación</li>
-          <li>Señal de calibración y elementos de realimentación</li>
+          <li>El pH en la clínica y la gasometría arterial</li>
+          <li>Ecuación de Nernst y potencial de celda</li>
+          <li>Electrodo de vidrio y electrodo combinado</li>
+          <li>Calibración, cadena de señal y electrodos ISE</li>
         </ul>
       </a>
+
+      <a class="card" href="ejercicios.html">
+        <span class="card-tag">Ejercicios · temas 1.8 y 1.9</span>
+        <h3>Bioestadística y características estáticas</h3>
+        <p>Un ejemplo resuelto sobre un glucómetro electroquímico y un ejercicio de clase sobre un transductor de presión arterial, con las mismas herramientas aplicadas a dos equipos distintos.</p>
+        <ul class="card-list">
+          <li>Estadística descriptiva y repetibilidad</li>
+          <li>Sensibilidad, especificidad y prevalencia</li>
+          <li>Calibración por mínimos cuadrados</li>
+          <li>Exactitud, precisión y resolución</li>
+          <li>Deriva de cero y de sensibilidad</li>
+        </ul>
+      </a>
+
+      <a class="card" href="simuladores.html">
+        <span class="card-tag">Laboratorio interactivo</span>
+        <h3>Simuladores y calculadoras</h3>
+        <p>Tres bancos de prueba para ver el efecto de las interferencias, comprobar cálculos y contrastar los tres tipos de entrada sobre señales clínicas sintéticas.</p>
+        <ul class="card-list">
+          <li>Ruido, derivas y técnicas de compensación (1.6 y 1.7)</li>
+          <li>Curva de calibración y sensibilidad estática</li>
+          <li>Calculadoras de estadística y matriz diagnóstica</li>
+          <li>Monitor de signos vitales con ECG y pletismograma</li>
+        </ul>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0" id="presentacion">
+  <div class="wrap">
+    <h2 class="section-title">Presentación</h2>
+    <p class="section-sub">Diapositivas de apoyo del tema. Avanzan solas cada minuto; usa el control de pantalla completa para proyectarlas.</p>
+    <div class="embed-slides">
+      <iframe
+        src="https://docs.google.com/presentation/d/e/2PACX-1vSdFS0KIuvWgMfFZSu580acJcuyKBfJTo1ct16JBm5NHCOGYaInHDHDAguMv6HZGNAM19dojJAO0ymB/pubembed?start=false&amp;loop=true&amp;delayms=60000"
+        title="Presentación de instrumentación médica"
+        loading="lazy"
+        allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
     </div>
   </div>
 </section>
@@ -112,7 +172,7 @@
     <div class="grid grid-3">
       <div class="card">
         <h3 style="margin-top:0">El mensurando manda</h3>
-        <p>Toda cadena de medida empieza en el <em>mensurando</em>: la magnitud, propiedad o condición que se mide. Su accesibilidad —interna, superficial, emanada del cuerpo o extraída en una muestra— condiciona todo el diseño.</p>
+        <p>Toda cadena de medida empieza en el <em>mensurando</em>: la magnitud, propiedad o condición que se mide. Su accesibilidad, interna, superficial, emanada del cuerpo o extraída en una muestra, condiciona todo el diseño.</p>
       </div>
       <div class="card">
         <h3 style="margin-top:0">La fuente es tejido vivo</h3>
@@ -144,7 +204,7 @@
 <footer class="site">
   <div class="wrap">
     <span>Mediciones Clínicas · material de estudio</span>
-    <span><a href="capitulo-01.html">Capítulo 1</a> · <a href="bioinstrumentacion.html">Bioinstrumentación</a> · <a href="glosario.html">Glosario</a></span>
+    <span><a href="bioinstrumentacion.html">Capítulo 0</a> · <a href="capitulo-01.html">Capítulo 1</a> · <a href="tema2-ph.html">Tema 2</a> · <a href="ejercicios.html">Ejercicios</a> · <a href="simuladores.html">Simuladores</a> · <a href="glosario.html">Glosario</a></span>
   </div>
 </footer>
 

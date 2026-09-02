@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simuladores y calculadoras · Ruido, filtros, calibración y estadística</title>
+<meta name="description" content="Laboratorio interactivo: ruido e interferencias con técnicas de compensación (1.6-1.7), calculadoras de calibración y bioestadística (1.8-1.9) y un monitor de signos vitales que contrasta las entradas deseada, interferente y modificadora.">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">◍</span>
+      <span class="brand-text">Mediciones Clínicas<small>Instrumentación biomédica</small></span>
+    </a>
+    <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Inicio</a>
+      <div class="nav-drop">
+        <button type="button" class="nav-drop-btn" aria-expanded="false" aria-haspopup="true">
+          Capítulos<span class="caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-menu">
+          <a href="bioinstrumentacion.html">Capítulo 0<small>Bioinstrumentación · 9.1 y 9.2</small></a>
+          <a href="capitulo-01.html">Capítulo 1<small>Conceptos básicos de instrumentación médica</small></a>
+          <a href="tema2-ph.html">Tema 2<small>Transductores químicos y pH</small></a>
+        </div>
+      </div>
+      <a href="ejercicios.html">Ejercicios</a>
+      <a class="active" href="simuladores.html">Simuladores</a>
+      <a href="glosario.html">Glosario</a>
+      <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema">☾</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc-head">
+    <span class="eyebrow">Laboratorio interactivo</span>
+    <h1>Simuladores y calculadoras</h1>
+    <div class="meta">
+      <span>Secciones 1.6 – 1.9</span>
+      <span>Ruido, compensación, calibración y bioestadística</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div style="padding: 32px 0 80px">
+
+  <div class="sim-tabs">
+    <button class="sim-tab-btn active" id="tabBtnNoise" onclick="mcSwitchSimTab('noise')">⚡ Ruido y filtros</button>
+    <button class="sim-tab-btn" id="tabBtnCalib" onclick="mcSwitchSimTab('calib')">📐 Calibración y estadística</button>
+    <button class="sim-tab-btn" id="tabBtnMonitor" onclick="mcSwitchSimTab('monitor')">🫀 Monitor de signos vitales</button>
+  </div>
+
+  <!-- PANEL 1: RUIDO Y FILTROS -->
+  <section class="sim-panel active" id="panelNoise">
+    <p style="color:var(--text-soft); max-width:70ch; margin:0 0 24px">
+      Las mediciones clínicas se ven afectadas por <strong>entradas interferentes</strong> (p. ej. ruido
+      magnético de 60 Hz acoplado en los cables) y <strong>entradas modificadoras</strong> (p. ej. la
+      temperatura que desplaza el cero o cambia la ganancia del amplificador). Ajusta los controles para
+      inyectar interferencias sobre un ECG sintético y aplica las técnicas de compensación de la sección 1.7.
+    </p>
+
+    <div class="sim-grid">
+      <div class="card">
+        <div class="sim-group">
+          <h4>1 · Introducir interferencias y derivas</h4>
+          <div class="sim-field">
+            <label class="sim-toggle">
+              <input type="checkbox" id="simNoiseCheck">
+              <span class="txt">
+                <span style="display:block">Ruido magnético 60 Hz</span>
+                <span class="hint">Entrada interferente acoplada en el bucle de cables</span>
+              </span>
+            </label>
+          </div>
+          <div class="sim-field">
+            <div class="sim-field-row">
+              <label for="simZeroDrift">Deriva de cero</label>
+              <span class="val" id="valZeroDrift">0.0 mV</span>
+            </div>
+            <input type="range" id="simZeroDrift" min="-1.5" max="1.5" step="0.1" value="0">
+            <span class="hint">Desplazamiento del punto de partida (offset DC)</span>
+          </div>
+          <div class="sim-field">
+            <div class="sim-field-row">
+              <label for="simSensDrift">Deriva de sensibilidad</label>
+              <span class="val" id="valSensDrift">1.0×</span>
+            </div>
+            <input type="range" id="simSensDrift" min="0.3" max="2.2" step="0.1" value="1.0">
+            <span class="hint">Cambio de ganancia del amplificador por temperatura</span>
+          </div>
+        </div>
+
+        <div class="sim-group">
+          <h4>2 · Aplicar compensación (sec. 1.7)</h4>
+          <div class="sim-field">
+            <label class="sim-toggle">
+              <input type="checkbox" id="compTwisted">
+              <span class="txt">
+                <span style="display:block">Insensibilidad inherente</span>
+                <span class="hint">Cables trenzados: reduce el área del bucle de inducción</span>
+              </span>
+            </label>
+          </div>
+          <div class="sim-field">
+            <label class="sim-toggle">
+              <input type="checkbox" id="compFilter">
+              <span class="txt">
+                <span style="display:block">Filtrado / acople AC</span>
+                <span class="hint">Filtro pasa-banda que elimina el offset DC</span>
+              </span>
+            </label>
+          </div>
+          <div class="sim-field">
+            <label class="sim-toggle">
+              <input type="checkbox" id="compFeedback">
+              <span class="txt">
+                <span style="display:block">Retroalimentación negativa</span>
+                <span class="hint">Estabiliza la ganancia, y ≈ (1/Hf)·xd</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-chart-card">
+        <div class="sim-chart-head">
+          <h4>Osciloscopio virtual · ECG en tiempo real</h4>
+          <div class="sim-legend">
+            <span><i style="background:#e5484d"></i> Señal alterada</span>
+            <span><i style="background:#0e8f86"></i> Señal compensada</span>
+          </div>
+        </div>
+        <div class="sim-canvas-wrap"><canvas id="noiseCanvas"></canvas></div>
+        <div class="callout warn" id="simSaturado" style="display:none; margin:14px 0 0; padding:10px 14px">
+          <p style="margin:0; font-size:.84rem">
+            La señal excede la escala del osciloscopio (−3 a +4 mV) y aparece recortada:
+            así se ve una <strong>saturación</strong> real del amplificador. Reduce la deriva o
+            activa una técnica de compensación.
+          </p>
+        </div>
+        <div class="eq" style="margin-top:16px; flex-wrap:wrap">
+          <span>Retroalimentación negativa:</span>
+          <span>y = G<sub>d</sub> / (1 + H<sub>f</sub>G<sub>d</sub>) · x<sub>d</sub> ≈ (1/H<sub>f</sub>) · x<sub>d</sub> cuando H<sub>f</sub>G<sub>d</sub> ≫ 1</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANEL 2: CALIBRACIÓN Y ESTADÍSTICA -->
+  <section class="sim-panel" id="panelCalib">
+    <p style="color:var(--text-soft); max-width:70ch; margin:0 0 24px">
+      Las características estáticas describen el comportamiento del instrumento ante entradas lentas o
+      continuas. La <strong>sensibilidad estática</strong> es la pendiente de la recta de calibración
+      (m = Δy / Δx<sub>d</sub>); la deriva de cero y de sensibilidad son los errores más comunes frente a
+      esa recta ideal.
+    </p>
+
+    <div class="sim-chart-card" style="margin-bottom:20px">
+      <div class="sim-chart-head">
+        <h4>Curva de calibración: recta ideal, deriva de cero y de sensibilidad</h4>
+        <div class="sim-legend">
+          <span><i style="background:#0e8f86"></i> Recta ideal (y = 2x + 5)</span>
+          <span><i style="background:#b4610d"></i> Deriva de cero (y = 2x + 20)</span>
+          <span><i style="background:#e5484d"></i> Deriva de sensibilidad (y = 2.8x + 5)</span>
+        </div>
+      </div>
+      <div class="sim-canvas-wrap" style="height:300px"><canvas id="calibCanvas"></canvas></div>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="calc-card">
+        <h4>📐 Estadística descriptiva</h4>
+        <p class="sub">Calcula media, desviación estándar y error estándar de una muestra (Ejemplo 1.1 del texto por defecto).</p>
+        <div class="calc-field">
+          <label class="calc-label" for="statsInput">Muestra de datos, separados por comas</label>
+          <input type="text" id="statsInput" class="calc-input" value="1, 1, 3, 5, 5">
+        </div>
+        <button class="btn btn-primary" style="width:100%; justify-content:center" onclick="mcCalcStats()">Calcular</button>
+        <div class="calc-result-grid" id="statsOutput"></div>
+      </div>
+
+      <div class="calc-card">
+        <h4>🧪 Matriz diagnóstica 2×2</h4>
+        <p class="sub">Evalúa sensibilidad, especificidad y prevalencia a partir de la tabla de contingencia.</p>
+        <div class="calc-grid-2">
+          <div>
+            <label class="calc-label">Verdaderos positivos (TP)</label>
+            <input type="number" id="diagTp" class="calc-input" value="85">
+          </div>
+          <div>
+            <label class="calc-label">Falsos positivos (FP)</label>
+            <input type="number" id="diagFp" class="calc-input" value="10">
+          </div>
+          <div>
+            <label class="calc-label">Falsos negativos (FN)</label>
+            <input type="number" id="diagFn" class="calc-input" value="15">
+          </div>
+          <div>
+            <label class="calc-label">Verdaderos negativos (TN)</label>
+            <input type="number" id="diagTn" class="calc-input" value="190">
+          </div>
+        </div>
+        <button class="btn btn-primary" style="width:100%; justify-content:center" onclick="mcCalcDiagnostic()">Calcular</button>
+        <div class="calc-result-grid" id="diagOutput"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANEL 3: MONITOR DE SIGNOS VITALES -->
+  <section class="sim-panel" id="panelMonitor">
+    <p style="color:var(--text-soft); max-width:70ch; margin:0 0 24px">
+      Las tres entradas de la sección 1.6 producen <strong>efectos distintos</strong>, no tres intensidades
+      del mismo. Enciende y apaga cada una y observa qué le ocurre al trazo y al número que lee el clínico:
+      la <strong>deseada</strong> es el mensurando, la <strong>interferente</strong> se suma a la señal y la
+      <strong>modificadora</strong> altera la ganancia del propio instrumento.
+    </p>
+
+    <div class="mon">
+
+      <!-- Monitor -->
+      <section class="mon-device" aria-label="Monitor de signos vitales">
+        <div class="mon-bar">
+          <span class="mon-dot"></span><span>MONITOR DE SIGNOS VITALES · DEMO DOCENTE</span>
+          <span class="mon-spacer"></span>
+          <span id="monClock">--:--:--</span>
+        </div>
+
+        <div class="mon-screen">
+          <div class="mon-lanes">
+            <div class="mon-lane">
+              <div class="mon-graticule"></div>
+              <canvas id="monEcg"></canvas>
+              <span class="mon-tag is-ecg">II · ECG</span>
+              <span class="mon-scale">25 mm/s · 10 mm/mV</span>
+            </div>
+            <div class="mon-lane">
+              <div class="mon-graticule"></div>
+              <canvas id="monPleth"></canvas>
+              <span class="mon-tag is-pleth">PLETH · SpO₂</span>
+              <span class="mon-scale">Fotopletismografía · dedo índice</span>
+            </div>
+          </div>
+
+          <div class="mon-readouts">
+            <div class="mon-read is-hr">
+              <span class="mon-read-label">FC</span>
+              <span class="mon-read-value" id="monVHr">--</span>
+              <span class="mon-read-unit">lpm</span>
+            </div>
+            <div class="mon-read is-spo2">
+              <span class="mon-read-label">SpO₂</span>
+              <span class="mon-read-value" id="monVSpo2">--</span>
+              <span class="mon-read-unit">%</span>
+            </div>
+            <div class="mon-read is-pi">
+              <span class="mon-read-label">Índice perf.</span>
+              <span class="mon-read-value" id="monVPi">--</span>
+              <span class="mon-read-unit">%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mon-status" id="monStatus"></div>
+      </section>
+
+      <div class="mon-extra">
+        <label for="monHr">FRECUENCIA CARDIACA SIMULADA</label>
+        <input type="range" id="monHr" min="45" max="150" step="1" value="72">
+        <output id="monHrOut">72 lpm</output>
+      </div>
+
+      <!-- Interruptores de entrada -->
+      <div class="mon-switches">
+        <label class="mon-sw is-d" data-on="1">
+          <input type="checkbox" id="monSwD" checked>
+          <span class="mon-sw-toggle"></span>
+          <span class="mon-sw-head"><span class="mon-led"></span>
+            <span><span class="mon-sw-name">Entrada deseada</span>
+            <span class="mon-sw-kind">Mensurando</span></span>
+          </span>
+          <span class="mon-sw-body">La variable que el equipo debe medir: despolarización cardiaca (P-QRS-T) y el pulso arterial en el lecho capilar.</span>
+          <span class="mon-sw-scope"><canvas id="monScopeD"></canvas></span>
+        </label>
+
+        <label class="mon-sw is-i" data-on="0">
+          <input type="checkbox" id="monSwI">
+          <span class="mon-sw-toggle"></span>
+          <span class="mon-sw-head"><span class="mon-led"></span>
+            <span><span class="mon-sw-name">Entrada interferente</span>
+            <span class="mon-sw-kind">Se suma a la señal</span></span>
+          </span>
+          <span class="mon-sw-body">Línea de CA a 60 Hz, EMG y movimiento del paciente, luz ambiente en el fotodetector. Entra por el mismo camino que la señal útil.</span>
+          <span class="mon-sw-scope"><canvas id="monScopeI"></canvas></span>
+        </label>
+
+        <label class="mon-sw is-m" data-on="0">
+          <input type="checkbox" id="monSwM">
+          <span class="mon-sw-toggle"></span>
+          <span class="mon-sw-head"><span class="mon-led"></span>
+            <span><span class="mon-sw-name">Entrada modificadora</span>
+            <span class="mon-sw-kind">Altera la ganancia</span></span>
+          </span>
+          <span class="mon-sw-body">Temperatura, humedad, gel del electrodo seco, perfusión baja, caída de la fuente. Cambia la relación entrada-salida del propio instrumento.</span>
+          <span class="mon-sw-scope"><canvas id="monScopeM"></canvas></span>
+        </label>
+      </div>
+
+      <!-- Cadena de medición -->
+      <section class="mon-chain">
+        <h4 class="mon-h">Dónde entra cada una</h4>
+        <svg viewBox="0 0 940 210" role="img" aria-label="Diagrama de bloques de la cadena de medición">
+          <g id="monGSensor">
+            <rect class="mon-blk" x="14" y="78" width="128" height="54" rx="7"/>
+            <text class="mon-blk-t" x="78" y="101" text-anchor="middle">Transductor</text>
+            <text class="mon-blk-s" x="78" y="118" text-anchor="middle">ELECTRODO / LED-FOTODIODO</text>
+          </g>
+
+          <g id="monGSum">
+            <circle class="mon-blk" cx="300" cy="105" r="27"/>
+            <text class="mon-blk-t" x="300" y="112" text-anchor="middle" font-size="20">Σ</text>
+          </g>
+
+          <g id="monGAmp">
+            <path class="mon-blk" d="M470 66 L470 144 L556 105 Z"/>
+            <text class="mon-blk-t" x="497" y="103" text-anchor="middle" font-size="15">G</text>
+            <text class="mon-blk-s" x="513" y="170" text-anchor="middle">AMPLIFICADOR · FILTRO</text>
+          </g>
+
+          <g id="monGOut">
+            <rect class="mon-blk" x="694" y="72" width="132" height="66" rx="7"/>
+            <text class="mon-blk-t" x="760" y="98" text-anchor="middle">Pantalla</text>
+            <text class="mon-blk-s" x="760" y="116" text-anchor="middle">TRAZO + NÚMERO</text>
+          </g>
+
+          <path id="monWA" class="mon-wire" d="M142 105 H273"/>
+          <path id="monWB" class="mon-wire" d="M327 105 H470"/>
+          <path id="monWC" class="mon-wire" d="M556 105 H694"/>
+          <path id="monWIn" class="mon-wire is-inj" d="M300 22 V78"/>
+          <path id="monWMod" class="mon-wire is-gain" d="M513 205 V150"/>
+
+          <path class="mon-wire" d="M266 99 l8 6 -8 6" fill="none"/>
+          <path class="mon-wire" d="M463 99 l8 6 -8 6" fill="none"/>
+          <path class="mon-wire" d="M687 99 l8 6 -8 6" fill="none"/>
+
+          <text id="monTIn" class="mon-blk-s" x="300" y="14" text-anchor="middle" fill="#ffb020">INTERFERENTE  →  SE SUMA AQUÍ</text>
+          <text id="monTMod" class="mon-blk-s" x="513" y="200" text-anchor="middle" fill="#c58bff">MODIFICADORA  →  CAMBIA G AQUÍ</text>
+          <text class="mon-blk-s" x="208" y="95" text-anchor="middle" fill="#5f7681">SEÑAL DESEADA</text>
+        </svg>
+      </section>
+
+      <!-- Equipos -->
+      <section class="mon-gallery">
+        <article class="mon-dev">
+          <svg width="126" height="126" viewBox="0 0 126 126" role="img" aria-label="Electrocardiógrafo">
+            <rect x="16" y="10" width="94" height="66" rx="6" fill="#1e262c" stroke="#38454d"/>
+            <rect x="23" y="17" width="80" height="38" rx="3" fill="#04100c" stroke="#2b6f56"/>
+            <path d="M27 40 h11 l3 -6 3 12 4 -22 4 26 3 -10 h9 l3 -6 3 12 4 -22 4 26 3 -10 h12" fill="none" stroke="#3dff9e" stroke-width="1.6" stroke-linejoin="round"/>
+            <g fill="#39464e">
+              <rect x="24" y="60" width="13" height="9" rx="2"/>
+              <rect x="41" y="60" width="13" height="9" rx="2"/>
+              <rect x="58" y="60" width="13" height="9" rx="2"/>
+            </g>
+            <circle cx="95" cy="65" r="6" fill="#22303a" stroke="#4f6570"/>
+            <circle cx="95" cy="65" r="2" fill="#3dff9e"/>
+            <rect x="52" y="76" width="22" height="26" fill="#232c33"/>
+            <rect x="30" y="102" width="66" height="8" rx="4" fill="#2a343b"/>
+            <circle cx="40" cy="116" r="6" fill="#161d22" stroke="#3a474f"/>
+            <circle cx="86" cy="116" r="6" fill="#161d22" stroke="#3a474f"/>
+            <path d="M110 46 c16 6 8 26 -6 30 c-12 3 -16 12 -10 20" fill="none" stroke="#4a5c66" stroke-width="2.4"/>
+            <circle cx="95" cy="98" r="4.5" fill="#c9d6db" stroke="#7b8f99"/>
+          </svg>
+          <div>
+            <p class="mon-meta">Biopotencial · µV–mV</p>
+            <h4>Electrocardiógrafo</h4>
+            <p>Mide diferencias de potencial en la piel. Su enemigo clásico es el acoplamiento capacitivo de la red de 60 Hz; su amplificador de instrumentación con alto CMRR existe precisamente para rechazarlo.</p>
+          </div>
+        </article>
+
+        <article class="mon-dev">
+          <svg width="126" height="126" viewBox="0 0 126 126" role="img" aria-label="Pulsioxímetro de dedo">
+            <path d="M8 74 c14 -12 34 -16 50 -14 l0 26 c-16 3 -36 1 -50 -4 Z" fill="#d9b49c"/>
+            <path d="M52 56 h44 a12 12 0 0 1 12 12 v22 a12 12 0 0 1 -12 12 h-44 Z" fill="#1f272d" stroke="#3b4850"/>
+            <rect x="52" y="52" width="56" height="16" rx="7" fill="#28323a" stroke="#44525b"/>
+            <rect x="60" y="72" width="40" height="22" rx="3" fill="#050d10" stroke="#2a5a68"/>
+            <text x="66" y="88" font-size="13" fill="#4fd8ff" style="font-family:var(--mono)">98</text>
+            <text x="88" y="88" font-size="8" fill="#4fd8ff" style="font-family:var(--mono)">%</text>
+            <path d="M60 100 q6 -9 11 0 t11 0 t11 0" fill="none" stroke="#4fd8ff" stroke-width="1.5"/>
+            <circle cx="46" cy="62" r="3" fill="#ff4d4d" opacity=".85"/>
+            <circle cx="46" cy="98" r="3" fill="#6b2fd6" opacity=".7"/>
+            <path d="M46 65 V95" stroke="#ff4d4d" stroke-width="1" stroke-dasharray="2 3" opacity=".6"/>
+          </svg>
+          <div>
+            <p class="mon-meta">Óptica · absorbancia</p>
+            <h4>Pulsioxímetro</h4>
+            <p>Compara la absorción de luz roja e infrarroja en el pulso arterial. El movimiento del dedo y la luz ambiente lo contaminan; la vasoconstricción por frío le baja la señal sin ensuciarla.</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Notas -->
+      <section class="mon-notes">
+        <h4 class="mon-h">Cómo distinguirlas en el trazo</h4>
+        <dl>
+          <dt class="is-d">Deseada</dt>
+          <dd>Sin ella no hay medición: apágala y el monitor queda en línea isoeléctrica aunque el equipo siga encendido y funcionando.</dd>
+          <dt class="is-i">Interferente</dt>
+          <dd>Se suma. El trazo se engrosa, tiembla o se desplaza, y el número salta de forma errática. La calibración del equipo sigue intacta: si quitas el ruido, la lectura vuelve sola.</dd>
+          <dt class="is-m">Modificadora</dt>
+          <dd>Multiplica. El trazo se ve limpio pero encogido y con la línea base corrida, y el número queda sesgado de forma sistemática. Es la más peligrosa: nada en la pantalla grita error.</dd>
+        </dl>
+      </section>
+
+    </div>
+  </section>
+
+  <div class="pager">
+    <a href="ejercicios.html"><small>← Anterior</small> Ejercicios · Temas 1.8 y 1.9</a>
+    <a href="glosario.html" style="text-align:right"><small>Siguiente →</small> Glosario de términos</a>
+  </div>
+
+</div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Mediciones Clínicas · material de estudio</span>
+    <span><a href="index.html">Inicio</a> · <a href="bioinstrumentacion.html">Capítulo 0</a> · <a href="capitulo-01.html">Capítulo 1</a> · <a href="tema2-ph.html">Tema 2</a> · <a href="ejercicios.html">Ejercicios</a> · <a href="glosario.html">Glosario</a></span>
+  </div>
+</footer>
+
+<button class="icon-btn" id="toTop" aria-label="Volver arriba">↑</button>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/simuladores.js"></script>
+<script src="assets/js/monitor.js"></script>
+</body>
+</html>
