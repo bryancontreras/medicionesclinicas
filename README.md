@@ -13,6 +13,10 @@ Sitio estático (HTML + CSS + JS, sin dependencias) con el material de la asigna
   completa de parámetros médicos y fisiológicos), 1.5 Clasificaciones, 1.6 Entradas interferentes y
   modificadoras, 1.7 Técnicas de compensación, 1.8 Bioestadística y 1.9 Características estáticas
   generalizadas. Incluye enlace de descarga del material complementario en PDF.
+- **`tema2-ph.html`** — Tema 2, *Transductores químicos y medición de pH*: el pH en la clínica y la
+  gasometría arterial, ecuación de Nernst y potencial de celda, electrodo de vidrio y electrodo
+  combinado, calibración y cadena de señal, y electrodos de ion selectivo (ISE). Incluye simulador
+  interactivo de pH con la ecuación de Nernst y diagramas SVG temáticos.
 - **`ejercicios.html`** — ejemplo resuelto sobre un glucómetro electroquímico y ejercicio de clase sobre
   un transductor de presión arterial, para los temas **1.8 Bioestadística** y
   **1.9 Características estáticas generalizadas**. El ejercicio se publica sin clave de respuestas.
@@ -42,6 +46,7 @@ Sitio estático (HTML + CSS + JS, sin dependencias) con el material de la asigna
 index.html               portada
 bioinstrumentacion.html  Capítulo 0
 capitulo-01.html         Capítulo 1
+tema2-ph.html            Tema 2 — Transductores químicos y pH
 ejercicios.html          ejercicios y ejemplos resueltos
 simuladores.html         laboratorio interactivo
 glosario.html            glosario

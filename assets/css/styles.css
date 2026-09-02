@@ -651,3 +651,136 @@ input[type="range"] { width: 100%; accent-color: var(--accent); margin-top: 8px;
   .mon-flow { animation: none; }
   .mon-chip.is-alarm { animation: none; }
 }
+
+/* ---------- Tema 2 · Transductores químicos y pH ---------- */
+
+.ph-intro {
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px;
+  align-items: center; padding: 32px 0 40px; border-bottom: 1px solid var(--border);
+}
+.ph-intro .ph-lede { font-size: 1.06rem; color: var(--text-soft); max-width: 56ch; }
+.ph-obj {
+  padding: 16px 20px; border-left: 3px solid var(--accent-2);
+  background: var(--surface); border-radius: 0 10px 10px 0;
+  box-shadow: var(--shadow); margin-top: 18px;
+}
+.ph-obj-label { font-size: .78rem; font-weight: 700; color: var(--accent-2); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+.ph-obj p { margin: 0; font-size: .96rem; color: var(--text); }
+
+.ph-meter {
+  background: #131c2b; color: #e2ecef;
+  border-radius: var(--radius); padding: 24px;
+  box-shadow: 0 18px 40px -22px rgba(0,0,0,.5);
+  border: 1px solid rgba(255,255,255,.06);
+}
+html[data-theme="dark"] .ph-meter { background: #0a0f18; }
+.ph-meter-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.ph-m-title { font-family: var(--mono); font-size: .82rem; color: #82969e; }
+.ph-m-live { font-family: var(--mono); font-size: .7rem; color: #8fd3b0; display: flex; align-items: center; gap: 6px; }
+.ph-m-live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #8fd3b0; box-shadow: 0 0 8px #8fd3b0; }
+.ph-readout { display: flex; align-items: baseline; gap: 14px; margin: 2px 0 4px; }
+.ph-val { font-family: var(--mono); font-size: 4.2rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.ph-unit { font-size: 1.1rem; color: #82969e; }
+.ph-tag { margin-left: auto; text-align: right; font-size: .8rem; color: #a0b0b8; max-width: 11ch; line-height: 1.3; }
+.ph-mv { font-family: var(--mono); font-size: .86rem; color: #82969e; margin-bottom: 16px; }
+.ph-mv b { color: #e2ecef; font-weight: 600; }
+.ph-spectrum {
+  position: relative; height: 16px; border-radius: 8px;
+  background: linear-gradient(90deg, #E03B2F 0%, #E85C2B 14%, #EE8E2E 28%, #E6C93B 43%, #86B93F 50%, #46A65E 57%, #2E93A3 71%, #2C63AE 86%, #6B4A9E 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+}
+.ph-needle {
+  position: absolute; top: -6px; width: 3px; height: 28px; background: #fff;
+  border-radius: 2px; transform: translateX(-50%);
+  box-shadow: 0 0 0 2px rgba(0,0,0,.35); transition: left .12s linear;
+}
+.ph-ticks { display: flex; justify-content: space-between; font-family: var(--mono); font-size: .68rem; color: #6b7a80; margin-top: 8px; }
+.ph-meter input[type=range] { width: 100%; margin-top: 16px; accent-color: #8fd3b0; height: 22px; cursor: ew-resize; }
+.ph-hint { font-size: .74rem; color: #6b7a80; margin: 8px 0 0; text-align: center; }
+
+.ph-sec { display: flex; gap: 16px; align-items: flex-start; margin: 48px 0 24px; }
+.ph-sec:first-child { margin-top: 0; }
+.ph-num {
+  font-family: var(--mono); font-size: .86rem; color: var(--accent-2);
+  border: 1px solid var(--border); border-radius: 8px; padding: 5px 10px; flex: none; margin-top: 4px;
+}
+.ph-sec h2 { font-size: 1.4rem; letter-spacing: -.3px; margin: 0; line-height: 1.25; }
+.ph-sec .ph-sub { color: var(--text-soft); margin: 8px 0 0; font-size: .98rem; }
+
+.ph-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; margin: 20px 0; }
+.ph-cols.lean { grid-template-columns: 1.15fr .85fr; }
+
+.ph-eq {
+  background: #131c2b; color: #e2ecef; border-radius: 12px; padding: 18px 20px;
+  font-family: var(--mono); overflow-x: auto; margin: 16px 0;
+  border: 1px solid rgba(255,255,255,.06);
+}
+html[data-theme="dark"] .ph-eq { background: #0a0f18; }
+.ph-eq .big { font-size: 1.3rem; letter-spacing: .01em; white-space: nowrap; }
+.ph-eq .note { font-size: .84rem; color: #82969e; margin-top: 10px; font-family: var(--font); line-height: 1.6; }
+.ph-eq .slope { color: #8fd3b0; }
+.ph-eq .note b { color: #e2ecef; }
+.ph-eq sub { font-size: .7em; }
+
+.ph-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 12px 0; }
+.ph-fact { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px; box-shadow: var(--shadow); }
+.ph-fact .n { font-family: var(--mono); font-size: 1.4rem; font-weight: 700; color: var(--accent-2); }
+.ph-fact .l { font-size: .82rem; color: var(--text-mute); margin-top: 4px; line-height: 1.4; }
+
+.ph-spec { width: 100%; border-collapse: collapse; font-size: .93rem; }
+.ph-spec tr { border-bottom: 1px solid var(--border); }
+.ph-spec tr:last-child { border-bottom: none; }
+.ph-spec th { text-align: left; font-weight: 700; color: var(--text-mute); padding: 10px 14px 10px 0; width: 42%; font-size: .88rem; }
+.ph-spec td { padding: 10px 0; color: var(--text); }
+
+.ph-tbl-wrap { overflow-x: auto; margin: 6px 0; }
+.ph-tbl { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 540px; }
+.ph-tbl th { text-align: left; font-weight: 700; color: var(--text-mute); border-bottom: 2px solid var(--border); padding: 9px 14px 9px 0; font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; }
+.ph-tbl td { padding: 9px 14px 9px 0; border-bottom: 1px solid var(--border); color: var(--text-soft); vertical-align: top; }
+.ph-tbl tr:last-child td { border-bottom: none; }
+.ph-tbl td:first-child { font-family: var(--mono); color: var(--accent-2); font-weight: 700; }
+
+.ph-steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 12px; }
+.ph-steps li {
+  counter-increment: s; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px 16px 56px; position: relative; box-shadow: var(--shadow);
+}
+.ph-steps li::before {
+  content: counter(s); position: absolute; left: 14px; top: 14px;
+  width: 28px; height: 28px; border-radius: 8px; background: var(--accent-2); color: #fff;
+  font-family: var(--mono); font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: .92rem;
+}
+.ph-steps li h4 { font-size: .98rem; margin: 0 0 4px; text-transform: none; letter-spacing: 0; color: var(--text); }
+.ph-steps li p { font-size: .92rem; color: var(--text-soft); margin: 0; }
+
+.ph-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ph-chip { font-size: .82rem; background: var(--accent-2-soft); color: var(--accent-2); border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; font-weight: 600; }
+
+.ph-refs { list-style: none; counter-reset: r; padding: 0; margin: 0; display: grid; gap: 14px; }
+.ph-refs li { counter-increment: r; position: relative; padding: 0 0 0 38px; font-size: .95rem; color: var(--text-soft); line-height: 1.6; }
+.ph-refs li::before { content: "[" counter(r) "]"; position: absolute; left: 0; font-family: var(--mono); font-size: .88rem; color: var(--accent-2); }
+.ph-refs .hang { padding-left: 1.4em; text-indent: -1.4em; display: block; }
+.ph-refs .use { display: block; margin-top: 4px; font-size: .84rem; color: var(--text-mute); }
+
+.ph-qlist { margin: 0; padding-left: 1.1em; }
+.ph-qlist li { margin-bottom: 8px; color: var(--text-soft); font-size: .95rem; }
+.ph-qlist li b { color: var(--text); }
+
+.ph-families { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+.ph-family-hi { border-color: var(--accent-2); background: var(--accent-2-soft); }
+.ph-family-hi h3 { color: var(--accent-2); }
+.ph-family-tag { font-family: var(--mono); font-size: .72rem; color: var(--accent-2); margin-bottom: 6px; }
+
+.ph-ise-types { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 20px 0; }
+
+@media (max-width: 860px) {
+  .ph-cols, .ph-cols.lean { grid-template-columns: 1fr; gap: 20px; }
+  .ph-facts { grid-template-columns: 1fr 1fr; }
+  .ph-families { grid-template-columns: 1fr; }
+  .ph-intro { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 520px) {
+  .ph-val { font-size: 3.2rem; }
+  .ph-facts { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .ph-needle { transition: none; } }
