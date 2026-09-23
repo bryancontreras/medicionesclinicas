@@ -833,3 +833,38 @@ html[data-theme="dark"] .ph-btn:hover {
   content: "↗";
   font-size: 1.1rem;
 }
+
+/* =========================================================
+   Tema 4 — figuras de mapa de bits y bloques de apoyo
+   ========================================================= */
+.fig-slot { position: relative; }
+.fig-slot .fig-img {
+  max-width: 100%; height: auto; display: block; margin: 0 auto;
+  border-radius: 8px; background: #ffffff;
+}
+.fig-slot .fig-hint {
+  display: none; border: 2px dashed var(--border); border-radius: 10px;
+  padding: 30px 20px; text-align: center; color: var(--text-mute);
+  background: var(--surface-2); font-size: .9rem;
+}
+.fig-slot .fig-hint b { display: block; color: var(--text); margin-bottom: 6px; }
+.fig-slot .fig-hint code {
+  display: inline-block; margin-top: 6px; font-family: var(--mono); font-size: .82rem;
+  color: var(--accent); background: var(--accent-soft); padding: 4px 10px; border-radius: 6px;
+}
+/* Cuando la imagen aún no existe (404), el onerror marca .missing */
+.fig-slot.missing .fig-img { display: none; }
+.fig-slot.missing .fig-hint { display: block; }
+
+/* Rejilla de dos columnas reutilizable para Tema 4 */
+.be-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: start; margin: 22px 0; }
+.be-cols.lean { grid-template-columns: 1.3fr 1fr; }
+@media (max-width: 860px) {
+  .be-cols, .be-cols.lean { grid-template-columns: 1fr; gap: 20px; }
+}
+/* Lista de resultados de aprendizaje / puntos clave */
+.be-list { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 10px; }
+.be-list li { position: relative; padding-left: 26px; font-size: .95rem; color: var(--text-soft); line-height: 1.5; }
+.be-list li::before {
+  content: "▸"; position: absolute; left: 4px; top: 0; color: var(--accent-2); font-weight: 700;
+}

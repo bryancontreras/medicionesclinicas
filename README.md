@@ -17,6 +17,13 @@ Sitio estático (HTML + CSS + JS, sin dependencias) con el material de la asigna
   gasometría arterial, ecuación de Nernst y potencial de celda, electrodo de vidrio y electrodo
   combinado, calibración y cadena de señal, y electrodos de ion selectivo (ISE). Incluye simulador
   interactivo de pH con la ecuación de Nernst y diagramas SVG temáticos.
+- **`tema4-bioelectricas.html`** — Tema 4, *Mediciones bioeléctricas* (Webster, *Medical Instrumentation*, caps. 4-6;
+  Enderle y Bronzino, *Introduction to Biomedical Engineering*, cap. 12): del potencial de membrana (Nernst,
+  Goldman-Hodgkin-Katz, Hodgkin-Huxley) al registro clínico. Origen celular de los biopotenciales, conductor
+  volumétrico, electrodos e interfaz electrodo-piel, amplificadores de biopotenciales (CMRR, amplificador de
+  instrumentación, DRL, aislamiento), electrocardiografía (12 derivaciones, morfología, detección de QRS), EEG,
+  EMG y ENG, otros biopotenciales, digitalización, interferencias y artefactos, seguridad eléctrica (IEC 60601-1),
+  práctica de laboratorio, ejercicios resueltos y glosario. Incluye 12 figuras en `assets/img/tema4/`.
 - **`ejercicios.html`** — ejemplo resuelto sobre un glucómetro electroquímico y ejercicio de clase sobre
   un transductor de presión arterial, para los temas **1.8 Bioestadística** y
   **1.9 Características estáticas generalizadas**. El ejercicio se publica sin clave de respuestas.
@@ -47,6 +54,7 @@ index.html               portada
 bioinstrumentacion.html  Capítulo 0
 capitulo-01.html         Capítulo 1
 tema2-ph.html            Tema 2 — Transductores químicos y pH
+tema4-bioelectricas.html Tema 4 — Mediciones bioeléctricas
 ejercicios.html          ejercicios y ejemplos resueltos
 simuladores.html         laboratorio interactivo
 glosario.html            glosario
@@ -54,6 +62,7 @@ assets/css/styles.css    hoja de estilos común
 assets/js/main.js        tema, navegación, desplegable, progreso e índice lateral
 assets/js/simuladores.js pestañas, gráficas y calculadoras
 assets/js/monitor.js     monitor de signos vitales
+assets/img/tema4/        figuras del Tema 4 (fig01–fig12)
 assets/docs/             material complementario en PDF
 ```
 
