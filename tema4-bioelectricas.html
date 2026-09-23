@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tema 4 · Mediciones bioeléctricas</title>
+<meta name="description" content="Mediciones bioeléctricas: del potencial de membrana (Nernst, GHK, Hodgkin-Huxley) al registro clínico de ECG, EEG y EMG. Electrodos, amplificadores de biopotenciales, seguridad eléctrica, digitalización, artefactos y práctica de laboratorio.">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">◍</span>
+      <span class="brand-text">Mediciones Clínicas<small>Instrumentación biomédica</small></span>
+    </a>
+    <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Inicio</a>
+      <div class="nav-drop">
+        <button type="button" class="nav-drop-btn active" aria-expanded="false" aria-haspopup="true">
+          Capítulos<span class="caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-menu">
+          <a href="bioinstrumentacion.html">Capítulo 0<small>Bioinstrumentación · 9.1 y 9.2</small></a>
+          <a href="capitulo-01.html">Capítulo 1<small>Conceptos básicos de instrumentación médica</small></a>
+          <a href="tema2-ph.html">Tema 2<small>Transductores químicos y pH</small></a>
+          <a class="active" href="tema4-bioelectricas.html">Tema 4<small>Mediciones bioeléctricas</small></a>
+        </div>
+      </div>
+      <a href="ejercicios.html">Ejercicios</a>
+      <a href="simuladores.html">Simuladores</a>
+      <a href="glosario.html">Glosario</a>
+      <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema">☾</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc-head">
+    <span class="eyebrow">Tema 4 · Mediciones bioeléctricas</span>
+    <h1>Del potencial de membrana al registro clínico de ECG, EEG y EMG</h1>
+    <div class="meta">
+      <span>Guía de estudio en extenso</span>
+      <span>Secciones 01–15</span>
+      <span>Tiempo de lectura ≈ 60 min</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="ph-intro">
+    <div>
+      <p class="ph-lede">Cada latido, cada contracción muscular y cada comunicación entre neuronas se acompaña de corrientes iónicas que generan diferencias de potencial medibles: primero a escala celular y después, tras propagarse por los tejidos, en la superficie del cuerpo. El ECG, el EEG, el EMG, el ENG, el EOG y el ERG son los ejemplos más conocidos de esta familia de registros.</p>
+      <p style="color:var(--text-soft);">Medir un biopotencial no es solo conectar electrodos a un amplificador: implica entender el origen fisiológico de la señal, el cuerpo como conductor volumétrico, la interfaz electrodo-piel, el amplificador que rescata microvoltios entre interferencias enormes y las condiciones de seguridad eléctrica. Esta guía sigue esa cadena de medición, de la célula al sistema digital.</p>
+      <div class="ph-obj">
+        <div class="ph-obj-label">Cómo está organizada</div>
+        <p>De la célula a la superficie corporal, de la superficie al electrodo, del electrodo al amplificador y del amplificador al sistema digital de adquisición y despliegue. Al final: ejercicios resueltos, práctica de laboratorio, autoevaluación y glosario.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">Resultados de aprendizaje</h3>
+      <ul class="be-list">
+        <li>Explicar el origen iónico del potencial de reposo y de acción, y calcularlos con Nernst y Goldman-Hodgkin-Katz.</li>
+        <li>Interpretar el modelo eléctrico de la membrana y el modelo de Hodgkin-Huxley.</li>
+        <li>Describir cómo la actividad celular produce potenciales en la superficie a través del conductor volumétrico.</li>
+        <li>Analizar la interfaz electrodo-electrolito-piel, su circuito equivalente y sus artefactos.</li>
+        <li>Especificar los requisitos de un amplificador de biopotenciales (ganancia, impedancia, CMRR, ancho de banda, aislamiento).</li>
+        <li>Describir las 12 derivaciones del ECG, su morfología normal y sus mediciones.</li>
+        <li>Caracterizar EEG, EMG, ENG, EOG y ERG por origen, amplitud, ancho de banda y técnica.</li>
+        <li>Identificar interferencias y artefactos, y aplicar criterios de seguridad eléctrica y mantenimiento.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="doc">
+
+  <aside class="toc">
+    <h4>Contenido</h4>
+    <ol>
+      <li><a href="#intro">01 · Introducción e historia</a></li>
+      <li><a href="#celular">02 · Origen celular de los biopotenciales</a></li>
+      <li><a href="#superficie">03 · Del generador celular a la superficie</a></li>
+      <li><a href="#electrodos">04 · Electrodos para biopotenciales</a></li>
+      <li><a href="#amplificadores">05 · Amplificadores de biopotenciales</a></li>
+      <li><a href="#ecg">06 · Electrocardiografía</a></li>
+      <li><a href="#eeg">07 · Electroencefalografía</a></li>
+      <li><a href="#emg">08 · EMG y electroneurografía</a></li>
+      <li><a href="#otros">09 · Otros biopotenciales</a></li>
+      <li><a href="#digital">10 · Digitalización y procesamiento</a></li>
+      <li><a href="#interferencias">11 · Interferencias y artefactos</a></li>
+      <li><a href="#seguridad">12 · Seguridad eléctrica y mantenimiento</a></li>
+      <li><a href="#practica">13 · Práctica de laboratorio</a></li>
+      <li><a href="#ejercicios">14 · Ejercicios y autoevaluación</a></li>
+      <li><a href="#glosario">15 · Glosario y referencias</a></li>
+    </ol>
+  </aside>
+
+  <article>
+
+  <!-- 01 INTRODUCCIÓN -->
+  <section id="intro">
+    <div class="ph-sec">
+      <span class="ph-num">01</span>
+      <div>
+        <h2>Introducción e historia</h2>
+        <p class="ph-sub">Las mediciones bioeléctricas son uno de los pilares de la instrumentación biomédica y de la práctica clínica moderna. La información funcional que aportan difícilmente se obtiene por otros medios.</p>
+      </div>
+    </div>
+
+    <h3>¿Por qué medimos biopotenciales?</h3>
+    <p>El ECG permite diagnosticar arritmias, isquemia e infarto, alteraciones electrolíticas y trastornos de conducción; el EEG es central en epilepsia, sueño y monitorización anestésica; el EMG y los estudios de conducción nerviosa distinguen entre enfermedades neuropáticas y miopáticas; el EOG y el ERG evalúan la función ocular y retiniana. Hoy estas señales alimentan además dispositivos portátiles, interfaces cerebro-computadora, prótesis mioeléctricas y algoritmos de inteligencia artificial, lo que vincula el tema con el procesamiento de señales, la salud digital y la biomecatrónica.</p>
+
+    <h3>Breve reseña histórica</h3>
+    <p>El estudio formal de la bioelectricidad nace con <b>Luigi Galvani</b> (1791), quien observó contracciones en ancas de rana y las interpretó como "electricidad animal". <b>Alessandro Volta</b> atribuyó el fenómeno al contacto entre metales disímiles, lo que lo llevó a inventar la pila voltaica. La controversia dio origen a dos disciplinas: la electrofisiología y la ingeniería eléctrica. En el siglo XIX, Matteucci y Du Bois-Reymond registraron corrientes de lesión y el potencial de acción; en 1887 <b>Augustus Waller</b> obtuvo el primer ECG humano, y en 1901 <b>Willem Einthoven</b> desarrolló el galvanómetro de cuerda (Nobel 1924). <b>Hans Berger</b> publicó el primer EEG humano en 1929, y en 1952 <b>Hodgkin y Huxley</b> presentaron su modelo cuantitativo del potencial de acción (Nobel 1963).</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 02 ORIGEN CELULAR -->
+  <section id="celular">
+    <div class="ph-sec">
+      <span class="ph-num">02</span>
+      <div>
+        <h2>Origen celular de los biopotenciales</h2>
+        <p class="ph-sub">Los biopotenciales son producto de la actividad electroquímica de las células excitables de los tejidos nervioso, muscular y glandular. En reposo mantienen un potencial estable; al estimularse generan un potencial de acción.</p>
+      </div>
+    </div>
+
+    <h3>2.1 La membrana celular y los gradientes iónicos</h3>
+    <p>La membrana es una bicapa lipídica de 7 a 10 nm de espesor que actúa como dieléctrico, con una capacitancia específica cercana a <b>1 µF/cm²</b>. En ella se embeben canales iónicos selectivos y bombas. La bomba de sodio-potasio (Na⁺/K⁺-ATPasa) expulsa tres Na⁺ e introduce dos K⁺ por cada ATP, manteniendo alto el K⁺ interior y alto el Na⁺ exterior.</p>
+
+    <div class="figure">
+      <div class="ph-tbl-wrap">
+        <table class="ph-tbl">
+          <thead>
+            <tr><th>Ion</th><th>Extracelular (mM)</th><th>Intracelular (mM)</th><th>E de Nernst a 37 °C (mV)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Na⁺</td><td>145</td><td>12</td><td>+66.6</td></tr>
+            <tr><td>K⁺</td><td>4</td><td>155</td><td>−97.7</td></tr>
+            <tr><td>Cl⁻</td><td>120</td><td>4</td><td>−90.9</td></tr>
+            <tr><td>Ca²⁺</td><td>2</td><td>0.0001</td><td>≈ +132</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption><b>Tabla 1.</b> Concentraciones iónicas típicas en músculo esquelético de mamífero y potenciales de equilibrio correspondientes.</figcaption>
+    </div>
+
+    <p>En reposo la membrana es mucho más permeable al K⁺ que al Na⁺. El K⁺ tiende a salir a favor de su gradiente, dejando atrás aniones no difusibles y volviendo negativo el interior; esa negatividad se opone a la salida adicional de K⁺ y el equilibrio se alcanza cuando la fuerza eléctrica iguala a la de difusión.</p>
+
+    <h3>2.2 Ecuación de Nernst</h3>
+    <p>El potencial al que un ion está en equilibrio electroquímico se obtiene con la ecuación de Nernst:</p>
+    <div class="ph-eq"><div class="big">E<sub>k</sub> = (RT / zF) · ln( [C]<sub>o</sub> / [C]<sub>i</sub> )&nbsp;&nbsp;&nbsp;(1)</div></div>
+    <p>donde R = 8.314 J/(mol·K), T es la temperatura absoluta, z la valencia, F = 96 485 C/mol y [C]<sub>o</sub>, [C]<sub>i</sub> las concentraciones externa e interna. A 37 °C (310 K), RT/F = 26.7 mV, de modo que en logaritmo base 10 y para un ion monovalente:</p>
+    <div class="ph-eq"><div class="big">E<sub>k</sub> ≈ 61.5 mV · log₁₀( [C]<sub>o</sub> / [C]<sub>i</sub> )&nbsp;&nbsp;&nbsp;(2)</div></div>
+
+    <h3>2.3 Ecuación de Goldman-Hodgkin-Katz</h3>
+    <p>La membrana real es permeable a varios iones a la vez, por lo que el potencial de reposo no coincide con ningún Nernst individual. La ecuación de Goldman-Hodgkin-Katz (GHK) pondera cada ion por su permeabilidad relativa P:</p>
+    <div class="ph-eq"><div class="big" style="white-space:normal">V<sub>m</sub> = (RT/F) · ln[ (P<sub>K</sub>[K]<sub>o</sub> + P<sub>Na</sub>[Na]<sub>o</sub> + P<sub>Cl</sub>[Cl]<sub>i</sub>) / (P<sub>K</sub>[K]<sub>i</sub> + P<sub>Na</sub>[Na]<sub>i</sub> + P<sub>Cl</sub>[Cl]<sub>o</sub>) ]&nbsp;&nbsp;&nbsp;(3)</div></div>
+    <p>Para el cloro, por ser anión, las concentraciones aparecen invertidas. El potencial de membrana se acerca al Nernst del ion más permeable: en reposo domina el K⁺ (V<sub>m</sub> negativo); durante el ascenso del potencial de acción domina el Na⁺ y V<sub>m</sub> se aproxima a E<sub>Na</sub>.</p>
+
+    <div class="callout tip">
+      <div class="callout-title">Ejemplo resuelto 1 · Potencial de reposo</div>
+      <p>Con las concentraciones de la Tabla 1 y permeabilidades relativas P<sub>K</sub> : P<sub>Na</sub> : P<sub>Cl</sub> = 1 : 0.04 : 0.45, a 37 °C:</p>
+      <p style="font-family:var(--mono);font-size:.9rem;">Numerador: 1(4) + 0.04(145) + 0.45(4) = 11.6<br>
+      Denominador: 1(155) + 0.04(12) + 0.45(120) = 209.5<br>
+      V<sub>m</sub> = 61.5 · log₁₀(11.6 / 209.5) = 61.5 · (−1.257) ≈ <b>−77 mV</b></p>
+      <p>El resultado queda entre E<sub>K</sub> (−97.7 mV) y E<sub>Na</sub> (+66.6 mV), mucho más cerca del primero porque el potasio domina en reposo. Si P<sub>Na</sub> subiera a 20 veces P<sub>K</sub>, el potencial se desplazaría hacia valores positivos: eso es la despolarización.</p>
+    </div>
+
+    <h3>2.4 Modelo eléctrico de la membrana</h3>
+    <p>La membrana puede representarse como un circuito: la bicapa es un capacitor C<sub>m</sub>; cada canal iónico, una conductancia g<sub>k</sub> en serie con una fuente igual al potencial de Nernst del ion. Las conductancias de Na⁺ y K⁺ dependen del voltaje y del tiempo; la conductancia de fuga g<sub>L</sub> agrupa las contribuciones pasivas restantes.</p>
+
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig01-modelo-membrana.png" alt="Modelo de conductancias paralelas de la membrana celular" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig01-modelo-membrana.png</code></div>
+      </div>
+      <figcaption><b>Figura 1.</b> Modelo de conductancias paralelas de la membrana celular. Las conductancias de Na⁺ y K⁺ dependen del voltaje y del tiempo.</figcaption>
+    </div>
+
+    <p>Aplicando la ley de corrientes de Kirchhoff, la corriente total de membrana es la suma de la capacitiva y las iónicas:</p>
+    <div class="ph-eq"><div class="big" style="white-space:normal">I<sub>m</sub> = C<sub>m</sub>(dV<sub>m</sub>/dt) + g<sub>Na</sub>(V<sub>m</sub> − E<sub>Na</sub>) + g<sub>K</sub>(V<sub>m</sub> − E<sub>K</sub>) + g<sub>L</sub>(V<sub>m</sub> − E<sub>L</sub>)&nbsp;&nbsp;&nbsp;(4)</div></div>
+    <p>En estado estacionario (dV<sub>m</sub>/dt = 0, I<sub>m</sub> = 0) el potencial de reposo es un promedio de los potenciales de equilibrio ponderado por las conductancias, análogo a GHK:</p>
+    <div class="ph-eq"><div class="big" style="white-space:normal">V<sub>m</sub> = (g<sub>Na</sub>E<sub>Na</sub> + g<sub>K</sub>E<sub>K</sub> + g<sub>L</sub>E<sub>L</sub>) / (g<sub>Na</sub> + g<sub>K</sub> + g<sub>L</sub>)&nbsp;&nbsp;&nbsp;(5)</div></div>
+
+    <h3>2.5 El potencial de acción y el modelo de Hodgkin-Huxley</h3>
+    <p>Cuando un estímulo despolariza la membrana por encima de un umbral (15 a 20 mV sobre el reposo), se abren canales de Na⁺ dependientes de voltaje. La entrada de Na⁺ despolariza más, lo que abre más canales en una retroalimentación positiva que lleva V<sub>m</sub> hacia E<sub>Na</sub> en menos de un milisegundo. Dos mecanismos más lentos terminan el evento: la inactivación del sodio y la apertura retardada del potasio, que repolariza e incluso hiperpolariza. El potencial de acción obedece a la <b>ley del todo o nada</b>.</p>
+    <p>Hodgkin y Huxley lo describieron con variables de compuerta adimensionales m, h y n (probabilidad de apertura de las compuertas de activación de Na⁺, inactivación de Na⁺ y activación de K⁺):</p>
+    <div class="ph-eq"><div class="big">g<sub>Na</sub> = ḡ<sub>Na</sub> m³h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<sub>K</sub> = ḡ<sub>K</sub> n⁴&nbsp;&nbsp;&nbsp;(6)</div></div>
+    <div class="ph-eq"><div class="big" style="white-space:normal">dx/dt = α<sub>x</sub>(V<sub>m</sub>)(1 − x) − β<sub>x</sub>(V<sub>m</sub>)·x,&nbsp;&nbsp;&nbsp;x ∈ {m, h, n}&nbsp;&nbsp;&nbsp;(7)</div></div>
+    <p>Para el axón de calamar: ḡ<sub>Na</sub> = 120 mS/cm², ḡ<sub>K</sub> = 36 mS/cm², g<sub>L</sub> = 0.3 mS/cm² y C<sub>m</sub> = 1 µF/cm². La Figura 2 muestra la simulación: el rápido pico de conductancia de sodio seguido de la de potasio, más lenta y sostenida, responsable de la repolarización y de la hiperpolarización.</p>
+
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig02-hodgkin-huxley.png" alt="Simulación del modelo de Hodgkin-Huxley: potencial de membrana y conductancias de sodio y potasio" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig02-hodgkin-huxley.png</code></div>
+      </div>
+      <figcaption><b>Figura 2.</b> Simulación del modelo de Hodgkin-Huxley. Arriba: potencial de membrana ante un pulso de corriente de 1 ms. Abajo: evolución de las conductancias de sodio y potasio.</figcaption>
+    </div>
+
+    <p>Durante el <b>periodo refractario absoluto</b> ningún estímulo genera un nuevo potencial de acción porque los canales de sodio están inactivados; durante el <b>relativo</b> se requiere un estímulo mayor. Esto limita la frecuencia máxima de disparo y, en el corazón, impide la tetanización del miocardio.</p>
+
+    <h3>2.6 Propagación del potencial de acción</h3>
+    <p>El potencial de acción se propaga porque las corrientes locales despolarizan las regiones vecinas por encima del umbral. En fibras amielínicas la conducción es continua y su velocidad crece con la raíz cuadrada del diámetro; en fibras mielínicas la vaina reduce la capacitancia y la excitación "salta" entre nodos de Ranvier (conducción saltatoria), alcanzando hasta 100 a 120 m/s. En el músculo cardiaco el potencial de acción dura 200 a 300 ms por una meseta de corrientes de calcio, decisiva para la forma del ECG.</p>
+
+    <div class="callout">
+      <div class="callout-title">Puntos clave del capítulo</div>
+      <ul class="be-list">
+        <li>El potencial de reposo depende de los gradientes de concentración (bomba Na⁺/K⁺) y de la permeabilidad selectiva.</li>
+        <li>Nernst da el equilibrio de un ion; GHK, el potencial de membrana con varios iones.</li>
+        <li>El potencial de acción resulta de cambios de conductancia dependientes de voltaje y tiempo (Hodgkin-Huxley).</li>
+        <li>Eléctricamente, la membrana es un capacitor en paralelo con ramas de conductancia y fuente.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 03 SUPERFICIE -->
+  <section id="superficie">
+    <div class="ph-sec">
+      <span class="ph-num">03</span>
+      <div>
+        <h2>Del generador celular a la superficie corporal</h2>
+        <p class="ph-sub">Lo que se registra en la piel es el efecto de corrientes iónicas que fluyen por los tejidos que rodean a la fuente. Ese medio (líquidos, sangre, músculo, grasa, hueso y piel) es el conductor volumétrico que enlaza lo microscópico con lo macroscópico.</p>
+      </div>
+    </div>
+
+    <h3>3.1 Fuentes de corriente y dipolos</h3>
+    <p>Cuando una región de la fibra se despolariza, la corriente entra en el frente activo (sumidero) y sale en las regiones vecinas en reposo (fuentes). A cierta distancia, el par fuente-sumidero se aproxima como un <b>dipolo de corriente</b> con momento p = I·d. En un medio homogéneo e infinito de conductividad σ, el potencial a distancia r y ángulo θ es:</p>
+    <div class="ph-eq"><div class="big">Φ(r, θ) = (p·cos θ) / (4π σ r²)&nbsp;&nbsp;&nbsp;(8)</div></div>
+    <p>De aquí, tres ideas para la clínica: (a) el potencial decrece rápido con la distancia, por eso las señales de superficie son mucho menores que las intracelulares; (b) la polaridad depende de la orientación del dipolo respecto al par de electrodos, lo que explica por qué una misma activación da ondas positivas en unas derivaciones y negativas en otras; y (c) la amplitud depende de la conductividad del medio, que no es homogénea (pulmón y grasa poco conductores, sangre muy conductora).</p>
+
+    <h3>3.2 Registro monofásico, bifásico y corriente de lesión</h3>
+    <p>Con dos electrodos extracelulares sobre una fibra, un potencial de acción que viaja por debajo produce un registro <b>bifásico</b>. Si una región está lesionada (permanentemente despolarizada), el registro se vuelve <b>monofásico</b>. Este principio fundamenta la elevación del segmento ST en el infarto agudo: el tejido isquémico genera una "corriente de lesión" que desplaza la línea de base.</p>
+
+    <h3>3.3 El corazón como generador dipolar</h3>
+    <p>La suma vectorial de millones de dipolos celulares se representa en cada instante por un único <b>vector cardiaco</b> o dipolo equivalente. Einthoven propuso que el corazón está en el centro de un triángulo equilátero cuyos vértices son el brazo derecho, el brazo izquierdo y la pierna izquierda; cada derivación mide la proyección del vector sobre su eje. Aunque es una simplificación, sigue siendo la base de la interpretación del eje eléctrico.</p>
+    <p>Los registros se clasifican por la posición de los electrodos: <b>intracelular</b> (microelectrodo, potencial transmembrana completo ≈ 100 mV), <b>extracelular cercano</b> (agujas en músculo o nervio, cientos de µV a mV) y <b>de superficie</b> (piel, de µV a pocos mV).</p>
+
+    <div class="figure">
+      <div class="ph-tbl-wrap">
+        <table class="ph-tbl">
+          <thead>
+            <tr><th>Señal</th><th>Origen</th><th>Amplitud</th><th>Ancho de banda</th><th>Electrodos</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ECG</td><td>Actividad del miocardio</td><td>0.5 a 4 mV</td><td>0.05 a 150 Hz</td><td>Superficie Ag/AgCl</td></tr>
+            <tr><td>EEG</td><td>Potenciales postsinápticos corticales</td><td>2 a 200 µV</td><td>0.5 a 100 Hz</td><td>Cuero cabelludo, 10-20</td></tr>
+            <tr><td>EMG superf.</td><td>Suma de potenciales de unidad motora</td><td>0.05 a 5 mV</td><td>10 a 500 Hz</td><td>Bipolar sobre el músculo</td></tr>
+            <tr><td>EMG aguja</td><td>Potenciales de unidad motora individuales</td><td>0.1 a 10 mV</td><td>20 Hz a 5 kHz</td><td>Aguja concéntrica/monopolar</td></tr>
+            <tr><td>ENG</td><td>Potencial de acción nervioso compuesto</td><td>5 a 10 µV (superf.)</td><td>100 Hz a 10 kHz</td><td>Superficie o aguja</td></tr>
+            <tr><td>EOG</td><td>Potencial corneorretiniano</td><td>10 µV a 3.5 mV</td><td>DC a 10 Hz</td><td>Superficie periocular</td></tr>
+            <tr><td>ERG</td><td>Respuesta de la retina a la luz</td><td>0.5 µV a 1 mV</td><td>0.2 a 200 Hz</td><td>Lente corneal o fibra</td></tr>
+            <tr><td>EGG</td><td>Actividad eléctrica gástrica</td><td>10 µV a 1 mV</td><td>0.01 a 1 Hz</td><td>Superficie abdominal</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption><b>Tabla 2.</b> Características de los principales biopotenciales de uso clínico (valores aproximados, compilados de Webster y Enderle-Bronzino).</figcaption>
+    </div>
+
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig03-espectro-biopotenciales.png" alt="Comparación del ancho de banda y del intervalo de amplitudes de los biopotenciales" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig03-espectro-biopotenciales.png</code></div>
+      </div>
+      <figcaption><b>Figura 3.</b> Comparación del ancho de banda y del intervalo de amplitudes de los biopotenciales. El EEG y el ENG requieren mucha más amplificación que el ECG o el EMG.</figcaption>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 04 ELECTRODOS -->
+  <section id="electrodos">
+    <div class="ph-sec">
+      <span class="ph-num">04</span>
+      <div>
+        <h2>Electrodos para biopotenciales</h2>
+        <p class="ph-sub">El electrodo es un transductor: convierte la corriente iónica del cuerpo en corriente electrónica del instrumento, mediante reacciones de oxidación-reducción en la interfaz. De ahí muchos problemas prácticos: potenciales de corrimiento, ruido, deriva y artefactos de movimiento.</p>
+      </div>
+    </div>
+
+    <h3>4.1 La interfaz electrodo-electrolito</h3>
+    <p>Cuando un metal M contacta un electrolito con sus cationes, ocurren las reacciones M ⇄ M<sup>n+</sup> + n e⁻. La distribución de cargas resultante (<b>doble capa eléctrica</b>) genera el <b>potencial de media celda</b> (E<sub>hc</sub>), medido por convención respecto al electrodo de hidrógeno (valor cero).</p>
+
+    <div class="figure">
+      <div class="ph-tbl-wrap">
+        <table class="ph-tbl">
+          <thead><tr><th>Metal y reacción</th><th>Potencial de media celda (V)</th></tr></thead>
+          <tbody>
+            <tr><td>Zn → Zn²⁺ + 2e⁻</td><td>−0.763</td></tr>
+            <tr><td>Fe → Fe²⁺ + 2e⁻</td><td>−0.440</td></tr>
+            <tr><td>H₂ → 2H⁺ + 2e⁻</td><td>0.000 (referencia)</td></tr>
+            <tr><td>Ag + Cl⁻ → AgCl + e⁻</td><td>+0.223</td></tr>
+            <tr><td>Cu → Cu²⁺ + 2e⁻</td><td>+0.337</td></tr>
+            <tr><td>Ag → Ag⁺ + e⁻</td><td>+0.799</td></tr>
+            <tr><td>Au → Au⁺ + e⁻</td><td>+1.680</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption><b>Tabla 3.</b> Potenciales de media celda de materiales comunes a 25 °C (adaptado de Webster).</figcaption>
+    </div>
+
+    <p>Si los dos electrodos fueran idénticos e iguales sus condiciones, sus potenciales se cancelarían. En la práctica queda una diferencia residual, el <b>potencial de corrimiento (offset)</b>, que puede llegar a decenas o cientos de milivoltios; por eso las normas exigen que un ECG tolere ±300 mV sin saturarse. Cuando circula corriente, la diferencia respecto al equilibrio se llama <b>sobrepotencial</b> (óhmico, de concentración y de activación).</p>
+
+    <h3>4.2 Electrodos polarizables y no polarizables</h3>
+    <p>Un electrodo perfectamente <b>polarizable</b> no permite paso de carga: se comporta como capacitor (platino, oro; sobrepotenciales altos y sensibles al movimiento). Uno perfectamente <b>no polarizable</b> permite paso libre sin sobrepotencial. El electrodo de <b>plata-cloruro de plata (Ag/AgCl)</b> se acerca a este ideal: plata recubierta de AgCl en contacto con electrolito de Cl⁻; potencial estable, bajo ruido y poco sensible al movimiento. Es el estándar en ECG, EEG y EMG de superficie.</p>
+
+    <h3>4.3 Circuito equivalente electrodo-piel</h3>
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig04-circuito-electrodo-piel.png" alt="Circuito equivalente de la interfaz electrodo-gel-piel" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig04-circuito-electrodo-piel.png</code></div>
+      </div>
+      <figcaption><b>Figura 4.</b> Circuito equivalente de la interfaz electrodo-gel-piel.</figcaption>
+    </div>
+    <p>E<sub>hc</sub> es el potencial de media celda; R<sub>d</sub> y C<sub>d</sub>, la resistencia y capacitancia de la doble capa; R<sub>s</sub>, la resistencia del gel. En la piel, la epidermis (estrato córneo) actúa como membrana semipermeable con un potencial E<sub>se</sub> e impedancia R<sub>e</sub> ∥ C<sub>e</sub>; la dermis y tejidos profundos aportan R<sub>u</sub>. La impedancia depende mucho de la frecuencia: a baja frecuencia domina la resistencia (cientos de kΩ en piel seca); a alta frecuencia los capacitores cortocircuitan las ramas resistivas. Limpiar con alcohol y abradir ligeramente reduce la impedancia a pocos kΩ: una mala preparación de la piel es la causa más frecuente de registros ruidosos.</p>
+
+    <h3>4.4 Artefactos de movimiento</h3>
+    <p>Al moverse un electrodo respecto al electrolito, la doble capa se perturba y cambia el potencial de media celda: aparece un <b>artefacto de movimiento</b>. Con Ag/AgCl se reduce, pero persiste el originado en la piel (al deformarse cambia E<sub>se</sub>). Sus componentes de baja frecuencia se superponen al ECG y al EEG, así que no pueden eliminarse por completo con filtros sin distorsionar la señal. Estrategias: preparación de la piel, buen gel, fijación de cables y, en prueba de esfuerzo, electrodos flotantes (con esponja en copa) que alejan el metal de la piel.</p>
+
+    <h3>4.5 Tipos de electrodos</h3>
+    <div class="figure">
+      <div class="ph-tbl-wrap">
+        <table class="ph-tbl">
+          <thead><tr><th>Tipo</th><th>Descripción</th><th>Aplicación típica</th></tr></thead>
+          <tbody>
+            <tr><td>Placa metálica</td><td>Lámina de metal con gel; históricos, reutilizables</td><td>ECG de extremidades en equipos antiguos</td></tr>
+            <tr><td>Succión</td><td>Copa de goma que se adhiere por vacío</td><td>Precordiales de corta duración</td></tr>
+            <tr><td>Flotante</td><td>El metal no toca la piel; el gel hace de puente</td><td>Monitorización, Holter, esfuerzo</td></tr>
+            <tr><td>Desechable Ag/AgCl</td><td>Broche de Ag/AgCl, hidrogel adhesivo</td><td>ECG diagnóstico, EMG de superficie</td></tr>
+            <tr><td>Seco o textil</td><td>Sin gel; contacto capacitivo o resistivo</td><td>Dispositivos portátiles y vestibles</td></tr>
+            <tr><td>Aguja / alambre</td><td>Penetran el tejido; concéntrica o monopolar</td><td>EMG de aguja, registros intramusculares</td></tr>
+            <tr><td>Microelectrodos</td><td>Pipetas de vidrio o arreglos de silicio de micras</td><td>Registro intracelular, investigación, BCI</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption><b>Tabla 4.</b> Clasificación de electrodos para biopotenciales.</figcaption>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-title">Nota para el laboratorio</div>
+      <p>Antes de registrar, revise la caducidad de los electrodos desechables: el hidrogel se deshidrata y sube la impedancia. No mezcle electrodos de distintos materiales en un mismo registro: la diferencia de potenciales de media celda puede ser de cientos de milivoltios y saturar la primera etapa del amplificador.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 05 AMPLIFICADORES -->
+  <section id="amplificadores">
+    <div class="ph-sec">
+      <span class="ph-num">05</span>
+      <div>
+        <h2>Amplificadores de biopotenciales</h2>
+        <p class="ph-sub">Aumentan la amplitud de la señal sin distorsionarla y rechazando interferencias. El reto: la señal útil está en µV a mV, mientras aparecen voltajes de modo común de decenas o cientos de mV (incluso volts) acoplados desde la red de 60 Hz.</p>
+      </div>
+    </div>
+
+    <h3>5.1 Requisitos de diseño</h3>
+    <ul class="be-list">
+      <li><b>Alta impedancia de entrada</b> (&gt; 10 MΩ, idealmente GΩ) para no cargar la fuente y minimizar la conversión de modo común a diferencial.</li>
+      <li><b>Entrada diferencial y alto CMRR</b>, típicamente &gt; 90 a 100 dB.</li>
+      <li><b>Ganancia adecuada</b>: ≈ 1 000 para ECG y 10 000 a 100 000 para EEG, repartida en etapas para evitar saturación por el corrimiento.</li>
+      <li><b>Ancho de banda</b> acorde: 0.05 a 150 Hz (ECG diagnóstico) y 0.5 a 40 Hz (monitorización).</li>
+      <li><b>Bajo ruido</b> referido a la entrada (pocos µV pico a pico).</li>
+      <li><b>Aislamiento galvánico y protección</b> contra desfibrilador, electrocirugía y descargas electrostáticas.</li>
+      <li><b>Recuperación rápida</b> tras saturación.</li>
+    </ul>
+
+    <h3>5.2 Modo diferencial, modo común y CMRR</h3>
+    <p>Con entradas V₁ y V₂: voltaje diferencial V<sub>d</sub> = V₁ − V₂ y de modo común V<sub>cm</sub> = (V₁ + V₂)/2. La salida real es:</p>
+    <div class="ph-eq"><div class="big" style="white-space:normal">V<sub>o</sub> = A<sub>d</sub>V<sub>d</sub> + A<sub>cm</sub>V<sub>cm</sub>,&nbsp;&nbsp;&nbsp;CMRR = 20·log₁₀(A<sub>d</sub>/A<sub>cm</sub>) dB&nbsp;&nbsp;&nbsp;(9)</div></div>
+    <p>Un amplificador ideal tendría A<sub>cm</sub> = 0. En la práctica pesa más el <b>desbalance de impedancias</b> de los electrodos: si difieren en ΔZ y la impedancia de modo común del amplificador es Z<sub>cm</sub>, parte del modo común se convierte en señal diferencial espuria:</p>
+    <div class="ph-eq"><div class="big">V<sub>d,error</sub> ≈ V<sub>cm</sub> · (ΔZ / Z<sub>cm</sub>)&nbsp;&nbsp;&nbsp;(10)</div></div>
+
+    <div class="callout tip">
+      <div class="callout-title">Ejemplo resuelto 2 · Efecto del desbalance de impedancias</div>
+      <p>V<sub>cm</sub> de 60 Hz de 100 mV; las impedancias de electrodo difieren en 20 kΩ. Compare Z<sub>cm</sub> = 10 MΩ vs. 1 GΩ:</p>
+      <p style="font-family:var(--mono);font-size:.9rem;">Z<sub>cm</sub> = 10 MΩ: V<sub>d,error</sub> = 0.1·(2×10⁴ / 10⁷) = <b>200 µV</b><br>
+      Z<sub>cm</sub> = 1 GΩ: V<sub>d,error</sub> = 0.1·(2×10⁴ / 10⁹) = <b>2 µV</b></p>
+      <p>200 µV es el 20 % de un QRS de 1 mV: inaceptable. Con CMRR = 100 dB el error por ganancia de modo común es solo 1 µV. Conclusión: con impedancias reales, la impedancia de entrada suele ser el factor limitante, más que el CMRR del circuito integrado.</p>
+    </div>
+
+    <h3>5.3 El amplificador de instrumentación</h3>
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig05-amplificador-instrumentacion.png" alt="Amplificador de instrumentación de tres amplificadores operacionales" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig05-amplificador-instrumentacion.png</code></div>
+      </div>
+      <figcaption><b>Figura 5.</b> Amplificador de instrumentación de tres amplificadores operacionales. Con V⁺ en el brazo izquierdo y V⁻ en el derecho se obtiene la derivación I.</figcaption>
+    </div>
+    <p>La primera etapa (A1 y A2 no inversores) da alta impedancia de entrada y ganancia diferencial ajustable con una sola resistencia R<sub>G</sub>, mientras su ganancia de modo común es unitaria. La segunda etapa (A3) es un diferencial que convierte a salida referida a tierra y rechaza el modo común remanente.</p>
+    <div class="ph-eq"><div class="big">G = (1 + 2R₁/R<sub>G</sub>) · (R₃/R₂)&nbsp;&nbsp;&nbsp;(11)</div></div>
+    <p>En integrados como el INA128, AD620 o AD8421, las resistencias internas ajustadas con láser dan CMRR &gt; 100 dB. Conviene limitar la ganancia de la primera etapa: con un corrimiento de 300 mV y alimentación ±5 V, una ganancia de 10 da 3 V de continua (aún lineal), mientras que 1 000 saturaría. Por eso: ganancia moderada de entrada, filtro pasa altas que elimina la continua y después la ganancia restante.</p>
+
+    <h3>5.4 Tratamiento del potencial de corrimiento</h3>
+    <p>Técnicas: (a) acoplamiento en CA con filtro pasa altas RC tras la primera etapa; (b) restauración de CD que descarga rápido el capacitor de acoplamiento al saturar; (c) realimentación con integrador (servo de CD) que resta la continua; y (d) acoplamiento en CD con convertidores de 24 bits que digitalizan la señal junto con el corrimiento y lo eliminan por software.</p>
+
+    <div class="callout tip">
+      <div class="callout-title">Ejemplo resuelto 3 · Filtro pasa altas de 0.05 Hz</div>
+      <p>Filtro RC pasa altas de primer orden, f<sub>c</sub> = 0.05 Hz, con R = 3.3 MΩ:</p>
+      <p style="font-family:var(--mono);font-size:.9rem;">C = 1 / (2π·f<sub>c</sub>·R) = 1 / (2π·0.05·3.3×10⁶) ≈ 0.96 µF → 1 µF</p>
+      <p>La constante de tiempo es τ = RC = 3.3 s; tras una saturación, la línea de base tarda ≈ 5τ ≈ 16 s en estabilizarse, lo que justifica los circuitos de restauración rápida en cuidados intensivos.</p>
+    </div>
+
+    <h3>5.5 Circuito de pierna derecha activa (DRL)</h3>
+    <p>En lugar de conectar el paciente a tierra, el <b>DRL</b> toma V<sub>cm</sub> en el punto medio de R<sub>G</sub>, lo amplifica e invierte, y lo reinyecta por el electrodo de la pierna derecha. El lazo de realimentación negativa reduce el modo común efectivo por un factor igual a la ganancia del lazo. Una resistencia en serie elevada (MΩ) limita la corriente por el paciente si el amplificador falla, mejorando la seguridad al evitar la conexión directa a tierra.</p>
+
+    <h3>5.6 Aislamiento, protección y cadena de adquisición</h3>
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig06-cadena-adquisicion-ecg.png" alt="Diagrama de bloques de un sistema de adquisición de ECG con DRL y barrera de aislamiento" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig06-cadena-adquisicion-ecg.png</code></div>
+      </div>
+      <figcaption><b>Figura 6.</b> Diagrama de bloques de un sistema de adquisición de ECG con circuito de pierna derecha activa y barrera de aislamiento.</figcaption>
+    </div>
+    <p>Los bloques previos a la barrera se alimentan con una fuente aislada y tierra flotante; la señal cruza por acopladores ópticos, transformadores o capacitivos, y los amplificadores de aislamiento mantienen la corriente de fuga hacia el paciente en el orden de microamperios.</p>
+
+    <h4>Protección contra desfibrilación</h4>
+    <p>Un desfibrilador aplica 3 a 5 kV con hasta 360 J. El ECG debe sobrevivir y recuperar el trazo en segundos: resistencias limitadoras en serie de varios kΩ (a menudo en los cables), lámparas de neón o tubos de descarga de gas que conducen sobre 70 a 90 V, y diodos que recortan a un nivel seguro. Las fallas típicas son la apertura de las resistencias en serie de los cables y la destrucción de la etapa de entrada; por eso los cables entran en el programa de mantenimiento.</p>
+    <h4>Filtrado de la interferencia de electrocirugía</h4>
+    <p>Las unidades de electrocirugía (ESU) operan a 300 kHz a 5 MHz con cientos de watts. Aunque la frecuencia esté lejos del ECG, la alinealidad de las uniones semiconductoras puede demodular la RF y generar componentes de baja frecuencia. Por eso los monitores quirúrgicos llevan filtros pasa bajas de RF (redes RC o LC con ferrita) en las entradas, antes de cualquier elemento activo.</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 06 ECG -->
+  <section id="ecg">
+    <div class="ph-sec">
+      <span class="ph-num">06</span>
+      <div>
+        <h2>Electrocardiografía</h2>
+        <p class="ph-sub">El registro de la actividad eléctrica del corazón desde la superficie. Es la medición bioeléctrica más empleada en la clínica por su bajo costo, su carácter no invasivo y la riqueza de información que aporta.</p>
+      </div>
+    </div>
+
+    <h3>6.1 El sistema de conducción y la génesis del ECG</h3>
+    <p>La activación normal se inicia en el <b>nodo sinoauricular (SA)</b> de la aurícula derecha (60 a 100 lpm), se extiende por las aurículas y llega al <b>nodo auriculoventricular (AV)</b>, donde se retrasa ≈ 0.1 s para permitir el llenado ventricular. Luego viaja por el haz de His, sus ramas y la red de Purkinje. El ECG de superficie es la manifestación en el conductor volumétrico de la suma de todos los potenciales de acción.</p>
+
+    <h3>6.2 Morfología del ECG normal</h3>
+    <p>En un ciclo se reconocen: la <b>onda P</b> (despolarización auricular), el <b>complejo QRS</b> (despolarización ventricular, que oculta la repolarización auricular) y la <b>onda T</b> (repolarización ventricular); a veces una pequeña onda U. El registro se hace a 25 mm/s y 10 mm/mV, de modo que cada cuadro pequeño equivale a 0.04 s y 0.1 mV, y cada cuadro grande (5 mm) a 0.2 s y 0.5 mV.</p>
+
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig07-ciclo-ecg-papel.png" alt="Ciclo cardiaco sobre papel electrocardiográfico con ondas, segmentos e intervalos" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig07-ciclo-ecg-papel.png</code></div>
+      </div>
+      <figcaption><b>Figura 7.</b> Ciclo cardiaco sintético sobre papel electrocardiográfico con las principales ondas, segmentos e intervalos.</figcaption>
+    </div>
+
+    <div class="figure">
+      <div class="ph-tbl-wrap">
+        <table class="ph-tbl">
+          <thead><tr><th>Parámetro</th><th>Significado fisiológico</th><th>Valor normal en adulto</th></tr></thead>
+          <tbody>
+            <tr><td>Onda P</td><td>Despolarización auricular</td><td>&lt; 0.12 s; amplitud &lt; 0.25 mV</td></tr>
+            <tr><td>Intervalo PR</td><td>Del inicio auricular al ventricular (retardo AV)</td><td>0.12 a 0.20 s</td></tr>
+            <tr><td>Complejo QRS</td><td>Despolarización ventricular</td><td>0.06 a 0.10 s (&lt; 0.12 s)</td></tr>
+            <tr><td>Segmento ST</td><td>Ventrículo totalmente despolarizado</td><td>Isoeléctrico (desnivel &lt; 0.1 mV)</td></tr>
+            <tr><td>Onda T</td><td>Repolarización ventricular</td><td>Positiva en la mayoría de derivaciones</td></tr>
+            <tr><td>Intervalo QT</td><td>Actividad eléctrica ventricular total</td><td>QTc &lt; 0.44 s aprox.</td></tr>
+            <tr><td>Intervalo RR</td><td>Duración del ciclo cardiaco</td><td>0.6 a 1.0 s (60 a 100 lpm)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption><b>Tabla 5.</b> Mediciones de amplitud y tiempo en el ECG del adulto (valores de referencia usuales).</figcaption>
+    </div>
+
+    <p>Como el QT se acorta al subir la frecuencia, se corrige con la fórmula de Bazett (QT y RR en segundos):</p>
+    <div class="ph-eq"><div class="big">QTc = QT / √RR&nbsp;&nbsp;&nbsp;(12)</div></div>
+    <p>La frecuencia cardiaca puede estimarse a 25 mm/s dividiendo 1 500 entre el número de cuadros pequeños entre dos ondas R, o 300 entre el número de cuadros grandes.</p>
+
+    <h3>6.3 Sistema estándar de 12 derivaciones</h3>
+    <p>Una <b>derivación</b> es la diferencia de potencial entre un par de electrodos o entre un electrodo y una referencia construida con varios. El ECG de 12 derivaciones usa 10 electrodos: cuatro en extremidades (RA, LA, LL y RL, este último como referencia/DRL) y seis precordiales.</p>
+    <h4>Derivaciones bipolares de extremidades (Einthoven)</h4>
+    <div class="ph-eq"><div class="big" style="white-space:normal">I = V<sub>LA</sub> − V<sub>RA</sub>&nbsp;&nbsp;&nbsp;II = V<sub>LL</sub> − V<sub>RA</sub>&nbsp;&nbsp;&nbsp;III = V<sub>LL</sub> − V<sub>LA</sub>&nbsp;&nbsp;&nbsp;(13)</div></div>
+    <p>De aquí la <b>ley de Einthoven</b>, II = I + III, que verifica el correcto conexionado de los cables.</p>
+    <h4>Derivaciones aumentadas de Goldberger</h4>
+    <p>Wilson propuso la <b>terminal central de Wilson (V<sub>W</sub>)</b>, promedio de los tres electrodos de extremidades. Goldberger notó que al excluir la propia extremidad del promedio la amplitud crece un 50 % sin cambiar la forma:</p>
+    <div class="ph-eq"><div class="big">aVR = V<sub>RA</sub> − (V<sub>LA</sub> + V<sub>LL</sub>)/2&nbsp;&nbsp;&nbsp;(14)</div></div>
+    <div class="ph-eq"><div class="big">aVL = V<sub>LA</sub> − (V<sub>RA</sub> + V<sub>LL</sub>)/2&nbsp;&nbsp;&nbsp;(15)</div></div>
+    <div class="ph-eq"><div class="big">aVF = V<sub>LL</sub> − (V<sub>RA</sub> + V<sub>LA</sub>)/2&nbsp;&nbsp;&nbsp;(16)</div></div>
+    <p>Las seis derivaciones de extremidades exploran el plano frontal con ejes separados 30°, formando el sistema hexaxial, base para calcular el eje eléctrico medio del QRS (normal entre −30° y +90°).</p>
+
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig08-einthoven-hexaxial.png" alt="Triángulo de Einthoven y sistema hexaxial de referencia en el plano frontal" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig08-einthoven-hexaxial.png</code></div>
+      </div>
+      <figcaption><b>Figura 8.</b> Triángulo de Einthoven (izquierda) y sistema hexaxial de referencia en el plano frontal (derecha).</figcaption>
+    </div>
+
+    <h4>Derivaciones precordiales</h4>
+    <p>V1 a V6 miden el potencial de electrodos en el tórax respecto a la terminal central de Wilson y exploran el plano horizontal. Su colocación es crucial: un espacio intercostal de diferencia puede simular patología.</p>
+    <div class="figure">
+      <div class="ph-tbl-wrap">
+        <table class="ph-tbl">
+          <thead><tr><th>Deriv.</th><th>Ubicación del electrodo</th><th>Región</th></tr></thead>
+          <tbody>
+            <tr><td>V1</td><td>4.º espacio intercostal, borde esternal derecho</td><td>Septal</td></tr>
+            <tr><td>V2</td><td>4.º espacio intercostal, borde esternal izquierdo</td><td>Septal</td></tr>
+            <tr><td>V3</td><td>Punto medio entre V2 y V4</td><td>Anterior</td></tr>
+            <tr><td>V4</td><td>5.º espacio intercostal, línea medioclavicular izq.</td><td>Anterior</td></tr>
+            <tr><td>V5</td><td>Línea axilar anterior, nivel de V4</td><td>Lateral</td></tr>
+            <tr><td>V6</td><td>Línea axilar media, nivel de V4</td><td>Lateral</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption><b>Tabla 6.</b> Colocación de los electrodos precordiales.</figcaption>
+    </div>
+
+    <h3>6.4 Otras modalidades de registro ECG</h3>
+    <ul class="be-list">
+      <li><b>Monitorización continua (3 o 5 electrodos):</b> hospitalización y quirófano, banda reducida (0.5 a 40 Hz); no apta para valorar ST con fines diagnósticos.</li>
+      <li><b>Holter:</b> registro ambulatorio de 24 a 48 h, 2 o 3 canales, para arritmias paroxísticas e isquemia silenciosa.</li>
+      <li><b>Prueba de esfuerzo:</b> exige electrodos poco susceptibles al movimiento, sistema Mason-Likar y promediado de latidos.</li>
+      <li><b>ECG esofágico e intracavitario:</b> electrodos cerca de las aurículas, ideales para ver la onda P.</li>
+      <li><b>ECG de un canal en portátiles:</b> relojes y parches que registran una derivación tipo I, útiles para tamizaje de fibrilación auricular.</li>
+    </ul>
+
+    <h3>6.5 Detección del complejo QRS</h3>
+    <p>Es la base de la frecuencia cardiaca, las alarmas y el análisis de arritmias. El algoritmo clásico de <b>Pan y Tompkins (1985)</b> combina filtro pasa banda de 5 a 15 Hz, derivación, elevación al cuadrado, integración en ventana móvil de ≈ 150 ms y umbrales adaptativos. Los monitores deben además detectar y rechazar los pulsos de marcapasos (0.1 a 2 ms), lo que exige frecuencias de muestreo elevadas.</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 07 EEG -->
+  <section id="eeg">
+    <div class="ph-sec">
+      <span class="ph-num">07</span>
+      <div>
+        <h2>Electroencefalografía</h2>
+        <p class="ph-sub">Registra desde el cuero cabelludo la actividad eléctrica del cerebro. Su origen principal no son los potenciales de acción, sino la suma de potenciales postsinápticos de poblaciones de neuronas piramidales orientadas en paralelo, que actúan como dipolos.</p>
+      </div>
+    </div>
+    <p>La señal atraviesa meninges, líquido cefalorraquídeo, cráneo (muy resistivo) y cuero cabelludo, por lo que llega muy atenuada y espacialmente difuminada: amplitud típica de <b>10 a 100 µV</b>.</p>
+
+    <h3>7.1 Sistema internacional 10-20</h3>
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig09-sistema-10-20.png" alt="Sistema internacional 10-20 de colocación de electrodos de EEG, vista superior" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig09-sistema-10-20.png</code></div>
+      </div>
+      <figcaption><b>Figura 9.</b> Sistema internacional 10-20 de colocación de electrodos de EEG (vista superior). En dorado, los electrodos de la línea media.</figcaption>
+    </div>
+    <p>Toma como referencias el nasion, el inion y los puntos preauriculares; los electrodos se ubican a distancias del 10 % o 20 %. Las letras indican región (Fp prefrontal, F frontal, C central, T temporal, P parietal, O occipital), los números impares el hemisferio izquierdo, los pares el derecho y la z la línea media. En alta densidad se usan 10-10 y 10-5, con hasta 256 canales.</p>
+
+    <h3>7.2 Ritmos cerebrales</h3>
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig10-ritmos-eeg.png" alt="Ritmos característicos del EEG: alfa, beta, theta, delta y gamma" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig10-ritmos-eeg.png</code></div>
+      </div>
+      <figcaption><b>Figura 10.</b> Ritmos característicos del EEG (señales sintéticas con fines ilustrativos).</figcaption>
+    </div>
+    <p>El <b>alfa</b> (8 a 13 Hz) predomina en occipital con ojos cerrados y se bloquea al abrirlos; el <b>beta</b> (13 a 30 Hz) se asocia a alerta y actividad mental; el <b>theta</b> (4 a 8 Hz) aparece en somnolencia y niños; el <b>delta</b> (0.5 a 4 Hz) caracteriza el sueño profundo y, en el adulto despierto, puede indicar lesión; la banda <b>gamma</b> (&gt; 30 Hz) se relaciona con procesos cognitivos.</p>
+
+    <h3>7.3 Montajes, potenciales evocados y requisitos</h3>
+    <p>Un <b>montaje</b> define cómo se combinan los electrodos: <b>referencial</b> (cada electrodo contra una referencia común, p. ej. lóbulos A1 y A2) o <b>bipolar</b> (diferencias entre adyacentes, resalta focos). Los <b>potenciales evocados</b> (visuales, auditivos de tallo, somatosensoriales) son de 0.1 a 10 µV, sincronizados con un estímulo; se extraen por <b>promediación coherente</b>: al promediar N respuestas, la relación señal a ruido mejora en √N. El amplificador de EEG requiere ganancias de 10 000 a 100 000, ruido &lt; 1 µV rms, impedancias &lt; 5 kΩ y alto CMRR. Artefactos frecuentes: movimientos oculares y parpadeo (en realidad un EOG), músculos de frente y mandíbula, sudor, ECG e interferencia de línea.</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 08 EMG -->
+  <section id="emg">
+    <div class="ph-sec">
+      <span class="ph-num">08</span>
+      <div>
+        <h2>Electromiografía y electroneurografía</h2>
+        <p class="ph-sub">El EMG registra la actividad eléctrica del músculo; el ENG, el potencial de acción compuesto de un nervio. Ambos son claves en el diagnóstico neuromuscular y en el control de prótesis mioeléctricas.</p>
+      </div>
+    </div>
+
+    <h3>8.1 La unidad motora y el origen del EMG</h3>
+    <p>La <b>unidad motora</b> es una motoneurona alfa y todas las fibras que inerva. Cuando dispara, sus fibras se activan casi a la vez y la suma de sus potenciales forma el <b>potencial de acción de unidad motora (PAUM)</b>. La fuerza se gradúa por reclutamiento de más unidades y por aumento de su frecuencia de disparo. El EMG de superficie es la suma de muchos trenes de PAUM, con aspecto de ruido aleatorio de media cero cuya amplitud crece con la fuerza.</p>
+
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig11-emg-superficie.png" alt="EMG de superficie simulado: señal cruda, rectificada y envolvente" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig11-emg-superficie.png</code></div>
+      </div>
+      <figcaption><b>Figura 11.</b> EMG de superficie simulado durante dos contracciones: señal cruda, señal rectificada y envolvente obtenida por filtrado pasa bajas.</figcaption>
+    </div>
+
+    <h3>8.2 EMG de superficie y EMG de aguja</h3>
+    <p>El <b>EMG de superficie</b> usa electrodos bipolares Ag/AgCl separados ≈ 2 cm y alineados con las fibras, más una referencia sobre hueso. Es no invasivo (biomecánica, rehabilitación, ergonomía, biorretroalimentación y prótesis mioeléctricas, donde la envolvente sirve de señal de mando). Su banda útil es 10 a 500 Hz, con la mayor energía entre 50 y 150 Hz. El <b>EMG de aguja</b> observa PAUM individuales: fibrilaciones y ondas agudas positivas en reposo sugieren denervación; PAUM pequeños y polifásicos sugieren miopatía. La <b>frecuencia mediana</b> del espectro disminuye en una contracción sostenida y se usa como indicador de fatiga.</p>
+
+    <h3>8.3 Electroneurografía y estudios de conducción</h3>
+    <p>El ENG registra el potencial de acción compuesto de un nervio. En los estudios de conducción se estimula en dos puntos y se mide la latencia. La velocidad de conducción se calcula como la distancia entre puntos entre la diferencia de latencias, lo que elimina el tiempo de la unión neuromuscular:</p>
+    <div class="ph-eq"><div class="big">VCN = Δx / (t<sub>proximal</sub> − t<sub>distal</sub>)&nbsp;&nbsp;&nbsp;(17)</div></div>
+
+    <div class="callout tip">
+      <div class="callout-title">Ejemplo resuelto 4 · Velocidad de conducción del nervio mediano</div>
+      <p>Estímulo en muñeca y codo, registro en el abductor corto del pulgar. Latencias: 3.6 ms (muñeca) y 7.8 ms (codo); distancia: 23 cm.</p>
+      <p style="font-family:var(--mono);font-size:.9rem;">VCN = 230 mm / (7.8 − 3.6) ms = 230 / 4.2 ≈ <b>54.8 m/s</b></p>
+      <p>El valor normal en extremidades superiores es 50 a 70 m/s; un valor mucho menor sugeriría desmielinización, y una amplitud reducida con velocidad conservada, pérdida axonal.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 09 OTROS -->
+  <section id="otros">
+    <div class="ph-sec">
+      <span class="ph-num">09</span>
+      <div>
+        <h2>Otros biopotenciales</h2>
+        <p class="ph-sub">Más allá de ECG, EEG y EMG, otras señales bioeléctricas tienen usos clínicos y de investigación específicos.</p>
+      </div>
+    </div>
+
+    <h3>9.1 Electrooculograma (EOG)</h3>
+    <p>El ojo es un dipolo fijo, con la córnea positiva respecto a la retina (potencial corneorretiniano de 0.4 a 1 mV). Al girar el globo cambia la orientación del dipolo y el potencial medido por electrodos a los lados (movimientos horizontales) o arriba y abajo (verticales). La relación es casi lineal en ±30°, con sensibilidad de 15 a 20 µV por grado. Se usa en polisomnografía, evaluación del nistagmo, interfaces para personas con discapacidad y como referencia para eliminar artefactos oculares del EEG. Requiere amplificadores acoplados en CD y electrodos muy estables.</p>
+
+    <h3>9.2 Electrorretinograma (ERG)</h3>
+    <p>Respuesta eléctrica de la retina ante luz, registrada entre un electrodo corneal (lente de contacto o fibra) y una referencia. Su forma incluye una <b>onda a</b> negativa (fotorreceptores) y una <b>onda b</b> positiva (células bipolares y de Müller). Se usa en el diagnóstico de distrofias retinianas y enfermedades hereditarias.</p>
+
+    <h3>9.3 Electrogastrograma y otras señales</h3>
+    <p>El <b>EGG</b> registra desde la superficie abdominal la actividad eléctrica lenta del estómago (≈ 3 ciclos por minuto, 0.05 Hz). Otras señales: el <b>electrohisterograma</b> del útero (útil en el trabajo de parto) y los registros intracorticales o electrocorticográficos en neurocirugía e interfaces cerebro-computadora invasivas.</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 10 DIGITAL -->
+  <section id="digital">
+    <div class="ph-sec">
+      <span class="ph-num">10</span>
+      <div>
+        <h2>Digitalización y procesamiento básico</h2>
+        <p class="ph-sub">Casi todos los equipos digitalizan los biopotenciales. La conversión impone tres decisiones: la frecuencia de muestreo, la resolución y el filtrado antialias.</p>
+      </div>
+    </div>
+
+    <h3>10.1 Frecuencia de muestreo</h3>
+    <p>El teorema de Nyquist exige f<sub>s</sub> mayor que el doble de la máxima frecuencia de la señal. En la práctica se usa margen: para un ECG diagnóstico de 150 Hz se recomiendan al menos 500 muestras/s, y 1 000 Hz o más para potenciales tardíos o pulsos de marcapasos. Antes del convertidor se coloca un <b>filtro antialias</b> pasa bajas que atenúe las componentes por encima de f<sub>s</sub>/2, que de lo contrario se reflejarían en la banda útil.</p>
+
+    <h3>10.2 Resolución</h3>
+    <p>El escalón de cuantización o bit menos significativo (LSB) referido a la entrada determina la mínima variación detectable:</p>
+    <div class="ph-eq"><div class="big">LSB<sub>entrada</sub> = V<sub>FS</sub> / (2<sup>n</sup> · G)&nbsp;&nbsp;&nbsp;(18)</div></div>
+    <p>donde V<sub>FS</sub> es el intervalo a plena escala, n el número de bits y G la ganancia analógica previa. Los sistemas modernos usan convertidores sigma-delta de 24 bits con ganancia moderada, lo que permite digitalizar el corrimiento sin saturar.</p>
+
+    <div class="callout tip">
+      <div class="callout-title">Ejemplo resuelto 5 · Resolución de un sistema de ECG</div>
+      <p>Ganancia G = 1 000, convertidor de 12 bits, entrada de 0 a 5 V.</p>
+      <p style="font-family:var(--mono);font-size:.9rem;">LSB<sub>entrada</sub> = 5 V / (4 096 · 1 000) ≈ <b>1.22 µV</b></p>
+      <p>Un QRS de 1 mV se convierte en 1 V a la salida y ocupa ≈ 820 niveles, más que suficiente. La misma cadena para EEG (20 µV) daría solo ≈ 16 niveles, por lo que haría falta más ganancia o más resolución.</p>
+    </div>
+
+    <h3>10.3 Filtrado digital</h3>
+    <p>Ya digitalizada, se aplican filtros para eliminar la deriva de línea de base (pasa altas, idealmente de fase lineal para no distorsionar el ST), el ruido de alta frecuencia (pasa bajas) y la red (notch de 60 Hz en México y América, 50 Hz en Europa). El notch se usa con prudencia porque puede introducir oscilaciones en el QRS y reducir componentes útiles cercanas a 60 Hz, sobre todo en EMG. Los filtros de fase cero (hacia adelante y atrás) solo son posibles fuera de línea.</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 11 INTERFERENCIAS -->
+  <section id="interferencias">
+    <div class="ph-sec">
+      <span class="ph-num">11</span>
+      <div>
+        <h2>Interferencias, artefactos y solución de problemas</h2>
+        <p class="ph-sub">Un registro es de calidad cuando la señal de interés se distingue de las interferencias, que pueden ser fisiológicas, técnicas o ambientales.</p>
+      </div>
+    </div>
+
+    <div class="figure">
+      <div class="fig-slot">
+        <img class="fig-img" src="assets/img/tema4/fig12-interferencias-ecg.png" alt="Interferencias típicas en el ECG: línea de 60 Hz, deriva de línea base y artefacto muscular" loading="lazy" onerror="this.closest('.fig-slot').classList.add('missing')">
+        <div class="fig-hint"><b>Imagen pendiente de subir</b><code>assets/img/tema4/fig12-interferencias-ecg.png</code></div>
+      </div>
+      <figcaption><b>Figura 12.</b> Interferencias típicas en el ECG: línea de 60 Hz, deriva de línea base y artefacto muscular.</figcaption>
+    </div>
+
+    <h3>11.1 Interferencia de la red eléctrica</h3>
+    <p>La red de 127 V y 60 Hz se acopla por dos mecanismos. El <b>acoplamiento capacitivo</b> (campo eléctrico) inyecta corrientes de desplazamiento de decenas de nanoamperios que, al fluir por las impedancias de los electrodos, generan voltajes de modo común y, si hay desbalance, diferenciales. El <b>acoplamiento inductivo</b> (campo magnético) induce voltajes en el lazo de los cables, proporcionales a su área. Contramedidas: impedancias bajas y balanceadas, circuito DRL, cables blindados con guarda activa, trenzar o juntar los cables para reducir el área del lazo, alejar el equipo de transformadores y, como último recurso, el filtro notch.</p>
+
+    <h3>11.2 Guía de solución de problemas</h3>
+    <div class="figure">
+      <div class="ph-tbl-wrap">
+        <table class="ph-tbl">
+          <thead><tr><th>Síntoma</th><th>Causas probables</th><th>Acciones correctivas</th></tr></thead>
+          <tbody>
+            <tr><td>Interferencia de 60 Hz</td><td>Electrodo suelto o seco, desbalance de impedancias, cable dañado, equipos o cables de potencia cercanos, tierra deficiente</td><td>Revisar/reemplazar electrodos, preparar la piel, verificar el cable, reubicar el equipo, revisar la tierra</td></tr>
+            <tr><td>Línea base errante</td><td>Respiración, movimiento, gel seco, electrodos de distinto material, tensión en cables</td><td>Relajar al paciente, fijar cables, usar electrodos nuevos del mismo lote, verificar el pasa altas</td></tr>
+            <tr><td>Artefacto muscular</td><td>Paciente tenso, con frío o temblor; electrodos sobre masas musculares</td><td>Tranquilizar y abrigar, colocar electrodos en zonas óseas o proximales</td></tr>
+            <tr><td>Trazo plano</td><td>Electrodo desprendido, cable roto, saturación por corrimiento</td><td>Revisar conexión, probar con simulador, esperar la recuperación de la línea base</td></tr>
+            <tr><td>aVR positiva / II ≠ I + III</td><td>Inversión de cables de brazos</td><td>Verificar colocación y código de colores</td></tr>
+            <tr><td>Picos esporádicos</td><td>Falso contacto, descargas electrostáticas, marcapasos</td><td>Revisar conectores y cables, identificar pulsos de marcapasos</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption><b>Tabla 7.</b> Problemas comunes en el registro de ECG, causas y soluciones.</figcaption>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">Código de colores de los cables de extremidades</div>
+      <p>Dos convenciones. <b>AHA</b> (América): RA blanco, LA negro, LL rojo, RL verde, V café. <b>IEC</b> (Europa): R rojo, L amarillo, F verde, N negro, C blanco. Antes de trabajar con un equipo, identifique cuál convención usa, sobre todo en hospitales con equipos de distintos orígenes.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 12 SEGURIDAD -->
+  <section id="seguridad">
+    <div class="ph-sec">
+      <span class="ph-num">12</span>
+      <div>
+        <h2>Seguridad eléctrica y mantenimiento</h2>
+        <p class="ph-sub">La corriente que atraviesa el cuerpo puede estimular tejidos, quemar y, en el peor caso, inducir fibrilación ventricular. Los límites cambian radicalmente cuando hay una vía conductora directa al corazón.</p>
+      </div>
+    </div>
+
+    <h3>12.1 Macrochoque y microchoque</h3>
+    <p>En el <b>macrochoque</b> (corriente por la piel) a 60 Hz: percepción ≈ 0.5 mA, "no soltar" ≈ 10 mA y fibrilación ventricular desde 75 a 400 mA. Pero con una vía directa al corazón (catéter, electrodo de marcapasos temporal), el <b>microchoque</b> de apenas decenas a cientos de microamperios puede ser peligroso. Por eso los límites de fuga en partes aplicadas cardiacas son del orden de <b>10 µA</b>.</p>
+
+    <h3>12.2 Clasificación de partes aplicadas (IEC 60601-1)</h3>
+    <div class="figure">
+      <div class="ph-tbl-wrap">
+        <table class="ph-tbl">
+          <thead><tr><th>Tipo</th><th>Descripción</th><th>Fuga al paciente (normal / primer defecto)</th></tr></thead>
+          <tbody>
+            <tr><td>B</td><td>Con conexión a tierra permitida; no para contacto cardiaco directo</td><td>100 µA / 500 µA</td></tr>
+            <tr><td>BF</td><td>Flotante (aislada de tierra); contacto con el paciente, no con el corazón</td><td>100 µA / 500 µA</td></tr>
+            <tr><td>CF</td><td>Flotante con máximo aislamiento; apta para aplicación cardiaca directa</td><td>10 µA / 50 µA</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption><b>Tabla 8.</b> Tipos de partes aplicadas y límites de corriente de fuga al paciente (IEC 60601-1).</figcaption>
+    </div>
+    <p>Los electrocardiógrafos y monitores suelen tener partes aplicadas tipo <b>CF a prueba de desfibrilación</b> (símbolo de corazón en un cuadro con un pequeño desfibrilador). Las normas particulares IEC 60601-2-25 (electrocardiógrafos) e IEC 60601-2-27 (monitores de ECG) especifican requisitos de respuesta en frecuencia, CMRR, tolerancia al corrimiento, recuperación tras desfibrilación y detección de marcapasos.</p>
+
+    <h3>12.3 Mantenimiento preventivo y verificación</h3>
+    <ul class="be-list">
+      <li><b>Inspección visual:</b> carcasa, conectores, cables del paciente, cable de alimentación y etiquetado.</li>
+      <li><b>Pruebas de seguridad eléctrica:</b> resistencia de tierra de protección y corrientes de fuga (chasis y paciente) en condición normal y de primer defecto.</li>
+      <li><b>Verificación funcional con simulador:</b> señal de 1 mV, ritmo sinusal a varias frecuencias, exactitud de la FC, alarmas, detección de derivación desconectada y de marcapasos.</li>
+      <li><b>Verificación de desempeño:</b> respuesta en frecuencia, velocidad de papel/barrido (25 y 50 mm/s) y sensibilidad (5, 10 y 20 mm/mV).</li>
+      <li><b>Revisión de cables:</b> continuidad y resistencias de protección; son lo que más falla, sobre todo tras desfibrilaciones.</li>
+      <li><b>Documentación:</b> registro de resultados, etiquetas de verificación y seguimiento de fallas recurrentes.</li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 13 PRÁCTICA -->
+  <section id="practica">
+    <div class="ph-sec">
+      <span class="ph-num">13</span>
+      <div>
+        <h2>Práctica de laboratorio sugerida</h2>
+        <p class="ph-sub">Registro de ECG de tres derivaciones y verificación de la ley de Einthoven.</p>
+      </div>
+    </div>
+
+    <div class="be-cols lean">
+      <div>
+        <h3>Objetivos</h3>
+        <ul class="be-list">
+          <li>Registrar las derivaciones I, II y III en un voluntario sano con un amplificador de instrumentación y un sistema de adquisición.</li>
+          <li>Medir amplitudes e intervalos, calcular la FC y el QTc, y verificar numéricamente la ley de Einthoven.</li>
+          <li>Observar el efecto de la preparación de la piel, del movimiento y del circuito DRL sobre la calidad del registro.</li>
+        </ul>
+        <h3>Procedimiento</h3>
+        <ol class="ph-steps">
+          <li><h4>Prepara la piel</h4><p>Limpia con alcohol las muñecas (o cara interna de antebrazos) y el tobillo izquierdo; deja secar.</p></li>
+          <li><h4>Coloca los electrodos</h4><p>En RA, LA, LL y RL. Para la derivación I: entrada + a LA, − a RA, referencia/DRL a RL.</p></li>
+          <li><h4>Registra</h4><p>Muestreo a 500 Hz o más; 30 s con el voluntario sentado, relajado y en silencio. Repite para II y III.</p></li>
+          <li><h4>Provoca artefactos</h4><p>10 s tensando los brazos y 10 s respirando profundo. Documenta lo observado.</p></li>
+          <li><h4>Compara condiciones</h4><p>Repite sin preparación de piel y, si el módulo lo permite, con el DRL desconectado.</p></li>
+          <li><h4>Filtra</h4><p>Aplica pasa banda de 0.5 a 40 Hz y notch de 60 Hz; compara con la señal cruda.</p></li>
+        </ol>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:18px;">
+          <h3 style="margin-top:0">Material</h3>
+          <div class="ph-chips">
+            <span class="ph-chip">Módulo AD8232 / INA128 / AD620 + DRL</span>
+            <span class="ph-chip">ESP32 o tarjeta de adquisición</span>
+            <span class="ph-chip">Electrodos Ag/AgCl</span>
+            <span class="ph-chip">Alcohol isopropílico + gasas</span>
+            <span class="ph-chip">Batería / banco de energía</span>
+            <span class="ph-chip">Laptop en batería</span>
+            <span class="ph-chip">Python / MATLAB / Arduino IDE</span>
+          </div>
+        </div>
+        <div class="callout warn">
+          <div class="callout-title">Advertencia de seguridad</div>
+          <p>Los circuitos de laboratorio no tienen aislamiento certificado. <b>Nunca</b> conectes a una persona a un circuito alimentado directa o indirectamente desde la red (incluida una laptop cargando). Usa solo baterías. No realices la práctica con portadores de marcapasos o dispositivos implantables. Los registros son didácticos, no diagnósticos.</p>
+        </div>
+        <div class="card" style="margin-top:18px;">
+          <h3 style="margin-top:0">Análisis y reporte</h3>
+          <ul class="be-list">
+            <li>Mide en ≥ 5 latidos las ondas P, R y T y los intervalos PR, QRS, QT y RR (media y desviación estándar).</li>
+            <li>Calcula la FC y el QTc de Bazett.</li>
+            <li>Compara R en II con la suma de I y III y discute las discrepancias.</li>
+            <li>Explica cuantitativamente el efecto de la preparación de la piel y del DRL con los conceptos de las secciones 04 y 05.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 14 EJERCICIOS -->
+  <section id="ejercicios">
+    <div class="ph-sec">
+      <span class="ph-num">14</span>
+      <div>
+        <h2>Ejercicios y autoevaluación</h2>
+        <p class="ph-sub">Problemas propuestos con respuestas y un cuestionario conceptual para verificar la comprensión.</p>
+      </div>
+    </div>
+
+    <h3>14.1 Problemas propuestos</h3>
+    <ol class="ph-steps">
+      <li><h4>Nernst del potasio</h4><p>Calcula E<sub>K</sub> a 37 °C para [K]<sub>o</sub> = 5 mM y [K]<sub>i</sub> = 140 mM. ¿Qué ocurre con el reposo si [K]<sub>o</sub> sube a 10 mM (hiperpotasemia)?</p></li>
+      <li><h4>Reposo por conductancias</h4><p>Con g<sub>K</sub> = 0.37, g<sub>Na</sub> = 0.011, g<sub>L</sub> = 0.3 mS/cm², E<sub>K</sub> = −77 mV, E<sub>Na</sub> = +50 mV y E<sub>L</sub> = −54.4 mV, obtén el reposo con la expresión de conductancias ponderadas.</p></li>
+      <li><h4>Ganancia del INA</h4><p>Con R₁ = 24.7 kΩ, R₂ = R₃ = 10 kΩ, determina R<sub>G</sub> para ganancia 10 en la primera etapa. ¿Cuál es la salida de continua si el corrimiento es 250 mV?</p></li>
+      <li><h4>FC y QTc</h4><p>A 25 mm/s hay 20 cuadros pequeños entre dos ondas R y el QT mide 9 cuadros. Calcula la FC y el QTc.</p></li>
+      <li><h4>Eje eléctrico</h4><p>I tiene un QRS neto de +0.6 mV y III de +0.4 mV. Calcula la amplitud en II y aVF y estima el eje.</p></li>
+      <li><h4>Promediación</h4><p>Se promedian 400 respuestas de un potencial evocado auditivo. Si la SNR individual es 0.1, ¿cuál es la SNR tras el promedio?</p></li>
+    </ol>
+
+    <h3>14.2 Respuestas</h3>
+    <div class="callout tip">
+      <ol class="be-list">
+        <li>E<sub>K</sub> = 61.5·log(5/140) ≈ −89 mV. Con 10 mM, E<sub>K</sub> ≈ −70.5 mV: la membrana se despolariza, lo que explica la hiperexcitabilidad inicial y las ondas T picudas de la hiperpotasemia.</li>
+        <li>V<sub>m</sub> = (0.37·(−77) + 0.011·50 + 0.3·(−54.4)) / 0.681 ≈ <b>−65 mV</b>, el reposo del modelo de Hodgkin-Huxley.</li>
+        <li>1 + 2R₁/R<sub>G</sub> = 10 → R<sub>G</sub> = 2(24.7 kΩ)/9 ≈ 5.49 kΩ. La salida de continua es 10 × 0.25 V × (R₃/R₂) = 2.5 V.</li>
+        <li>RR = 20 × 0.04 = 0.8 s → FC = 75 lpm. QT = 0.36 s; QTc = 0.36/√0.8 ≈ 0.40 s, normal.</li>
+        <li>Por Einthoven, II = I + III = 1.0 mV. aVF = (II + III)/2 = 0.7 mV. Con I a 0° y aVF a 90°, el eje ≈ arctan(0.7/0.6) ≈ 49°, normal.</li>
+        <li>La SNR mejora en √400 = 20, por lo que pasa de 0.1 a <b>2</b>.</li>
+      </ol>
+    </div>
+
+    <h3>14.3 Cuestionario de autoevaluación</h3>
+    <ul class="be-list">
+      <li>¿Por qué el interior de una célula en reposo es negativo? Menciona la bomba Na⁺/K⁺ y la permeabilidad selectiva.</li>
+      <li>Explica la diferencia entre periodo refractario absoluto y relativo, y su importancia en el músculo cardiaco.</li>
+      <li>¿Qué representa el conductor volumétrico y por qué la polaridad de una onda depende de la derivación?</li>
+      <li>Define potencial de media celda y potencial de corrimiento. ¿Por qué se prefieren electrodos Ag/AgCl?</li>
+      <li>Dibuja el circuito equivalente electrodo-piel y explica por qué la abrasión mejora el registro.</li>
+      <li>Enumera cinco requisitos de un amplificador de biopotenciales y justifícalos.</li>
+      <li>¿Por qué la ganancia de la primera etapa de un ECG se mantiene baja?</li>
+      <li>Describe el circuito de pierna derecha activa y sus ventajas de seguridad.</li>
+      <li>Menciona tres técnicas para tratar el corrimiento del potencial de electrodo.</li>
+      <li>¿Qué protege al ECG de una descarga de desfibrilador? ¿Cuáles son las fallas típicas?</li>
+      <li>¿Por qué la interferencia de un electrobisturí puede aparecer en la banda del ECG si opera a cientos de kHz?</li>
+      <li>Escribe las ecuaciones de I, II, III, aVR, aVL y aVF, y describe la colocación de V1 a V6.</li>
+      <li>¿Qué diferencia hay entre el ancho de banda de un ECG diagnóstico y uno de monitorización?</li>
+      <li>¿Cuál es el origen fisiológico del EEG y por qué su amplitud es tan pequeña?</li>
+      <li>Explica cómo se obtiene la envolvente del EMG y su uso en prótesis mioeléctricas.</li>
+      <li>Distingue macrochoque de microchoque y explica qué significa una parte aplicada tipo CF.</li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 15 GLOSARIO Y REFERENCIAS -->
+  <section id="glosario">
+    <div class="ph-sec">
+      <span class="ph-num">15</span>
+      <div>
+        <h2>Glosario y referencias</h2>
+        <p class="ph-sub">Términos clave de la guía y las fuentes en que se basa el contenido.</p>
+      </div>
+    </div>
+
+    <div class="figure">
+      <div class="ph-tbl-wrap">
+        <table class="ph-tbl">
+          <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+          <tbody>
+            <tr><td>Biopotencial</td><td>Diferencia de potencial producida por la actividad electroquímica de células excitables.</td></tr>
+            <tr><td>Célula excitable</td><td>Célula capaz de generar un potencial de acción: neuronas, fibras musculares y algunas glandulares.</td></tr>
+            <tr><td>CMRR</td><td>Relación de rechazo de modo común; cociente entre ganancia diferencial y de modo común, en dB.</td></tr>
+            <tr><td>Conductor volumétrico</td><td>Medio conductor (tejidos y líquidos) por el que se propagan las corrientes bioeléctricas.</td></tr>
+            <tr><td>Derivación</td><td>Par de electrodos, o electrodo y referencia, cuya diferencia de potencial es un canal de registro.</td></tr>
+            <tr><td>Doble capa eléctrica</td><td>Distribución de cargas en la interfaz metal-electrolito que origina el potencial de media celda.</td></tr>
+            <tr><td>DRL</td><td>Circuito de pierna derecha activa; realimenta el modo común invertido al paciente para reducirlo.</td></tr>
+            <tr><td>Parte aplicada</td><td>Parte del equipo que contacta físicamente al paciente (IEC 60601-1).</td></tr>
+            <tr><td>Potencial de acción</td><td>Cambio transitorio, rápido y estereotipado del potencial de membrana ante un estímulo supraumbral.</td></tr>
+            <tr><td>Potencial de corrimiento</td><td>Diferencia de continua entre los potenciales de media celda de dos electrodos.</td></tr>
+            <tr><td>Potencial de reposo</td><td>Potencial de membrana estable de una célula no estimulada, típicamente de −60 a −90 mV.</td></tr>
+            <tr><td>PAUM</td><td>Potencial de acción de unidad motora; suma de los potenciales de las fibras de una unidad motora.</td></tr>
+            <tr><td>Terminal central de Wilson</td><td>Referencia formada por el promedio de RA, LA y LL, usada en derivaciones unipolares.</td></tr>
+            <tr><td>Umbral</td><td>Nivel de despolarización a partir del cual se dispara un potencial de acción.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption><b>Tabla 9.</b> Términos clave de la guía.</figcaption>
+    </div>
+
+    <h3>Referencias y lecturas recomendadas</h3>
+    <ol class="ph-refs">
+      <li><span class="hang">Webster, J. G. (Ed.). (2010). <i>Medical instrumentation: Application and design</i> (4.ª ed.). Wiley.</span><span class="use">Capítulos 4 (The origin of biopotentials), 5 (Biopotential electrodes) y 6 (Biopotential amplifiers).</span></li>
+      <li><span class="hang">Enderle, J. D., y Bronzino, J. D. (2012). <i>Introduction to biomedical engineering</i> (3.ª ed.). Academic Press.</span><span class="use">Capítulo 12 (Bioelectric phenomena).</span></li>
+      <li><span class="hang">Facultad de Ingeniería, UNAM. <i>Tema 12: Electrocardiografía</i> (rev. 2). Notas del curso de Mediciones Clínicas.</span></li>
+      <li><span class="hang">Malmivuo, J., y Plonsey, R. (1995). <i>Bioelectromagnetism: Principles and applications of bioelectric and biomagnetic fields</i>. Oxford University Press.</span><span class="use">Disponible en acceso abierto.</span></li>
+      <li><span class="hang">Hodgkin, A. L., y Huxley, A. F. (1952). A quantitative description of membrane current and its application to conduction and excitation in nerve. <i>The Journal of Physiology, 117</i>(4), 500-544.</span></li>
+      <li><span class="hang">Pan, J., y Tompkins, W. J. (1985). A real-time QRS detection algorithm. <i>IEEE Transactions on Biomedical Engineering, 32</i>(3), 230-236.</span></li>
+      <li><span class="hang">Kligfield, P., et al. (2007). Recommendations for the standardization and interpretation of the electrocardiogram, Part I. <i>Circulation, 115</i>(10), 1306-1324.</span></li>
+      <li><span class="hang">Carr, J. J., y Brown, J. M. (2001). <i>Introduction to biomedical equipment technology</i> (4.ª ed.). Prentice Hall.</span></li>
+      <li><span class="hang">International Electrotechnical Commission. <i>IEC 60601-1</i> (requisitos generales de seguridad); <i>IEC 60601-2-25</i> (electrocardiógrafos) e <i>IEC 60601-2-27</i> (monitores de ECG).</span></li>
+      <li><span class="hang">Merletti, R., y Farina, D. (Eds.). (2016). <i>Surface electromyography: Physiology, engineering, and applications</i>. Wiley-IEEE Press.</span></li>
+    </ol>
+  </section>
+
+  <div class="pager">
+    <a href="tema2-ph.html"><small>← Anterior</small> Tema 2 · Transductores químicos y pH</a>
+    <a href="ejercicios.html" style="text-align:right"><small>Siguiente →</small> Ejercicios · Temas 1.8 y 1.9</a>
+  </div>
+
+  </article>
+</div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Mediciones Clínicas · material de estudio</span>
+    <span><a href="index.html">Inicio</a> · <a href="bioinstrumentacion.html">Capítulo 0</a> · <a href="capitulo-01.html">Capítulo 1</a> · <a href="tema2-ph.html">Tema 2</a> · <a href="tema4-bioelectricas.html">Tema 4</a> · <a href="ejercicios.html">Ejercicios</a> · <a href="simuladores.html">Simuladores</a> · <a href="glosario.html">Glosario</a></span>
+  </div>
+</footer>
+
+<button class="icon-btn" id="toTop" aria-label="Volver arriba">↑</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
